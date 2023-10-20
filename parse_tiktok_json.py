@@ -190,7 +190,6 @@ ad_interests_list = json_data["Ads and data"]["Ad Interests"]["AdInterestCategor
 filename = "data/ad_interests.csv"
 f = open(filename, "w")
 f.write("AdInterestCategories\n")
-for ad_interest in ad_interests_list:
-    f.write(ad_interest + "\n")
+f.write(ad_interests_list + "\n")
 
 f.close()
