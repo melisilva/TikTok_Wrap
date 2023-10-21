@@ -59,11 +59,6 @@ def get_tiktok_video_info(input_file_path, output_file_path):
         
     
         tiktok_data = [date, link, tiktok_username, tiktok_description, ', '.join(hashtags), sound_name, sound_link]
-
-        if input_file_path == "data/video_upload_history.csv":
-            header.append("Likes")
-            likes = row['Likes']
-            tiktok_data.append(likes)
         
         if input_file_path == "data/share_history.csv":
             header.append("SharedContent")
@@ -83,9 +78,10 @@ def get_tiktok_video_info(input_file_path, output_file_path):
             writer.writerow(tiktok_data)
             print(f"Data appended to {output_file_path}")
 
-# share_history and video_upload_history have more information than the other videos so the header is different (see if conditions in line 63 and 68)
+# share_history have more information than the other videos so the header is different (see if conditions in line 63 and 68)
 get_tiktok_video_info("data/favorite_videos.csv", "data/favorite_videos_full_tiktok_data.csv")
-get_tiktok_video_info("data/likes.csv","data/likes_full_tiktok_data.csv")
+get_tiktok_video_info("data/likes.csv","data/likes_full_tiktok_data.csv") 
 get_tiktok_video_info("data/share_history.csv", "data/share_history_full_tiktok_data.csv") 
-get_tiktok_video_info("data/video_browsing_history.csv", "data/video_browsing_history_full_tiktok_data.csv")
-get_tiktok_video_info("data/video_upload_history.csv", "data/video_upload_history_full_tiktok_data.csv") 
+get_tiktok_video_info("data/video_browsing_history.csv", "data/video_browsing_history_full_tiktok_data.csv") 
+
+

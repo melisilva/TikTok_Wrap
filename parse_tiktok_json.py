@@ -157,7 +157,6 @@ f.close()
 # Extract Video Upload History List
 video_upload_history_list = json_data["Video"]["Videos"]["VideoList"]
 
-#We can scrape this but idk how worth it, it is
 filename = "data/video_upload_history.csv"
 f = open(filename, "w")
 f.write("Date,Link,Likes\n")
