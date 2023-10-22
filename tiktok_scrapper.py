@@ -20,7 +20,8 @@ def get_tiktok_video_info(input_file_path, output_file_path):
     
         # find the row in the input_file_path
         matching_rows = table.loc[table['Link'] == last_line['Link'].values[0]]
-        row = matching_rows.index.values[0] + 2
+        matching_rows = matching_rows.loc[matching_rows['Date'] == last_line['Date'].values[0]]
+        row = matching_rows.index.values[0] + 1
     
     sliced_table = table.iloc[row:,:]
     
