@@ -37,7 +37,13 @@ def get_tiktok_video_info(input_file_path, output_file_path):
             continue
         tiktok_info = soup.find("div", {"class":"tiktok-15ip68j-DivDescriptionContentWrapper-StyledDetailContentWrapper eqrezik14"})
         # print(tiktok_info)
-        tiktok_username = tiktok_info.find("span", {"class": "tiktok-1c7urt-SpanUniqueId evv7pft1"}).text
+        if tiktok_info == None:
+            continue
+        tiktok_username = tiktok_info.find("span", {"class": "tiktok-1c7urt-SpanUniqueId evv7pft1"})
+        if(tiktok_username != None):
+            tiktok_username = tiktok_username.text
+        else:
+            continue
         tiktok_description = tiktok_info.find("span", {"class":"tiktok-j2a19r-SpanText efbd9f0"})
         if(tiktok_description != None):
             tiktok_description = tiktok_description.text
