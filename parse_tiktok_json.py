@@ -17,6 +17,7 @@ with open('data/user_data.json', 'r', encoding = 'utf-8') as file:
 # favorite_sounds = json_data["Activity"]["Favorite Sounds"]["FavoriteSoundList"]
 
 # Extract the "Favorite Videos" column
+
 favorite_videos = json_data["Activity"]["Favorite Videos"]["FavoriteVideoList"]
 
 filename = "data/favorite_videos.csv"
@@ -75,19 +76,22 @@ for like in likes_list:
 f.close()
 
 # Extract Hashtags used list
-hashtag_list = json_data["Activity"]["Hashtag"]["HashtagList"]
+if "HashtagList" in json_data["Activity"]["Hashtag"]:
+    hashtag_list = json_data["Activity"]["Hashtag"]["HashtagList"]
 
-# Don't really know what we can/should scrape from this or we just don't?
-filename = "data/hashtags.csv"
-f = open(filename, "w")
-f.write("HashtagName,HashtagLink\n")
-for hashtag in hashtag_list:
-    hashtag_name = hashtag["HashtagName"]
-    hashtag_link = hashtag["HashtagLink"]
+    # Don't really know what we can/should scrape from this or we just don't?
+    filename = "data/hashtags.csv"
+    f = open(filename, "w")
+    f.write("HashtagName,HashtagLink\n")
+    for hashtag in hashtag_list:
+        hashtag_name = hashtag["HashtagName"]
+        hashtag_link = hashtag["HashtagLink"]
 
-    f.write(hashtag_name + "," + hashtag_link + "\n")
+        f.write(hashtag_name + "," + hashtag_link + "\n")
 
-f.close()
+    f.close()
+else: 
+    print("No hashtags have been used")
 
 # Extract Login History List
 login_history_list = json_data["Activity"]["Login History"]["LoginHistoryList"]
@@ -155,35 +159,43 @@ for video in video_browsing_history_list:
 f.close()
 
 # Extract Video Upload History List
-video_upload_history_list = json_data["Video"]["Videos"]["VideoList"]
+if "VideoList" in json_data["Video"]["Videos"]:
+    video_upload_history_list = json_data["Video"]["Videos"]["VideoList"]
 
-filename = "data/video_upload_history.csv"
-f = open(filename, "w")
-f.write("Date,Link,Likes\n")
-for video in video_upload_history_list:
-    date = video["Date"]
-    link = video["Link"]
-    likes = video["Likes"]
+    filename = "data/video_upload_history.csv"
+    f = open(filename, "w")
+    f.write("Date,Link,Likes\n")
+    for video in video_upload_history_list:
+        date = video["Date"]
+        link = video["Link"]
+        likes = video["Likes"]
 
-    f.write(date + "," + link + "," + likes + "\n")
+        f.write(date + "," + link + "," + likes + "\n")
 
-f.close()
+    f.close()
+else: 
+    print("No videos have been uploaded")
 
 # Extract Comments List
+
 comments_list = json_data["Comment"]["Comments"]["CommentsList"]
 
-filename = "data/comments.csv"
-f = open(filename, "w",encoding="utf-8")
-f.write("Date,Comment\n")
-for comment in comments_list:
-    date = comment["Date"]
-    comment = comment["Comment"]
+if comments_list == None:
+    print("No comments have been made")
+else: 
+    filename = "data/comments.csv"
+    f = open(filename, "w",encoding="utf-8")
+    f.write("Date,Comment\n")
+    for comment in comments_list:
+        date = comment["Date"]
+        comment = comment["Comment"]
 
-    f.write(date + "," + comment + "\n")
+        f.write(date + "," + comment + "\n")
 
-f.close()
+    f.close()
 
 # Extract Ad Interests List
+
 ad_interests_list = json_data["Ads and data"]["Ad Interests"]["AdInterestCategories"] # this is just strings
 
 filename = "data/ad_interests.csv"
