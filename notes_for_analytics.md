@@ -17,3 +17,8 @@ Cool stuff to show the user with their data:
 
 # Stuff that I noticed
 Ads - Promoted Music
+
+
+For the checkpoint show the concept of what we will show in the graphics to the user - use figma
+
+- Should we scrape the number of likes in each video?

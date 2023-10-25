@@ -1,20 +1,51 @@
 import json
 
+
 with open('data/user_data.json', 'r', encoding = 'utf-8') as file:
     data = file.read()
     json_data = json.loads(data)
 
 # Extract the "Favorite Effects" column
-# I don't have this
-# favorite_effects = json_data["Activity"]["Favorite Effects"]["FavoriteEffectsList"]
+favorite_effects = json_data["Activity"]["Favorite Effects"]["FavoriteEffectsList"]
+
+filename = "data/favorite_effects.csv"
+f = open(filename, "w")
+f.write("Date,EffectLink\n")
+for effect in favorite_effects:
+    date = effect["Date"]
+    effect_link = effect["EffectLink"]
+
+    f.write(date + "," + effect_link + "\n")
+
+f.close()
 
 # Extract the "Favorite Hashtags" column
-# I don't have this
-# favorite_hashtags = json_data["Activity"]["Favorite Hashtags"]["FavoriteHashtagList"]
+favorite_hashtags = json_data["Activity"]["Favorite Hashtags"]["FavoriteHashtagList"]
+
+filename = "data/favorite_hashtags.csv"
+f = open(filename, "w")
+f.write("Date,Link\n")
+for hashtag in favorite_hashtags:
+    date = hashtag["Date"]
+    link = hashtag["Link"]
+
+    f.write(date + "," + link + "\n")
+
+f.close()
 
 # Extract the "Favorite Sounds" column
-# I don't have this
-# favorite_sounds = json_data["Activity"]["Favorite Sounds"]["FavoriteSoundList"]
+favorite_sounds = json_data["Activity"]["Favorite Sounds"]["FavoriteSoundList"]
+
+filename = "data/favorite_sounds.csv"
+f = open(filename, "w")
+f.write("Date,Link\n")
+for sound in favorite_sounds:
+    date = sound["Date"]
+    link = sound["Link"]
+
+    f.write(date + "," + link + "\n")
+
+f.close()
 
 # Extract the "Favorite Videos" column
 
@@ -30,6 +61,7 @@ for video in favorite_videos:
     f.write(date + "," + link + "\n")
 
 f.close()
+
 
 
 # Extract Followers List
