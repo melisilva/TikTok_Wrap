@@ -24,6 +24,7 @@
 
 Future work: Visão criador
 
+Idea to discuss: information about the top hashtags of a user, like number of videos that tiktok has from that hashtag, how many the user saw...whatever we can get
 
 # Pré-processamento
     - Erro data + link
