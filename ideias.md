@@ -18,8 +18,6 @@
 - Visualizar hashtags por wordcloud
 - Generos de videos: musica, humor, filmes, jogos...
 
-- Podemos relacionar likes, favorite, history se apenas vermos as datas
-
 - Linguagem do conteúdo em função das descrições (e hashtags)
 
 Future work: Visão criador
