@@ -13,10 +13,18 @@ def home():
 # top creator history
 @app.get("/top-creator-history")
 def top_creator_history():
-    crud.top_creator_history()
-    return {"Hello": "World"}
+    return crud.top_creator_history()
+
 # top creator likes
+@app.get("/top-creator-likes")
+def top_creator_likes():
+    return crud.top_creator_likes()
+
 # top creator favorites
+@app.get("/top-creator-favorites")
+def top_creator_favorites():
+    return crud.top_creator_favorites()
+
 # top sound history
 # top sound likes
 # top sound favorites
