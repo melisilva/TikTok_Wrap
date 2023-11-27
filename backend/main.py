@@ -26,8 +26,20 @@ def top_creator_favorites():
     return crud.top_creator_favorites()
 
 # top sound history
+@app.get("/top-sound-history")
+def top_sound_history():
+    return crud.top_sound_history()
+
 # top sound likes
+@app.get("/top-sound-likes")
+def top_sound_likes():
+    return crud.top_sound_likes()
+
 # top sound favorites
+@app.get("/top-sound-favorites")
+def top_sound_favorites():
+    return crud.top_sound_favorites()
+
 # top hashtag history
 # top hashtag likes
 # top hashtag favorites

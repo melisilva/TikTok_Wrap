@@ -36,6 +36,17 @@ def scrape_tiktok_photo(name):
         photo = ""
     return photo
 
+def scrape_tiktok_sound_photo(link):
+    link = "https://" + link
+    page = requests.get(link)
+    
+    soup = BeautifulSoup(page.content, "lxml")
+    photo = soup.find("div", {"class":"tiktok-uur1tb-DivMusicCardContainer ervjp3i1"})
+    if(photo != None):
+        photo = photo['style'].split('background-image:url')[1].split('(')[1].split(')')[0]
+    else:
+        photo = ""
+    return photo
 
 def top_following(df):
     # Assuming 'Username' is the column containing usernames in the history DataFrame
@@ -50,6 +61,22 @@ def top_following(df):
     # Display the sorted and counted data
     return sorted_username_counts
 
+def top_sound(df):
+    df_copy = df.copy()
+
+    # Drop every row where the 'Sound Name' contains "Promoted Music"
+    df_copy = df_copy[~df_copy['Sound Name'].str.contains("Promoted Music")]
+
+    sound_counts = df_copy['Sound Link'].value_counts().reset_index()
+
+    # Rename the columns for clarity
+    sound_counts.columns = ['Sound Link', 'Count']
+
+    # Sort the DataFrame based on the 'Count' column
+    sorted_sound_counts = sound_counts.sort_values(by='Count', ascending=False)
+
+    # Display the sorted and counted data
+    return sorted_sound_counts
 
 
 
@@ -89,5 +116,56 @@ def top_creator_favorites():
     top.drop(['Count_x', 'Position_Likes', 'Position_Favorites', 'Change'], axis=1, inplace=True)
 
     top['Photo'] = top['Username'].apply(scrape_tiktok_photo)
+    top = top.to_dict()
+    return top
+
+def top_sound_history():
+    top = top_sound(history).head(5)
+
+    sound_names = []
+    for i in top['Sound Link']:
+        sound_name = history.loc[history['Sound Link'] == i, 'Sound Name'].head(1).item()
+        sound_names.append(sound_name)
+
+
+    top['Photo'] = top['Sound Link'].apply(scrape_tiktok_sound_photo)
+    top['Sound Name'] = sound_names
+    top.drop(['Sound Link'], axis=1, inplace=True)
+    top = top.to_dict()
+    return top
+
+def top_sound_likes():
+    top_history = top_sound(history).head(5)
+    top_likes = top_sound(likes).head(5)
+    top = compare_positions(top_history, top_likes, 'History', 'Likes', 'Sound Name')
+    top.drop(['Count_x', 'Position_History', 'Position_Likes', 'Change'], axis=1, inplace=True)
+
+    sound_names = []
+    for i in top['Sound Link']:
+        sound_name = history.loc[history['Sound Link'] == i, 'Sound Name'].head(1).item()
+        sound_names.append(sound_name)
+
+
+    top['Photo'] = top['Sound Link'].apply(scrape_tiktok_sound_photo)
+    top['Sound Name'] = sound_names
+    top.drop(['Sound Link'], axis=1, inplace=True)
+    top = top.to_dict()
+    return top
+
+def top_sound_favorites():
+    top_likes = top_sound(likes).head(5)
+    top_favorites = top_sound(favorites).head(5)
+    top = compare_positions(top_likes, top_favorites, 'Likes', 'Favorites', 'Sound Name')
+    top.drop(['Count_x', 'Position_Likes', 'Position_Favorites', 'Change'], axis=1, inplace=True)
+
+    sound_names = []
+    for i in top['Sound Link']:
+        sound_name = history.loc[history['Sound Link'] == i, 'Sound Name'].head(1).item()
+        sound_names.append(sound_name)
+
+
+    top['Photo'] = top['Sound Link'].apply(scrape_tiktok_sound_photo)
+    top['Sound Name'] = sound_names
+    top.drop(['Sound Link'], axis=1, inplace=True)
     top = top.to_dict()
     return top
