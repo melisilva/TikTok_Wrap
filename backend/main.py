@@ -7,7 +7,6 @@ app = FastAPI()
 def home():
     return {"Hello": "World"}
 
-# scrap photos of stuff
 # can see if there's a most watched video and scrap it idk
 
 # top creator history
@@ -41,8 +40,10 @@ def top_sound_favorites():
     return crud.top_sound_favorites()
 
 # top hashtag history
-# top hashtag likes
-# top hashtag favorites
+@app.get("/top-hashtag")
+def top_hashtag_history():
+    return crud.top_hashtag()
+
 # total number of minutes
 # time of the day most active
 # top creator overall + number of videos watched; liked and favorited

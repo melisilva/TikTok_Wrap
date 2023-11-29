@@ -8,7 +8,7 @@ history = pd.read_csv('data/unique_video_browsing_history_full_tiktok_data.csv')
 likes = pd.read_csv('data/likes_full_tiktok_data.csv')
 favorites = pd.read_csv('data/favorite_videos_full_tiktok_data.csv')
 share = pd.read_csv('data/share_history_full_tiktok_data.csv')
-# see how to put hashtags here
+hashtags = pd.read_csv('data/clean_hashtags/after_hashtags.csv')
 
 history = history.sort_values(by=["Date"])
 likes = likes.sort_values(by=["Date"])
@@ -24,12 +24,23 @@ likes = likes[likes['Date'] >= base_date]
 favorites = favorites[favorites['Date'] >= base_date]
 share = share[share['Date'] >= base_date]
 
-def scrape_tiktok_photo(name):
-    link = "https://www.tiktok.com/@" + name
+def scrape_tiktok_photo(link):
     page = requests.get(link)
     
     soup = BeautifulSoup(page.content, "lxml")
     photo = soup.find("img", {"class":"tiktok-1zpj2q-ImgAvatar e1e9er4e1"})
+    if(photo != None):
+        photo = photo['src']
+    else:
+        photo = ""
+    return photo
+
+def scrape_tiktok_hashtag_photo(link):
+    page = requests.get(link)
+    
+    soup = BeautifulSoup(page.content, "lxml")
+    div = soup.find("div", {"class":"tiktok-fcfffm-DivShareInfo ekmpd5l2"})
+    photo = div.find("img", {"class":"tiktok-1zpj2q-ImgAvatar e1e9er4e1"})
     if(photo != None):
         photo = photo['src']
     else:
@@ -78,7 +89,17 @@ def top_sound(df):
     # Display the sorted and counted data
     return sorted_sound_counts
 
+def top_hashtag():
+    # Sort the DataFrame based on the 'Count' column
+    sorted_hashtag_counts = hashtags.sort_values(by='Count', ascending=False)
 
+    top = sorted_hashtag_counts.head(5).reset_index()
+
+    top['Photo'] = ("https://www.tiktok.com/tag/" + top['Hashtag']).apply(scrape_tiktok_hashtag_photo)
+    top.drop(['index', 'Cluster'], axis=1, inplace=True)
+
+    # Display the sorted and counted data
+    return top.to_dict()
 
 # Function to compare the position change between two DataFrames
 def compare_positions(df1, df2, name1, name2, element_name):
@@ -95,7 +116,8 @@ def compare_positions(df1, df2, name1, name2, element_name):
 
 def top_creator_history(): # taking a lil bit
     top = top_following(history).head(5)
-    top['Photo'] = top['Username'].apply(scrape_tiktok_photo)
+
+    top['Photo'] = ("https://www.tiktok.com/@" + top['Username']).apply(scrape_tiktok_photo)
     top = top.to_dict()
     return top
 
@@ -105,7 +127,7 @@ def top_creator_likes():
     top = compare_positions(top_history, top_likes, 'History', 'Likes', 'Username')
     top.drop(['Count_x', 'Position_History', 'Position_Likes', 'Change'], axis=1, inplace=True)
 
-    top['Photo'] = top['Username'].apply(scrape_tiktok_photo)
+    top['Photo'] = ("https://www.tiktok.com/@" + top['Username']).apply(scrape_tiktok_photo)
     top = top.to_dict()
     return top
 
@@ -115,7 +137,7 @@ def top_creator_favorites():
     top = compare_positions(top_likes, top_favorites, 'Likes', 'Favorites', 'Username')
     top.drop(['Count_x', 'Position_Likes', 'Position_Favorites', 'Change'], axis=1, inplace=True)
 
-    top['Photo'] = top['Username'].apply(scrape_tiktok_photo)
+    top['Photo'] = ("https://www.tiktok.com/@" + top['Username']).apply(scrape_tiktok_photo)
     top = top.to_dict()
     return top
 
@@ -169,3 +191,4 @@ def top_sound_favorites():
     top.drop(['Sound Link'], axis=1, inplace=True)
     top = top.to_dict()
     return top
+
