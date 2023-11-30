@@ -1,6 +1,7 @@
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
+from datetime import datetime
 
 # Check if this works as global variables
 
@@ -192,3 +193,15 @@ def top_sound_favorites():
     top = top.to_dict()
     return top
 
+def total_minutes():
+    # Convert date strings to datetime objects
+    dates = [datetime.strptime(date_str, "%Y-%m-%d %H:%M:%S") for date_str in history['Date']]
+
+    # Calculate time differences between consecutive dates
+    time_diff = [dates[i + 1] - dates[i] for i in range(len(dates) - 1)]
+
+    # Sum up the total time difference in minutes
+    total_minutes = sum(td.total_seconds() / 60 for td in time_diff)
+
+    #calculate total of minutes
+    return round(total_minutes)

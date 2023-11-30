@@ -45,7 +45,12 @@ def top_hashtag_history():
     return crud.top_hashtag()
 
 # total number of minutes
+@app.get("/total-minutes")
+def total_minutes():
+    return crud.total_minutes()
+
 # time of the day most active
+# do we want to do minutes per month?
 # top creator overall + number of videos watched; liked and favorited
 
 if __name__ == "__main__":
