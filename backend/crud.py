@@ -205,3 +205,22 @@ def total_minutes():
 
     #calculate total of minutes
     return round(total_minutes)
+
+def time_of_day():
+    ## Convert the 'Date' column to a datetime object
+    history['Date'] = pd.to_datetime(history['Date'])
+
+    ## Extract the hour information
+    history['Hour'] = history['Date'].dt.hour
+
+    ## Count the occurences of each hour
+    hourly_counts = history['Hour'].value_counts().reset_index()
+
+    hourly_counts.columns = ['Hour', 'Count']
+
+    sorted_hourly_counts = hourly_counts.sort_values(by='Count', ascending=False)
+
+    # Display the sorted and counted data
+    return sorted_hourly_counts.head(1)['Hour'][0].item()
+
+

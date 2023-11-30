@@ -50,6 +50,10 @@ def total_minutes():
     return crud.total_minutes()
 
 # time of the day most active
+@app.get("/time-of-day")
+def time_of_day():
+    return crud.time_of_day()
+
 # do we want to do minutes per month?
 # top creator overall + number of videos watched; liked and favorited
 
