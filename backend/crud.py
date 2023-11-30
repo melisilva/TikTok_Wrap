@@ -248,3 +248,28 @@ def top_creator_overall():
     top.drop(['Count'], axis=1, inplace=True)
     top = top.to_dict()
     return top
+
+def ads():
+    ads = history[history['Sound Name'] == 'Promoted Music']
+
+    ads_counts = ads['Sound Link'].value_counts().reset_index()
+
+    ads_counts.columns = ['Sound Link', 'Count']
+
+    # Sort the DataFrame based on the 'Count' column
+    sorted_ads_counts = ads_counts.sort_values(by='Count', ascending=False)
+
+    top = sorted_ads_counts.head(5)
+
+    creators = []
+    for i in top['Sound Link']:
+        creator = ads.loc[history['Sound Link'] == i, 'Username'].head(1).item()
+        creators.append(creator)
+
+    top['Username'] = creators
+    top['Photo'] = ("https://www.tiktok.com/@" + top['Username']).apply(scrape_tiktok_photo)
+    
+    top['Percentage'] = len(ads) / len(history) * 100
+    top = top.to_dict()
+
+    return top

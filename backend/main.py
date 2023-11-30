@@ -54,11 +54,15 @@ def total_minutes():
 def time_of_day():
     return crud.time_of_day()
 
-# do we want to do minutes per month?
 # top creator overall + number of videos watched; liked and favorited
 @app.get("/top-creator-overall")
 def top_creator_overall():
     return crud.top_creator_overall()
+
+# % of ads and who are the creators
+@app.get("/ads")
+def ads():
+    return crud.ads()
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
