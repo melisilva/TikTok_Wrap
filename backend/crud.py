@@ -223,4 +223,28 @@ def time_of_day():
     # Display the sorted and counted data
     return sorted_hourly_counts.head(1)['Hour'][0].item()
 
+def top_creator_overall():
+    top_history = top_following(history)
+    top_likes = top_following(likes)
+    top_favorites = top_following(favorites)
 
+    ratio_likes = top_history['Count'] / top_likes['Count']
+    ratio_favorites = top_history['Count'] / top_favorites['Count']
+
+    top = top_history.copy()
+    top['Count'] = top_history['Count'] + (top_likes['Count'] * ratio_likes) + (top_favorites['Count'] * ratio_favorites)
+
+    top = top.sort_values(by='Count', ascending=False).head(1)
+
+
+    top['Photo'] = scrape_tiktok_photo("https://www.tiktok.com/@" + top['Username'].item())
+    top['Count_History'] = top_history[top_history['Username'] == top['Username'].item()]['Count'].item()
+
+    if(top['Username'].item() in top_likes['Username'].values):
+        top['Count_Likes'] = top_likes[top_likes['Username'] == top['Username'].item()]['Count'].item()
+    
+    if(top['Username'].item() in top_favorites['Username'].values):
+        top['Count_Favorites'] = top_favorites[top_favorites['Username'] == top['Username'].item()]['Count'].item()
+    top.drop(['Count'], axis=1, inplace=True)
+    top = top.to_dict()
+    return top
