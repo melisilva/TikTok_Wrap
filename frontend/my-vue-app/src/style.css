@@ -26,9 +26,8 @@ body{
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
   min-height: 100vh;
-  background-color: #b4b5db;
+  background: linear-gradient(180deg, rgba(255, 68, 105, 0.83) 0%,rgba(33, 186, 235, 0.86) 53.5416305065155%);
 }
 
 h1 {
@@ -181,6 +180,18 @@ button:focus-visible {
   width: 16.25px;
   height: 9.84px;
   left: 227.17px; 
+  display: flex;
+  align-items: center;
+  justify-content: center
+} 
+
+.ads-message{
+  color: #ffffff;
+  text-align: center;
+  font-family: 'futura-maxi-cg-bold';
+  font-size: 32px;
+  line-height: 35.5px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center} 
