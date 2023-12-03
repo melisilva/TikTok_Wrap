@@ -27,6 +27,7 @@ body{
   display: flex;
   place-items: center;
   min-height: 100vh;
+  background: #f08080;
   /*background: linear-gradient(180deg, rgba(255, 68, 105, 0.83) 0%,rgba(33, 186, 235, 0.86) 53.5416305065155%); -> Background of AdsMessage.vue*/
 }
 
@@ -207,3 +208,51 @@ button:focus-visible {
   transform: rotate(0.082deg) scale(1, 1);
   overflow: hidden;
   } 
+
+  .title,
+  .subtitle {
+    font-family: 'futura-maxi-cg-bold';
+    font-weight: 400;
+    margin-bottom: 10px; /* Add space below title and subtitle */
+  }
+
+    /* Center the title horizontally */
+    .title {
+      font-size: 32px;
+      margin: 0 auto;
+      text-align: center;
+    }
+  
+    .subtitle {
+      font-size: 20px;
+      margin: 0 auto;
+      text-align: left;
+    }
+  
+  .creator-item {
+    display: flex; /* Use Flexbox */
+    align-items: center; /* Center items vertically */
+    margin-top: 20px; /* Adjust spacing between items */
+  }
+  
+  .number,
+  .name {
+    font-family: 'futura-maxi-cg-bold';
+    font-weight: 400;
+  }
+  
+  .pfp {
+    border-radius: 50px;
+    width: 84px;
+    height: 83px;
+    margin: 0 10px; /* Adjust spacing around the image */
+  }
+  
+  .number {
+    font-size: 24px;
+  }
+  
+  .name {
+    font-size: 20px;
+  }
+  
