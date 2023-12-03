@@ -2,6 +2,8 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
+import aiohttp
+import asyncio
 
 # Check if this works as global variables
 
@@ -25,16 +27,21 @@ likes = likes[likes['Date'] >= base_date]
 favorites = favorites[favorites['Date'] >= base_date]
 share = share[share['Date'] >= base_date]
 
-def scrape_tiktok_photo(link):
-    page = requests.get(link)
-    
-    soup = BeautifulSoup(page.content, "lxml")
-    photo = soup.find("img", {"class":"tiktok-1zpj2q-ImgAvatar e1e9er4e1"})
-    if(photo != None):
-        photo = photo['src']
-    else:
-        photo = ""
-    return photo
+async def scrape_tiktok_photo(link, session):
+    async with session.get(link) as response:
+        content = await response.text()
+
+        soup = BeautifulSoup(content, "html.parser")
+        photo = soup.find("img", {"class": "tiktok-1zpj2q-ImgAvatar e1e9er4e1"})
+        if photo:
+            return photo['src']
+        else:
+            return ""
+
+async def fetch_photos(creators):
+    async with aiohttp.ClientSession() as session:
+        tasks = [scrape_tiktok_photo(f"https://www.tiktok.com/@{creator}", session) for creator in creators]
+        return await asyncio.gather(*tasks)
 
 def scrape_tiktok_hashtag_photo(link):
     page = requests.get(link)
@@ -267,8 +274,15 @@ def ads():
         creators.append(creator)
 
     top['Username'] = creators
-    top['Photo'] = ("https://www.tiktok.com/@" + top['Username']).apply(scrape_tiktok_photo)
-    
+
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+
+    try:
+        top['Photo'] = loop.run_until_complete(fetch_photos(top['Username']))
+    finally:
+        loop.close()
+        
     top['Percentage'] = len(ads) / len(history) * 100
     top = top.to_dict()
 
