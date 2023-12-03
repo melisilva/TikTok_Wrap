@@ -27,7 +27,7 @@ body{
   display: flex;
   place-items: center;
   min-height: 100vh;
-  background: linear-gradient(180deg, rgba(255, 68, 105, 0.83) 0%,rgba(33, 186, 235, 0.86) 53.5416305065155%);
+  /*background: linear-gradient(180deg, rgba(255, 68, 105, 0.83) 0%,rgba(33, 186, 235, 0.86) 53.5416305065155%); -> Background of AdsMessage.vue*/
 }
 
 h1 {
@@ -194,4 +194,16 @@ button:focus-visible {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center} 
+  justify-content: center
+}
+
+.minutes {
+  background: linear-gradient(to left, #fadadd, #fadadd);
+  border-radius: 20px;
+  width: 390px;
+  height: 844px;
+  position: relative;
+  transform-origin: 0 0;
+  transform: rotate(0.082deg) scale(1, 1);
+  overflow: hidden;
+  } 
