@@ -9,6 +9,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 /* import font awesome icon component */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+import './assets/sass/style.scss'
+
 const app = createApp(App)
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(router)
