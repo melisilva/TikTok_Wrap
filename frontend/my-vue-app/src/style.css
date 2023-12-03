@@ -109,6 +109,9 @@ button:focus-visible {
 .rectangle {
   border-radius: 30px 30px 0px 0px;
   width: 78px;
+  z-index: 1; /* Set a higher z-index value */
+  overflow: hidden;
+  top: 30px;
   } 
 
 #rect-11{
@@ -140,3 +143,44 @@ button:focus-visible {
   height: 272px;
   position: relative; 
 }
+
+._1st-place {
+  position: absolute;
+  inset: 0;
+  z-index: 2; /* Set a higher z-index value */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align at the top */
+  align-items: center;
+}
+
+.ellipse-1 {
+  border-radius: 50%;
+  width: 125px;
+  height: 122.95px;
+}
+
+.rectangle-11 {
+  background: #1e1e1e;
+  border-radius: 15px;
+  width: 33.33px;
+  height: 22.54px;
+  position: relative;
+
+  }
+  
+  ._1 {
+  color: #ffffff;
+  text-align: center;
+  font-family: 'futura-maxi-cg-bold';
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+  position: relative;
+  width: 16.25px;
+  height: 9.84px;
+  left: 227.17px; 
+  display: flex;
+  align-items: center;
+  justify-content: center} 
