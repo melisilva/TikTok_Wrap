@@ -27,45 +27,56 @@ likes = likes[likes['Date'] >= base_date]
 favorites = favorites[favorites['Date'] >= base_date]
 share = share[share['Date'] >= base_date]
 
-async def scrape_tiktok_photo(link, session):
+async def scrape_tiktok_photo_user(link, session):
     async with session.get(link) as response:
         content = await response.text()
 
-        soup = BeautifulSoup(content, "html.parser")
-        photo = soup.find("img", {"class": "tiktok-1zpj2q-ImgAvatar e1e9er4e1"})
-        if photo:
-            return photo['src']
+        soup = BeautifulSoup(content, "lxml")        
+        photo = soup.find("img", {"class":"tiktok-1zpj2q-ImgAvatar e1e9er4e1"})
+        if(photo != None):
+            photo = photo['src']
         else:
-            return ""
+            photo = ""
+        return photo
 
-async def fetch_photos(creators):
+async def scrape_tiktok_photo_hashtag(link, session):
+    async with session.get(link) as response:
+        content = await response.text()
+
+        soup = BeautifulSoup(content, "lxml")        
+        div = soup.find("div", {"class":"tiktok-fcfffm-DivShareInfo ekmpd5l2"})
+        photo = div.find("img", {"class":"tiktok-1zpj2q-ImgAvatar e1e9er4e1"})
+        if(photo != None):
+            photo = photo['src']
+        else:
+            photo = ""
+        return photo
+
+async def scrape_tiktok_sound_photo(link,session):
+    link = "https://" + link
+    async with session.get(link) as response:
+        content = await response.text()
+    
+        soup = BeautifulSoup(content, "lxml")
+        photo = soup.find("div", {"class":"tiktok-uur1tb-DivMusicCardContainer ervjp3i1"})
+        if(photo != None):
+            photo = photo['style'].split('background-image:url')[1].split('(')[1].split(')')[0]
+        else:
+            photo = ""
+        return photo
+
+async def fetch_photos(link, creators, indicator):
     async with aiohttp.ClientSession() as session:
-        tasks = [scrape_tiktok_photo(f"https://www.tiktok.com/@{creator}", session) for creator in creators]
+        if indicator == 'Username':
+            tasks = [scrape_tiktok_photo_user(link + creator, session) for creator in creators]
+        else:
+            tasks = [scrape_tiktok_photo_hashtag(link + creator, session) for creator in creators]
         return await asyncio.gather(*tasks)
 
-def scrape_tiktok_hashtag_photo(link):
-    page = requests.get(link)
-    
-    soup = BeautifulSoup(page.content, "lxml")
-    div = soup.find("div", {"class":"tiktok-fcfffm-DivShareInfo ekmpd5l2"})
-    photo = div.find("img", {"class":"tiktok-1zpj2q-ImgAvatar e1e9er4e1"})
-    if(photo != None):
-        photo = photo['src']
-    else:
-        photo = ""
-    return photo
-
-def scrape_tiktok_sound_photo(link):
-    link = "https://" + link
-    page = requests.get(link)
-    
-    soup = BeautifulSoup(page.content, "lxml")
-    photo = soup.find("div", {"class":"tiktok-uur1tb-DivMusicCardContainer ervjp3i1"})
-    if(photo != None):
-        photo = photo['style'].split('background-image:url')[1].split('(')[1].split(')')[0]
-    else:
-        photo = ""
-    return photo
+async def fetch_photos_sounds(sounds):
+    async with aiohttp.ClientSession() as session:
+        tasks = [scrape_tiktok_sound_photo(sound, session) for sound in sounds]
+        return await asyncio.gather(*tasks)
 
 def top_following(df):
     # Assuming 'Username' is the column containing usernames in the history DataFrame
@@ -103,7 +114,14 @@ def top_hashtag():
 
     top = sorted_hashtag_counts.head(5).reset_index()
 
-    top['Photo'] = ("https://www.tiktok.com/tag/" + top['Hashtag']).apply(scrape_tiktok_hashtag_photo)
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+
+    try:
+        top['Photo'] = loop.run_until_complete(fetch_photos("https://www.tiktok.com/tag/", top['Hashtag'], 'Hashtag'))
+    finally:
+        loop.close()
+
     top.drop(['index', 'Cluster'], axis=1, inplace=True)
 
     # Display the sorted and counted data
@@ -125,7 +143,14 @@ def compare_positions(df1, df2, name1, name2, element_name):
 def top_creator_history(): # taking a lil bit
     top = top_following(history).head(5)
 
-    top['Photo'] = ("https://www.tiktok.com/@" + top['Username']).apply(scrape_tiktok_photo)
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+
+    try:
+        top['Photo'] = loop.run_until_complete(fetch_photos("https://www.tiktok.com/@", top['Username'], 'Username'))
+    finally:
+        loop.close()
+
     top = top.to_dict()
     return top
 
@@ -135,7 +160,14 @@ def top_creator_likes():
     top = compare_positions(top_history, top_likes, 'History', 'Likes', 'Username')
     top.drop(['Count_x', 'Position_History', 'Position_Likes', 'Change'], axis=1, inplace=True)
 
-    top['Photo'] = ("https://www.tiktok.com/@" + top['Username']).apply(scrape_tiktok_photo)
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+
+    try:
+        top['Photo'] = loop.run_until_complete(fetch_photos("https://www.tiktok.com/@", top['Username'], 'Username'))
+    finally:
+        loop.close()
+
     top = top.to_dict()
     return top
 
@@ -145,7 +177,14 @@ def top_creator_favorites():
     top = compare_positions(top_likes, top_favorites, 'Likes', 'Favorites', 'Username')
     top.drop(['Count_x', 'Position_Likes', 'Position_Favorites', 'Change'], axis=1, inplace=True)
 
-    top['Photo'] = ("https://www.tiktok.com/@" + top['Username']).apply(scrape_tiktok_photo)
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+
+    try:
+        top['Photo'] = loop.run_until_complete(fetch_photos("https://www.tiktok.com/@", top['Username'], 'Username'))
+    finally:
+        loop.close()
+
     top = top.to_dict()
     return top
 
@@ -157,8 +196,14 @@ def top_sound_history():
         sound_name = history.loc[history['Sound Link'] == i, 'Sound Name'].head(1).item()
         sound_names.append(sound_name)
 
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
 
-    top['Photo'] = top['Sound Link'].apply(scrape_tiktok_sound_photo)
+    try:
+        top['Photo'] = loop.run_until_complete(fetch_photos_sounds(top['Sound Link']))
+    finally:
+        loop.close()
+
     top['Sound Name'] = sound_names
     top.drop(['Sound Link'], axis=1, inplace=True)
     top = top.to_dict()
@@ -176,7 +221,14 @@ def top_sound_likes():
         sound_names.append(sound_name)
 
 
-    top['Photo'] = top['Sound Link'].apply(scrape_tiktok_sound_photo)
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+
+    try:
+        top['Photo'] = loop.run_until_complete(fetch_photos_sounds(top['Sound Link']))
+    finally:
+        loop.close()
+
     top['Sound Name'] = sound_names
     top.drop(['Sound Link'], axis=1, inplace=True)
     top = top.to_dict()
@@ -194,7 +246,13 @@ def top_sound_favorites():
         sound_names.append(sound_name)
 
 
-    top['Photo'] = top['Sound Link'].apply(scrape_tiktok_sound_photo)
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+
+    try:
+        top['Photo'] = loop.run_until_complete(fetch_photos_sounds(top['Sound Link']))
+    finally:
+        loop.close()
     top['Sound Name'] = sound_names
     top.drop(['Sound Link'], axis=1, inplace=True)
     top = top.to_dict()
@@ -244,7 +302,14 @@ def top_creator_overall():
     top = top.sort_values(by='Count', ascending=False).head(1)
 
 
-    top['Photo'] = scrape_tiktok_photo("https://www.tiktok.com/@" + top['Username'].item())
+    loop = asyncio.new_event_loop()
+    asyncio.set_event_loop(loop)
+
+    try:
+        top['Photo'] = loop.run_until_complete(fetch_photos("https://www.tiktok.com/@", top['Username'], 'Username'))
+    finally:
+        loop.close()
+
     top['Count_History'] = top_history[top_history['Username'] == top['Username'].item()]['Count'].item()
 
     if(top['Username'].item() in top_likes['Username'].values):
@@ -279,7 +344,7 @@ def ads():
     asyncio.set_event_loop(loop)
 
     try:
-        top['Photo'] = loop.run_until_complete(fetch_photos(top['Username']))
+        top['Photo'] = loop.run_until_complete(fetch_photos("https://www.tiktok.com/@", top['Username'], 'Username'))
     finally:
         loop.close()
         
