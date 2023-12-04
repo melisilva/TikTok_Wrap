@@ -268,32 +268,27 @@ def total_minutes():
     time_diff = [dates[i + 1] - dates[i] for i in range(len(dates) - 1)]
 
     # Sum up the total time difference in minutes
-    total_minutes = sum(td.total_seconds() / 60 for td in time_diff)
+    total_minutes = round(sum(td.total_seconds() / 60 for td in time_diff))
+
+    quote = ""
+
+    if total_minutes < 2400:
+        quote = "Either you're new here or you have some serious time management skills!"
+    elif 2400 <= total_minutes < 4200:
+        quote = "Not bad, not bad at all! That's enough time to become a TikTok philosopher. What's your favorite deep thought from the FYP?"
+    elif 4200 <= total_minutes < 7200:
+        quote = "Give it up for the dedicated souls! You're not just watching, you're earning a virtual Ph.D. in TikTokology!"
+    elif 7200 <= total_minutes < 18000:
+        quote = "Procrastination level: Expert! The real question is, how many times did you think about doing chores?"
+    elif 18000 <= total_minutes < 30000:
+        quote = "Hold onto your time machines! That's enough time to create your own TikTok time capsule!"
+    elif 30000 <= total_minutes:
+        quote = "And the award for TikTok Marathoner goes to... you! Is there a gold medal for endless scrolling?"
+
+    result = {'Minutes': total_minutes, 'Quote': quote}
 
     #calculate total of minutes
-    return round(total_minutes)
-
-"""
-30+31 = 61 hours (average?)
-
-    Short and Sweet Total Minutes (0-40 hours):
-        "Breaking news: TikTok users have collectively spent less than an hour watching videos. Either you're new here or you have some serious time management skills!"
-
-    Casual Scrollers (40-70 hours):
-        "Not bad, not bad at all! The total TikTok watch time is between 1 to 5 hours. That's enough time to become a TikTok philosopher. What's your favorite deep thought from the For You Page?"
-
-    Dedicated Devotees (70-120 hours):
-        "Give it up for the dedicated souls! TikTok users have spent between 5 to 10 hours scrolling through content. You're not just watching, you're earning a virtual Ph.D. in TikTokology!"
-
-    Procrastination Masters (120-300 hours):
-        "Procrastination level: Expert! TikTok fans have collectively spent between 10 to 20 hours avoiding responsibilities. The real question is, how many times did you think about doing chores?"
-
-    Time-Travelers of TikTok (300-500):
-        "Hold onto your time machines! TikTok users have clocked between 20 to 30 hours on the app. That's enough time to create your own TikTok time capsule!"
-
-    TikTok Marathoners (500+ Hours):
-        "And the award for TikTok Marathoner goes to... everyone! The total watch time is a whopping 30+ hours. You're not just watching, you're training for the TikTok Olympics. Is there a gold medal for endless scrolling?"
-"""
+    return result
 
 def time_of_day():
     ## Convert the 'Date' column to a datetime object
@@ -330,7 +325,6 @@ def time_of_day():
     # Display the sorted and counted data
     result = {'Time': time, 'Quote': quote}
     return result
-
 
 def top_creator_overall():
     top_history = top_following(history)
