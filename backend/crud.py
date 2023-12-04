@@ -22,6 +22,8 @@ oldest_date_likes = likes['Date'].min()
 oldest_date_favorites = favorites['Date'].min()
 base_date = max(oldest_date_likes, oldest_date_favorites)
 
+print(base_date)
+
 history = history[history['Date'] >= base_date]
 likes = likes[likes['Date'] >= base_date]
 favorites = favorites[favorites['Date'] >= base_date]
@@ -271,6 +273,28 @@ def total_minutes():
     #calculate total of minutes
     return round(total_minutes)
 
+"""
+30+31 = 61 hours (average?)
+
+    Short and Sweet Total Minutes (0-40 hours):
+        "Breaking news: TikTok users have collectively spent less than an hour watching videos. Either you're new here or you have some serious time management skills!"
+
+    Casual Scrollers (40-70 hours):
+        "Not bad, not bad at all! The total TikTok watch time is between 1 to 5 hours. That's enough time to become a TikTok philosopher. What's your favorite deep thought from the For You Page?"
+
+    Dedicated Devotees (70-120 hours):
+        "Give it up for the dedicated souls! TikTok users have spent between 5 to 10 hours scrolling through content. You're not just watching, you're earning a virtual Ph.D. in TikTokology!"
+
+    Procrastination Masters (120-300 hours):
+        "Procrastination level: Expert! TikTok fans have collectively spent between 10 to 20 hours avoiding responsibilities. The real question is, how many times did you think about doing chores?"
+
+    Time-Travelers of TikTok (300-500):
+        "Hold onto your time machines! TikTok users have clocked between 20 to 30 hours on the app. That's enough time to create your own TikTok time capsule!"
+
+    TikTok Marathoners (500+ Hours):
+        "And the award for TikTok Marathoner goes to... everyone! The total watch time is a whopping 30+ hours. You're not just watching, you're training for the TikTok Olympics. Is there a gold medal for endless scrolling?"
+"""
+
 def time_of_day():
     ## Convert the 'Date' column to a datetime object
     history['Date'] = pd.to_datetime(history['Date'])
@@ -285,8 +309,28 @@ def time_of_day():
 
     sorted_hourly_counts = hourly_counts.sort_values(by='Count', ascending=False)
 
+    initial_time = sorted_hourly_counts.head(1)['Hour'][0].item()
+    time = str(initial_time) + '-' + str(initial_time + 1)
+    quote = ""
+    if(initial_time >= 5 and initial_time < 8):
+        quote = "Rise and shine! Are you on a mission to out-early-bird the early birds? The worm's not ready, but you're already catching the laughs!"
+    elif(initial_time >= 0 and initial_time < 5):
+        quote = "Burning the midnight oil, or just scrolling through TikTok? Your late-night dedication is unmatched. The real question is, do you dream in TikToks?"
+    elif 8 <= initial_time < 12:
+        quote = "Good morning to the late risers! You're fashionably late to the TikTok party, but the entertainment is just getting started. Grab your coffee and join the fun!"
+    elif(initial_time >= 12 and initial_time < 14):
+        quote = "Taking a break or breaking the internet? Your lunchtime dedication to TikTok is commendable. Your boss might be wondering why you're laughing so much during Zoom calls!"
+    elif(initial_time >= 14 and initial_time < 16):
+        quote = "The early afternoon crew! Dodging responsibilities and diving into TikTok. Who needs productivity when you've got endless content to enjoy?"
+    elif 16 <= initial_time < 20:
+        quote = "Evening delight! Spending time on TikTok between 4 to 8 PM means you've turned your evenings into a delightful TikTok escape. The sun may be setting, but your laughs are just beginning!"
+    elif(initial_time >= 20 and initial_time <= 23):
+        quote = "Prime time for prime content! You've chosen the perfect window to unwind with TikTok. Dinner can wait; the real feast is on your For You Page!"
+
     # Display the sorted and counted data
-    return sorted_hourly_counts.head(1)['Hour'][0].item()
+    result = {'Time': time, 'Quote': quote}
+    return result
+
 
 def top_creator_overall():
     top_history = top_following(history)
