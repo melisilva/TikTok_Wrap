@@ -1,85 +1,13 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body{
+body, html, .page {
+  height: 100vh;
   margin: 0;
-  display: flex;
   place-items: center;
-  min-height: 100vh;
-  background: linear-gradient(to left, hsla(354, 76%, 92%, 0.65), hsla(354, 76%, 92%, 0.65)), 
-        url(assets/images/TikTok_Wrapped_Inverted_Background.png) no-repeat center center fixed;
-  background-blend-mode: overlay;
-  /*background: #f08080; top-ad-creators*/
-  /*background: linear-gradient(180deg, rgba(255, 68, 105, 0.83) 0%,rgba(33, 186, 235, 0.86) 53.5416305065155%); -> Background of AdsMessage.vue, put fixed for no weird bar*/
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-.card {
-  padding: 2em;
 }
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
   text-align: center;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  overflow:hidden;
 }
 
 .top-history-creators {
@@ -107,12 +35,12 @@ button:focus-visible {
 .side-by-side-chart {
   display: flex;
   align-items: flex-end; /* Align bars at the bottom */
+  justify-content: center; 
 }
 
-.rectangle {
+.rectangle { /*make this a component*/
   border-radius: 30px 30px 0px 0px;
-  width: 78px;
-  z-index: 1; /* Set a higher z-index value */
+  width: 80px;
   overflow: hidden;
   top: 30px;
   } 
@@ -148,20 +76,16 @@ button:focus-visible {
 }
 
 ._1st-place {
-  position: absolute;
-  inset: 0;
-  z-index: 2; /* Set a higher z-index value */
-
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* Align at the top */
   align-items: center;
 }
 
 .ellipse-1 {
   border-radius: 50%;
-  width: 125px;
-  height: 122.95px;
+  width: 80px;
+  height: 80px;
+  z-index: 1;
 }
 
 .rectangle-11 {
@@ -180,7 +104,6 @@ button:focus-visible {
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
-  position: relative;
   width: 16.25px;
   height: 9.84px;
   left: 227.17px; 
@@ -191,14 +114,9 @@ button:focus-visible {
 
 .ads-message{
   color: #ffffff;
-  text-align: center;
   font-family: 'futura-maxi-cg-bold';
   font-size: 32px;
   line-height: 35.5px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center
 }
 
 .minutes {
@@ -267,14 +185,10 @@ button:focus-visible {
     line-height: 35px;
     font-weight: 700;
     position: relative;
-    width: 366px;
-    height: 58px;
-    transform-origin: 0 0;
-    transform: rotate(0deg) scale(1, 1); 
   }
 
   .quote-text {
-    color: #000000;
+    color: #ffffff;
     text-align: center;
     font-family: 'Inter-SemiBoldItalic', sans-serif; 
     font-size: 32px;
@@ -282,9 +196,6 @@ button:focus-visible {
     font-weight: 600;
     font-style: italic;
     position: relative;
-    left: 12.57px;
-    width: 366.61px;
-    height: 107.46px;
-    transform-origin: 0 0;
-    transform: rotate(0deg) scale(1, 1); 
+    width: 50%;
+    padding-top: 10%;
   }

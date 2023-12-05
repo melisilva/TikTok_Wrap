@@ -1,4 +1,5 @@
 <template>
+    <div class="page" style="background: #f08080;">
     <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" />
     <div class="title">
         {{ percentage }}% of TikToks you watched were ads
@@ -36,11 +37,13 @@
         <img v-bind:src="photos[4] === '' ? 'src/assets/images/user_default.png' : photos[4]" class="pfp"/>
         <div class="name"> {{ creators[4]}} </div>
     </div>
+    </div>
 </template>
 
 <script>
 import axios from 'axios'
 import { defineComponent } from 'vue'
+//add margins all around (reflexive)
 
 export default defineComponent({
   name: 'TopAdCreators',
