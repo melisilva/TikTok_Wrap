@@ -180,7 +180,7 @@ body, html, .page {
   }
 
   .text-inside-rectangle {
-    writing-mode: vertical-lr;
+    writing-mode: vertical-rl;
     margin: 0; /* Reset margin to avoid extra spacing */
     font-family: 'futura-maxi-cg-bold';
     color: white;

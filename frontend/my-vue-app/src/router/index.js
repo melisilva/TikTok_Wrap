@@ -9,6 +9,16 @@ const router = createRouter({
       component: () => import('../views/TopHistoryCreators.vue')
     },
     {
+      path: '/top-history-sounds',
+      name: 'top_history_sounds',
+      component: () => import('../views/TopHistorySounds.vue')
+    },
+    {
+      path: '/top-hashtags',
+      name: 'top_hashtags',
+      component: () => import('../views/TopHashtags.vue')
+    },
+    {
       path: '/ads-message',
       name: 'ads_message',
       component: () => import('../views/AdsMessage.vue')
