@@ -18,10 +18,8 @@ body, html, .page {
   line-height: 24px;
   font-weight: 400;
   position: absolute;
-  left: 37px;
-  top: 49px;
-  width: 318px;
-  height: 28px;
+  padding-left: 10%;
+  padding-top:5%;
   }
   
   .tik-tok-logo {
@@ -75,20 +73,22 @@ body, html, .page {
   position: relative; 
 }
 
-._1st-place {
+.place {
   display: flex;
   flex-direction: column;
   align-items: center;
+  top: 50px;
+  position: relative;
 }
 
-.ellipse-1 {
+.ellipse {
   border-radius: 50%;
   width: 80px;
   height: 80px;
   z-index: 1;
 }
 
-.rectangle-11 {
+.rectangle-place {
   background: #1e1e1e;
   border-radius: 15px;
   width: 33.33px;
@@ -96,22 +96,6 @@ body, html, .page {
   position: relative;
 
   }
-  
-  ._1 {
-  color: #ffffff;
-  text-align: center;
-  font-family: 'futura-maxi-cg-bold';
-  font-size: 18px;
-  line-height: 24px;
-  font-weight: 400;
-  width: 16.25px;
-  height: 9.84px;
-  left: 227.17px; 
-  display: flex;
-  align-items: center;
-  justify-content: center
-} 
-
 
 .minutes {
   background: linear-gradient(to left, #fadadd, #fadadd);
