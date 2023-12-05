@@ -27,8 +27,11 @@ body{
   display: flex;
   place-items: center;
   min-height: 100vh;
-  background: #f08080;
-  /*background: linear-gradient(180deg, rgba(255, 68, 105, 0.83) 0%,rgba(33, 186, 235, 0.86) 53.5416305065155%); -> Background of AdsMessage.vue*/
+  background: linear-gradient(to left, hsla(354, 76%, 92%, 0.65), hsla(354, 76%, 92%, 0.65)), 
+        url(assets/images/TikTok_Wrapped_Inverted_Background.png) no-repeat center center fixed;
+  background-blend-mode: overlay;
+  /*background: #f08080; top-ad-creators*/
+  /*background: linear-gradient(180deg, rgba(255, 68, 105, 0.83) 0%,rgba(33, 186, 235, 0.86) 53.5416305065155%); -> Background of AdsMessage.vue, put fixed for no weird bar*/
 }
 
 h1 {
@@ -255,4 +258,33 @@ button:focus-visible {
   .name {
     font-size: 20px;
   }
-  
+
+  .general-text {
+    font-family: 'futura-maxi-cg-bold';
+    font-size: 32px;
+    text-align: center;
+    color: #000000;
+    line-height: 35px;
+    font-weight: 700;
+    position: relative;
+    width: 366px;
+    height: 58px;
+    transform-origin: 0 0;
+    transform: rotate(0deg) scale(1, 1); 
+  }
+
+  .quote-text {
+    color: #000000;
+    text-align: center;
+    font-family: 'Inter-SemiBoldItalic', sans-serif; 
+    font-size: 32px;
+    line-height: 35px;
+    font-weight: 600;
+    font-style: italic;
+    position: relative;
+    left: 12.57px;
+    width: 366.61px;
+    height: 107.46px;
+    transform-origin: 0 0;
+    transform: rotate(0deg) scale(1, 1); 
+  }
