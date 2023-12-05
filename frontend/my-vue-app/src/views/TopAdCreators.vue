@@ -8,6 +8,8 @@
         Top Ad Creators
     </div>
 
+    <div style="padding-left: 25%;">
+
     <div class="creator-item">
         <div class="number"> #1 </div>
         <img v-bind:src="photos[0] === '' ? 'src/assets/images/user_default.png' : photos[0]" class="pfp"/>
@@ -36,6 +38,7 @@
         <div class="number"> #5 </div>
         <img v-bind:src="photos[4] === '' ? 'src/assets/images/user_default.png' : photos[4]" class="pfp"/>
         <div class="name"> {{ creators[4]}} </div>
+    </div>
     </div>
     </div>
 </template>

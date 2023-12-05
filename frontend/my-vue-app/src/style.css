@@ -128,7 +128,6 @@ body, html, .page {
   .subtitle {
     font-family: 'futura-maxi-cg-bold';
     font-weight: 400;
-    margin-bottom: 10px; /* Add space below title and subtitle */
   }
 
     /* Center the title horizontally */
@@ -136,12 +135,14 @@ body, html, .page {
       font-size: 32px;
       margin: 0 auto;
       text-align: center;
+      padding-top: 2%;
     }
   
     .subtitle {
       font-size: 20px;
-      margin: 0 auto;
       text-align: left;
+      padding-top: 2%;
+      padding-left: 15%;
     }
   
   .creator-item {
