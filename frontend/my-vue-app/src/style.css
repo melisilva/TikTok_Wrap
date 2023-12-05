@@ -112,12 +112,6 @@ body, html, .page {
   justify-content: center
 } 
 
-.ads-message{
-  color: #ffffff;
-  font-family: 'futura-maxi-cg-bold';
-  font-size: 32px;
-  line-height: 35.5px;
-}
 
 .minutes {
   background: linear-gradient(to left, #fadadd, #fadadd);
