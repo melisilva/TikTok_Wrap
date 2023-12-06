@@ -185,10 +185,10 @@ body, html, .page {
     font-family: 'futura-maxi-cg-bold';
     color: black;
     display: flex;
-    align-items: center; /* Center text vertically */
-    justify-content: center; /* Center text horizontally */
-    height: 100%; 
-    padding-right: 30%;
+    height: 80%; 
+    font-size: 14px;
+    padding-bottom: 30%;
+    padding-right: 20%;
     transform: rotate(180deg); 
   }
   
