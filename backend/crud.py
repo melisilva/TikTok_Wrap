@@ -99,6 +99,8 @@ def top_sound(df):
     # Drop every row where the 'Sound Name' contains "Promoted Music"
     df_copy = df_copy[~df_copy['Sound Name'].str.contains("Promoted Music")]
 
+    df_copy.drop(history.loc[history['Sound Link'] == "www.tiktok.com/"].index, inplace=True)
+
     sound_counts = df_copy['Sound Link'].value_counts().reset_index()
 
     # Rename the columns for clarity

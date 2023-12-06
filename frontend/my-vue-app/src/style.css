@@ -183,7 +183,7 @@ body, html, .page {
     writing-mode: vertical-rl;
     margin: 0; /* Reset margin to avoid extra spacing */
     font-family: 'futura-maxi-cg-bold';
-    color: white;
+    color: black;
     display: flex;
     align-items: center; /* Center text vertically */
     justify-content: center; /* Center text horizontally */
@@ -192,3 +192,9 @@ body, html, .page {
     transform: rotate(180deg); 
   }
   
+  .number-placement {
+    padding: 0px; 
+    margin: 0px; 
+    font-family: 'futura-maxi-cg-bold'; 
+    color: white;
+  }
