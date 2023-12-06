@@ -5,6 +5,14 @@ with open('data/user_data.json', 'r', encoding = 'utf-8') as file:
     data = file.read()
     json_data = json.loads(data)
 
+personal = json_data["Profile"]["Profile Information"]["ProfileMap"]
+
+filename = "data/personal.csv"
+f = open(filename, "w")
+f.write("Username,Photo\n")
+f.write(personal["userName"] + "," + personal["profilePhoto"] + "\n")
+f.close()
+
 # Extract the "Favorite Effects" column
 favorite_effects = json_data["Activity"]["Favorite Effects"]["FavoriteEffectsList"]
 

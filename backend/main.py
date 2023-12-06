@@ -75,6 +75,9 @@ def ads():
     return crud.ads()
 
 # summary of the data
+@app.get("/summary")
+def summary():
+    return crud.summary()
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)

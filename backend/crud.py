@@ -1,5 +1,4 @@
 import pandas as pd
-import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 import aiohttp
@@ -112,19 +111,20 @@ def top_sound(df):
     # Display the sorted and counted data
     return sorted_sound_counts
 
-def top_hashtag():
+def top_hashtag(need_photo = True):
     # Sort the DataFrame based on the 'Count' column
     sorted_hashtag_counts = hashtags.sort_values(by='Count', ascending=False)
 
     top = sorted_hashtag_counts.head(5).reset_index()
 
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
+    if(need_photo):
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
 
-    try:
-        top['Photo'] = loop.run_until_complete(fetch_photos("https://www.tiktok.com/tag/", top['Hashtag'], 'Hashtag'))
-    finally:
-        loop.close()
+        try:
+            top['Photo'] = loop.run_until_complete(fetch_photos("https://www.tiktok.com/tag/", top['Hashtag'], 'Hashtag'))
+        finally:
+            loop.close()
 
     top.drop(['index', 'Cluster'], axis=1, inplace=True)
 
@@ -328,18 +328,23 @@ def time_of_day():
     result = {'Time': time, 'Quote': quote}
     return result
 
-def top_creator_overall():
-    top_history = top_following(history)
-    top_likes = top_following(likes)
-    top_favorites = top_following(favorites)
-
+def top_creators(top_history, top_likes, top_favorites):
     ratio_likes = top_history['Count'] / top_likes['Count']
     ratio_favorites = top_history['Count'] / top_favorites['Count']
 
     top = top_history.copy()
     top['Count'] = top_history['Count'] + (top_likes['Count'] * ratio_likes) + (top_favorites['Count'] * ratio_favorites)
 
-    top = top.sort_values(by='Count', ascending=False).head(1)
+    top = top.sort_values(by='Count', ascending=False)
+
+    return top
+
+def top_creator_overall():
+    top_history = top_following(history)
+    top_likes = top_following(likes)
+    top_favorites = top_following(favorites)
+
+    top = top_creators().head(1)
 
 
     loop = asyncio.new_event_loop()
@@ -392,3 +397,24 @@ def ads():
     top = top.to_dict()
 
     return top
+
+def summary():
+    #top creators
+    top_history = top_following(history)
+    top_likes = top_following(likes)
+    top_favorites = top_following(favorites)
+
+    creators = top_creators(top_history, top_likes, top_favorites).head(5)
+
+    #total minutes
+    minutes = total_minutes()['Minutes']
+
+    #top hashtags
+    hashtags = top_hashtag(False)
+
+    #user photo
+    personal = pd.read_csv("data/personal.csv")
+    photo = personal['Photo'].item()
+
+    summary = {'Top Creators': creators.to_dict(), 'Total Minutes': minutes, 'Top Hashtags': hashtags, "Photo": photo}
+    return summary
