@@ -11,7 +11,7 @@
                         </div>
                    </div>
                    <div class="rectangle" id="rect-15">
-                        <p class="text-inside-rectangle"> {{ sounds[4]}} </p>
+                        <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ sounds[4]}} </p>
                    </div>
               </div>
               <div class="col">
@@ -44,7 +44,7 @@
                         </div>
                    </div>
                    <div class="rectangle" id="rect-13">
-                        <p class="text-inside-rectangle"> {{ sounds[2]}} </p>
+                        <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%; padding-bottom: 50%;"> {{ sounds[2]}} </p>
                    </div>
               </div>
               <div class="col">
@@ -55,7 +55,7 @@
                         </div>
                    </div>
                    <div class="rectangle" id="rect-14">
-                        <p class="text-inside-rectangle"> {{ sounds[3]}} </p>
+                        <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ sounds[3]}} </p>
                    </div>
               </div>
 
