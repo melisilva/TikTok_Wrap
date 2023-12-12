@@ -42,6 +42,11 @@ const router = createRouter({
       path: '/top-creator-overall',
       name: 'top_creator_overall',
       component: () => import('../views/TopCreator.vue')
+    },
+    {
+      path: '/summary',
+      name: 'summary',
+      component: () => import('../views/Summary.vue')
     }
   ]
 })

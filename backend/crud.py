@@ -121,7 +121,7 @@ def top_hashtag(need_photo = True):
     if(need_photo):
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-
+        
         try:
             top['Photo'] = loop.run_until_complete(fetch_photos("https://www.tiktok.com/tag/", top['Hashtag'], 'Hashtag'))
         finally:
@@ -416,6 +416,7 @@ def summary():
     #user photo
     personal = pd.read_csv("data/personal.csv")
     photo = personal['Photo'].item()
+    username = personal['Username'].item()
 
-    summary = {'Top Creators': creators.to_dict(), 'Total Minutes': minutes, 'Top Hashtags': hashtags, "Photo": photo}
+    summary = {'Top Creators': creators.to_dict(), 'Total Minutes': minutes, 'Top Hashtags': hashtags, "Photo": photo, "Username": username}
     return summary

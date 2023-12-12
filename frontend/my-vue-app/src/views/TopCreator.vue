@@ -14,7 +14,7 @@
                         </div>
                     </div>
                     <img :src="topCreatorImage" style="background-color:cyan;width: 300px; height: 300px; border-radius: 50%;">
-                    <div style="width: 30%; height: 10%; border: 5px solid white; border-radius: 50px; position: relative; margin: auto; bottom: 7%; ">
+                    <div style="width: 50%; height: 10%; border: 5px solid white; border-radius: 50px; position: relative; margin: auto; bottom: 7%; ">
                         <div style="width: 100%; height: 100%; background-color: black; border-radius: 50px; display:flex; align-items: center; justify-content: center;">
                             {{ topCreator }}
                         </div>
@@ -24,7 +24,7 @@
         </div>
 
         
-        <div style="margin: auto; display:flex; flex-direction: column; justify-content: space-between; height:40%; font-size:larger;">
+        <div style="margin: auto; display:flex; flex-direction: column; justify-content: space-between; height:40%; font-size:large;">
             <div class="row">
                 <div class="row" style="font-weight: bolder;">
                     Your Top Watched Creator
