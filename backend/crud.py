@@ -66,6 +66,7 @@ async def scrape_tiktok_sound_photo(link,session):
             photo = ""
         return photo
 
+
 async def fetch_photos(link, creators, indicator):
     async with aiohttp.ClientSession() as session:
         if indicator == 'Username':
@@ -344,17 +345,17 @@ def top_creator_overall():
     top_likes = top_following(likes)
     top_favorites = top_following(favorites)
 
-    top = top_creators().head(1)
+    top = top_creators(top_history, top_likes, top_favorites).head(1)
 
 
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
-
+    
     try:
         top['Photo'] = loop.run_until_complete(fetch_photos("https://www.tiktok.com/@", top['Username'], 'Username'))
     finally:
         loop.close()
-
+    
     top['Count_History'] = top_history[top_history['Username'] == top['Username'].item()]['Count'].item()
 
     if(top['Username'].item() in top_likes['Username'].values):

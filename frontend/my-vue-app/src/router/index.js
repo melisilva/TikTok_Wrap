@@ -37,6 +37,11 @@ const router = createRouter({
       path: '/timeofday',
       name: 'timeofday',
       component: () => import('../views/TimeOfDay.vue')
+    },
+    {
+      path: '/top-creator-overall',
+      name: 'top_creator_overall',
+      component: () => import('../views/TopCreator.vue')
     }
   ]
 })

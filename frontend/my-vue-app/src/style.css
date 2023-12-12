@@ -20,14 +20,14 @@ body, html, .page {
   position: absolute;
   padding-left: 10%;
   padding-top:5%;
-  }
+}
   
-  .tik-tok-logo {
+.tik-tok-logo {
     width: 29px;
     height: 29px;
-    position: absolute;
-    left: 37px;
-    top: 600px;
+    position: fixed;
+    left: 10px;
+    bottom: 10px;
 } 
 
 .side-by-side-chart {

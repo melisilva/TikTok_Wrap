@@ -1,0 +1,100 @@
+<template>
+    <div class="page" 
+        style="color:white; background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1)), url('/images/black_tiktok_pattern.png'); padding:auto;">
+        <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" /> 
+
+        <div class="row" style="height:45%; padding-top: 30px; padding-bottom: 30px;">
+            <!-- Create a white border -->
+            <div style="border: 5px solid white; border-radius: 50%; width: 300px; height: 300px; margin: auto;">
+                <!-- Center the image -->
+                <div style="width: 100%; height: 100%; position: relative;">
+                    <div style="width: 15%; height: 10%; border: 1px solid white; border-radius: 5px; position: absolute; margin: auto; top:7%; right:7%">
+                        <div style="width: 100%; height: 100%; background-color: black; border-radius: 5px; display:flex; align-items: center; justify-content: center; font-weight: 1000; font-size:larger;">
+                            #1
+                        </div>
+                    </div>
+                    <img :src="topCreatorImage" style="background-color:cyan;width: 300px; height: 300px; border-radius: 50%;">
+                    <div style="width: 30%; height: 10%; border: 5px solid white; border-radius: 50px; position: relative; margin: auto; bottom: 7%; ">
+                        <div style="width: 100%; height: 100%; background-color: black; border-radius: 50px; display:flex; align-items: center; justify-content: center;">
+                            {{ topCreator }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div style="margin: auto; display:flex; flex-direction: column; justify-content: space-between; height:40%; font-size:larger;">
+            <div class="row">
+                <div class="row" style="font-weight: bolder;">
+                    Your Top Watched Creator
+                </div>
+                <div class="row">
+                    {{ topCreator }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="row" style="font-weight: bolder; ">
+                    # Tiktok Watched
+                </div>
+                <div class="row">
+                    {{ timesWatched }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="row" style="font-weight: bolder;">
+                    # Tiktok Liked
+                </div>
+                <div class="row">
+                    {{ timesLikes }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="row" style="font-weight: bolder;">
+                    # Tiktok Favorite
+                </div>
+                <div class="row">
+                    {{ timesFavorite }}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+
+<script>
+
+    import axios from 'axios';
+    import { defineComponent } from 'vue';
+
+    export default defineComponent({
+        name: 'TopCreator',
+        data() {
+            return {
+                topCreator: "",
+                topCreatorImage: "",
+                timesWatched: 0,
+                timesLikes: 0,
+                timesFavorite: 0,
+            }
+        },
+        async created() {
+            axios.get("http://localhost:8000/top-creator-overall")
+                .then((response) => {
+                    console.log(response.data)
+                    this.topCreator = response.data['Username']["0"];
+                    this.topCreatorImage = response.data['Top Creator Image'];
+                    this.timesWatched = response.data['Count_History']["0"];
+                    this.timesLikes = response.data['Count_Likes']['0'];
+                    this.timesFavorite = response.data['Count_Favorites']['0'];
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        },
+        methods: {
+        }
+        
+    })
+
+</script>
