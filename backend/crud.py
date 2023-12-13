@@ -426,6 +426,7 @@ def top_creator_overall():
     top = top_creators(top_history, top_likes, top_favorites).head(1)
 
 
+    """
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
     
@@ -433,6 +434,14 @@ def top_creator_overall():
         top['Photo'] = loop.run_until_complete(fetch_photos("https://www.tiktok.com/@", top['Username'], 'Username'))
     finally:
         loop.close()
+
+    """
+
+    photo = user_photos[user_photos['Username'] == top['Username'].item()]['Photo'].item()
+    if photo != photo:
+        photo = ""
+
+    top['Photo'] = photo
     
     top['Count_History'] = top_history[top_history['Username'] == top['Username'].item()]['Count'].item()
 
@@ -464,6 +473,7 @@ def ads():
 
     top['Username'] = creators
 
+    """
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 
@@ -471,6 +481,18 @@ def ads():
         top['Photo'] = loop.run_until_complete(fetch_photos("https://www.tiktok.com/@", top['Username'], 'Username'))
     finally:
         loop.close()
+    """
+
+    photos = []
+    for i in range(len(top)):
+        username = creators[i]
+        photo = user_photos[user_photos['Username'] == username]['Photo'].item()
+        if photo != photo:
+            photo = ""
+
+        photos.append(photo)
+
+    top['Photo'] = photos
         
     top['Percentage'] = len(ads) / len(history) * 100
     top = top.to_dict()

@@ -13,7 +13,7 @@
                             #1
                         </div>
                     </div>
-                    <img :src="topCreatorImage" style="background-color:cyan;width: 300px; height: 300px; border-radius: 50%;">
+                    <img v-bind:src="topCreatorImage === '' ? 'src/assets/images/sound_default.png' : topCreatorImage" style="background-color:cyan;width: 300px; height: 300px; border-radius: 50%;">
                     <div style="width: 50%; height: 10%; border: 5px solid white; border-radius: 50px; position: relative; margin: auto; bottom: 7%; ">
                         <div style="width: 100%; height: 100%; background-color: black; border-radius: 50px; display:flex; align-items: center; justify-content: center;">
                             {{ topCreator }}
@@ -83,7 +83,7 @@
                 .then((response) => {
                     console.log(response.data)
                     this.topCreator = response.data['Username']["0"];
-                    this.topCreatorImage = response.data['Top Creator Image'];
+                    this.topCreatorImage = response.data['Photo']["0"];
                     this.timesWatched = response.data['Count_History']["0"];
                     this.timesLikes = response.data['Count_Likes']['0'];
                     this.timesFavorite = response.data['Count_Favorites']['0'];
