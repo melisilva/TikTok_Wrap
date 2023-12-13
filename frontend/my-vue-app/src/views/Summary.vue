@@ -9,8 +9,8 @@
                 <div style="width: 100%; height: 100%; position: relative;">
                     <img v-bind:src="photo === '' ? 'src/assets/images/sound_default.png' : photo" style="background-color:cyan;width: 300px; height: 300px; border-radius: 50%;">
                 </div>
-                <div style="width: 50%; height: 10%; border: 5px solid white; border-radius: 50px; position: relative; margin: auto; bottom: 7%; ">
-                    <div style="width: 100%; height: 100%; background-color: black; border-radius: 50px; display:flex; align-items: center; justify-content: center;">
+                <div style="width: 60%; height: 10%; border: 5px solid white; border-radius: 50px; position: relative; margin: auto; bottom: 7%; ">
+                    <div style=" font-family: 'futura-maxi-cg-bold'; width: 100%; height: 100%; background-color: black; border-radius: 50px; display:flex; align-items: center; justify-content: center;">
                         {{ username }}
                     </div>
                 </div>
@@ -20,20 +20,20 @@
         <div class="row" style="height: 45%; font-size: large">
             <div class="row" style="height: 65%; display: flex;">
                 <div class="col" style="width: 50%;">
-                    <div style="font-weight: bolder;height:10%; margin-bottom: 5%">
+                    <div style=" font-family: 'futura-maxi-cg-bold';font-weight: bolder;height:10%; margin-bottom: 5%">
                         Top Creators
                     </div>
-                    <div v-for="creator in topCreators" style="height:10%;display: flex; justify-content: space-between; flex-direction: column;">
+                    <div v-for="creator in topCreators" style=" font-family: 'futura-maxi-cg-bold';height:10%;display: flex; justify-content: space-between; flex-direction: column;">
                         <div >
                             {{ creator }}
                         </div>
                     </div>
                 </div>
                 <div class="col" style="width: 50%;">
-                    <div style="font-weight: bolder;height:10%; margin-bottom: 5%">
+                    <div style=" font-family: 'futura-maxi-cg-bold'; font-weight: bolder;height:10%; margin-bottom: 5%">
                         Top Hashtags
                     </div>
-                    <div v-for="hashtag in topHashTags" style="height:10%;display: flex; justify-content: space-between; flex-direction: column;">
+                    <div v-for="hashtag in topHashTags" style=" font-family: 'futura-maxi-cg-bold';height:10%;display: flex; justify-content: space-between; flex-direction: column;">
                         <div >
                             # {{ hashtag }}
                         </div>
@@ -41,10 +41,10 @@
                 </div>
             </div>
             <div class="row" style="height: 35%;">
-                <div style="font-weight: bolder;">
+                <div style=" font-family: 'futura-maxi-cg-bold';font-weight: bolder;">
                     Minutes Watched
                 </div>
-                <div>
+                <div style=" font-family: 'futura-maxi-cg-bold';">
                     {{ minutesWatched }}
                 </div>
             </div>

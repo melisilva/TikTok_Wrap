@@ -9,13 +9,13 @@
                 <!-- Center the image -->
                 <div style="width: 100%; height: 100%; position: relative;">
                     <div style="width: 15%; height: 10%; border: 1px solid white; border-radius: 5px; position: absolute; margin: auto; top:7%; right:7%">
-                        <div style="width: 100%; height: 100%; background-color: black; border-radius: 5px; display:flex; align-items: center; justify-content: center; font-weight: 1000; font-size:larger;">
+                        <div style=" font-family: 'futura-maxi-cg-bold';width: 100%; height: 100%; background-color: black; border-radius: 5px; display:flex; align-items: center; justify-content: center; font-weight: 1000; font-size:larger;">
                             #1
                         </div>
                     </div>
                     <img v-bind:src="topCreatorImage === '' ? 'src/assets/images/sound_default.png' : topCreatorImage" style="background-color:cyan;width: 300px; height: 300px; border-radius: 50%;">
                     <div style="width: 50%; height: 10%; border: 5px solid white; border-radius: 50px; position: relative; margin: auto; bottom: 7%; ">
-                        <div style="width: 100%; height: 100%; background-color: black; border-radius: 50px; display:flex; align-items: center; justify-content: center;">
+                        <div style=" font-family: 'futura-maxi-cg-bold';width: 100%; height: 100%; background-color: black; border-radius: 50px; display:flex; align-items: center; justify-content: center;">
                             {{ topCreator }}
                         </div>
                     </div>
@@ -26,34 +26,34 @@
         
         <div style="margin: auto; display:flex; flex-direction: column; justify-content: space-between; height:40%; font-size:large;">
             <div class="row">
-                <div class="row" style="font-weight: bolder;">
+                <div class="row" style=" font-family: 'futura-maxi-cg-bold';font-weight: bolder;">
                     Your Top Watched Creator
                 </div>
-                <div class="row">
+                <div class="row" style=" font-family: 'futura-maxi-cg-bold';">
                     {{ topCreator }}
                 </div>
             </div>
             <div class="row">
-                <div class="row" style="font-weight: bolder; ">
+                <div class="row" style="font-weight: bolder; font-family: 'futura-maxi-cg-bold'; ">
                     # Tiktok Watched
                 </div>
-                <div class="row">
+                <div class="row" style=" font-family: 'futura-maxi-cg-bold';">
                     {{ timesWatched }}
                 </div>
             </div>
             <div class="row">
-                <div class="row" style="font-weight: bolder;">
+                <div class="row" style="font-weight: bolder; font-family: 'futura-maxi-cg-bold';">
                     # Tiktok Liked
                 </div>
-                <div class="row">
+                <div class="row" style=" font-family: 'futura-maxi-cg-bold';">
                     {{ timesLikes }}
                 </div>
             </div>
             <div class="row">
-                <div class="row" style="font-weight: bolder;">
+                <div class="row" style="font-weight: bolder; font-family: 'futura-maxi-cg-bold';">
                     # Tiktok Favorite
                 </div>
-                <div class="row">
+                <div class="row" style=" font-family: 'futura-maxi-cg-bold';">
                     {{ timesFavorite }}
                 </div>
             </div>
