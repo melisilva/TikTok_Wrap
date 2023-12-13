@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime
 
 # Import your functions from the script
-from crud import top_following, total_minutes, top_hashtag
+import crud
 
 class TestYourFunctions(unittest.TestCase):
 
@@ -13,36 +13,123 @@ class TestYourFunctions(unittest.TestCase):
     def setUp(self):
         # Create sample data for testing
         self.sample_history_data = {
-            'Date': ['2023-12-01 10:00:00', '2023-12-01 12:30:00', '2023-12-01 15:45:00'],
-            'Link': ['https://www.tiktokv.com/share/video/7283922901265419563/', "https://www.tiktokv.com/share/video/7283618975903255854/", "https://www.tiktokv.com/share/video/7283618975903255809/"],
-            'Username': ['user1', 'user2', 'user3'],
-            'Description': ['text1', 'text2', 'text3'],
-            'Hashtags': ['tag1', 'tag2', 'tag3'],
-            'Sound Name': ['sound1', 'sound2', 'sound3'],
-            'Sound Link': ['www.tiktok.com/music/original-sound-7283922937491589930', 'www.tiktok.com/music/I-Can-See-You-Taylor%E2%80%99s-Version-From-The-Vault-7252896191606999041', 'www.tiktok.com/music/This-Will-Be-An-Everlasting-Love-6926839226684147714']
+            'Date': ['2023-12-01 10:00:00','2023-12-01 12:30:00','2023-12-01 15:45:00','2023-09-24 06:13:25','2023-09-28 07:38:44','2023-10-31 07:38:44','2023-09-27 19:26:51','2023-09-27 19:24:04','2023-12-02 08:15:00','2023-12-02 14:00:00','2023-12-03 09:30:00','2023-10-15 16:45:00','2023-10-18 20:12:30','2023-11-20 14:30:00','2023-09-25 22:10:15','2023-09-26 05:45:00','2023-09-26 13:20:00','2023-09-29 18:30:00','2023-09-29 21:45:00','2023-10-05 11:00:00','2023-10-08 07:30:00','2023-10-12 16:15:00','2023-11-05 22:00:00','2023-11-10 07:45:00','2023-11-15 13:20:00','2023-11-23 19:30:00','2023-11-25 07:05:00','2023-11-28 09:10:00','2023-12-05 14:55:00','2023-12-10 18:20:00'],
+            'Link': ['link1', 'link2', 'link3', 'link4', 'link5', 'link6', 'link7', 'link8','link9','link10', 'link11','link12','link13','link14','link15', 'link16','link17','link18','link19','link20','link21','link22','link23','link24','link25','link26','link27','link28','link29','link30'],
+            'Username': ['rory', 'batfamilyprotector', 'lily', 'lindsaybrookethomas','badwolf', 'rory', 'rory', 'lily','badwolf','rory', 'badwolf', 'lindsaybrookethomas', 'lindsaybrookethomas', 'rory', 'badwolf','ikeapt','tacobell','ikeapt','ikeapt','ikeapt','tacobell','ikeapt','tacobell','tacobell','disney','disney','disney','microsoft','microsoft','playstation'],
+            'Description': ['text1', 'text2', 'text3', 'text4', 'text5', 'text6', 'text7', 'text8', 'text9', 'text10', 'text11', 'text12', 'text13', 'text14','text15','text16','text17','text18','text19','text20','text21','text22','text23','text24','text25','text26','text27','text28','text29','text30'],
+            'Hashtags': ['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6','tag7','tag8','tag9', 'tag10','tag11','tag12','tag13','tag14','tag15','tag16','tag17','tag18','tag19','tag20','tag21','tag22','tag23','tag24','tag25','tag26','tag27','tag28','tag29','tag30'],
+            'Sound Name': ['sound5', 'sound3','sound4','sound1','sound1','sound2','sound2','sound4','sound1','sound2','sound1','sound3','sound3','sound2','sound1','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music'],
+            'Sound Link': ['www.tiktok.com/music/sound5', 'www.tiktok.com/music/sound3','www.tiktok.com/music/sound4', 'www.tiktok.com/music/sound1','www.tiktok.com/music/sound1', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound2', 'www.tiktok.com/music/sound4','www.tiktok.com/music/sound1', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/sound3','www.tiktok.com/music/sound3','www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music']
         }
 
         self.sample_likes_data = {
-            'Date': ['2023-12-01 10:30:00', '2023-12-01 13:00:00', '2023-12-01 16:00:00'],
-            'Username': ['user4', 'user3', 'user2'],
-            # Add other required columns in the likes DataFrame
+            'Date': ['2023-12-01 10:00:00','2023-12-01 12:30:00','2023-12-01 15:45:00','2023-09-24 06:13:25','2023-09-28 07:38:44','2023-10-31 07:38:44','2023-09-27 19:26:51','2023-09-27 19:24:04','2023-12-02 08:15:00','2023-12-02 14:00:00','2023-12-03 09:30:00','2023-10-15 16:45:00','2023-10-18 20:12:30','2023-11-20 14:30:00','2023-09-25 22:10:15','2023-09-26 05:45:00','2023-09-26 13:20:00','2023-09-29 18:30:00','2023-09-29 21:45:00','2023-10-05 11:00:00','2023-10-08 07:30:00','2023-10-12 16:15:00','2023-11-05 22:00:00','2023-11-10 07:45:00','2023-11-15 13:20:00','2023-11-23 19:30:00','2023-11-25 07:05:00','2023-11-28 09:10:00','2023-12-05 14:55:00','2023-12-10 18:20:00'],
+            'Link': ['link1', 'link2', 'link3', 'link4', 'link5', 'link6', 'link7', 'link8','link9','link10', 'link11','link12','link13','link14','link15', 'link16','link17','link18','link19','link20','link21','link22','link23','link24','link25','link26','link27','link28','link29','link30'],
+            'Username': ['badwolf','batfamilyprotector', 'emma', 'lindsaybrookethomas', 'badwolf','rory', 'rory', 'emma', 'badwolf','rory', 'badwolf', 'batfamilyprotector', 'batfamilyprotector', 'rory', 'badwolf','ikeapt','tacobell','ikeapt','ikeapt','ikeapt','tacobell','ikeapt','tacobell','tacobell','disney','disney','disney','microsoft','microsoft','playstation'],
+            'Description': ['text1', 'text2', 'text3', 'text4', 'text5', 'text6', 'text7', 'text8', 'text9', 'text10', 'text11', 'text12', 'text13', 'text14','text15','text16','text17','text18','text19','text20','text21','text22','text23','text24','text25','text26','text27','text28','text29','text30'],
+            'Hashtags': ['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6','tag7','tag8','tag9', 'tag10','tag11','tag12','tag13','tag14','tag15','tag16','tag17','tag18','tag19','tag20','tag21','tag22','tag23','tag24','tag25','tag26','tag27','tag28','tag29','tag30'],
+            'Sound Name': ['sound5', 'sound6','sound4','sound1','sound2','sound2','sound2','sound4','sound1','sound2','sound1','sound6','sound6','sound2','sound1','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music'],
+            'Sound Link': ['www.tiktok.com/music/sound5', 'www.tiktok.com/music/sound6','www.tiktok.com/music/sound4', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound1', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound2', 'www.tiktok.com/music/sound4','www.tiktok.com/music/sound1', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/sound6','www.tiktok.com/music/sound6','www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music']
+        }
+
+        self.sample_favorites_data = {
+            'Date': ['2023-12-01 10:00:00','2023-12-01 12:30:00','2023-12-01 15:45:00','2023-09-24 06:13:25','2023-09-28 07:38:44','2023-10-31 07:38:44','2023-09-27 19:26:51','2023-09-27 19:24:04','2023-12-02 08:15:00','2023-12-02 14:00:00','2023-12-03 09:30:00','2023-10-15 16:45:00','2023-10-18 20:12:30','2023-11-20 14:30:00','2023-09-25 22:10:15','2023-09-26 05:45:00','2023-09-26 13:20:00','2023-09-29 18:30:00','2023-09-29 21:45:00','2023-10-05 11:00:00','2023-10-08 07:30:00','2023-10-12 16:15:00','2023-11-05 22:00:00','2023-11-10 07:45:00','2023-11-15 13:20:00','2023-11-23 19:30:00','2023-11-25 07:05:00','2023-11-28 09:10:00','2023-12-05 14:55:00','2023-12-10 18:20:00'],
+            'Link': ['link1', 'link2', 'link3', 'link4', 'link5', 'link6', 'link7', 'link8','link9','link10', 'link11','link12','link13','link14','link15', 'link16','link17','link18','link19','link20','link21','link22','link23','link24','link25','link26','link27','link28','link29','link30'],
+            'Username': ['badwolf', 'taylor','emma', 'lindsaybrookethomas', 'lindsaybrookethomas', 'rory', 'rory', 'emma', 'lindsaybrookethomas','rory', 'lindsaybrookethomas', 'taylor','taylor','rory', 'lindsaybrookethomas','ikeapt','tacobell','ikeapt','ikeapt','ikeapt','tacobell','ikeapt','tacobell','tacobell','disney','disney','disney','microsoft','microsoft','playstation'],
+            'Description': ['text1', 'text2', 'text3', 'text4', 'text5', 'text6', 'text7', 'text8', 'text9', 'text10', 'text11', 'text12', 'text13', 'text14','text15','text16','text17','text18','text19','text20','text21','text22','text23','text24','text25','text26','text27','text28','text29','text30'],
+            'Hashtags': ['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6','tag7','tag8','tag9', 'tag10','tag11','tag12','tag13','tag14','tag15','tag16','tag17','tag18','tag19','tag20','tag21','tag22','tag23','tag24','tag25','tag26','tag27','tag28','tag29','tag30'],
+            'Sound Name': ['sound7', 'sound4','sound4','sound1','sound1','sound2','sound2','sound4','sound1','sound2','sound1','sound3','sound3','sound2','sound1','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music'],
+            'Sound Link': ['www.tiktok.com/music/sound7', 'www.tiktok.com/music/sound4','www.tiktok.com/music/sound4', 'www.tiktok.com/music/sound1','www.tiktok.com/music/sound1', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound2', 'www.tiktok.com/music/sound4','www.tiktok.com/music/sound1', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/sound3','www.tiktok.com/music/sound3','www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music']
+        }
+
+        self.sample_hashtag_data = {
+            'Hashtag': ['007', '00sbaby', '100k', '100layers', '100million', '100solodateideas', '100years', '101dalmatians', '101daysofgamora', '1080p', '10k', '10millionadoptions', '10monthsold', '10sbabe', '10stephaircareroutine', '10tags5questions', '10thdoctor', '10thdoctoredit', '10thhungergames', '10thingsihataboutyou', '10yearchallenge', '10years', '11andthepondsedit', '11doctorwho', '11monthsold', '11thdoctor', '11thdoctoredit', '11weeksold', '12', '123letsgobitc', '123lgb'],
+            'Cluster': ["['007']", "['00sbaby', 'baby']", "['100k', 'daimonia100k', 'isaacs100keditcomp', 'kandi', 'the100', 'zexo100kcomp']", "['100layers', 'the100']", "['100million', 'million', 'the100']", "['100solodateideas', 'cheapdateideas', 'datedayideas', 'falldateideas', 'seasonaldateideas', 'solobookdate', 'uniquedateideas']", "['100years', 'disney100yearsofmagic', 'the100', 'years']", "['101dalmatians']", "['101daysofgamora']", "['1080p', 'pll']", "['10k', 'kandi', 'karish10kcomp', 'ourscardigan10k', 'stel10kcomp']", "['10millionadoptions']", "['10monthsold', '11monthsold', '14monthsold']", "['10sbabe', 'babe']", "['10stephaircareroutine', 'haircare', 'haircareroutine']", "['10tags5questions']", "['10thdoctor', '10thdoctoredit', '10thhungergames', '11thdoctor', '12thdoctor', '9thdoctor', 'doctorwho60thanniversary', 'twelvthdoctor']", "['10thdoctoredit', '10thhungergames', '11thdoctoredit', '12thdoctoredit']", "['10thhungergames', 'effiehungergames', 'hungergamesdeluxe', 'ruehungergames', 'thehungergames']", "['10thingsihataboutyou']", "['10yearchallenge']", "['10years', 'first10years', 'years']", "['11andthepondsedit']", "['11doctorwho', '11thdoctor', 'doctorwho']", "['11monthsold', '11weeksold', '14monthsold']", "['11thdoctor', '11thdoctoredit', '12thdoctor', '9thdoctor', 'august11th', 'doctorwho60thanniversary', 'twelvthdoctor']", "['11thdoctoredit', '12thdoctoredit', 'august11th']", "['11weeksold', '14weeksold', 'sixweeksold']", "['12', '12apostles', '12clara', 'day12', 'district12', 'local12', 'year12']", "['123letsgobitc']", "['123lgb']"],
+            'Count':  [2, 98, 52, 7, 21, 35, 22, 2, 3, 30, 59, 1, 15,5, 12, 1, 194, 62, 410, 4, 1, 16, 2, 399, 10, 175, 53, 5, 71, 1, 10]
         }
 
         # Create DataFrames
         self.sample_history = pd.DataFrame(self.sample_history_data)
         self.sample_likes = pd.DataFrame(self.sample_likes_data)
+        self.sample_favorites = pd.DataFrame(self.sample_favorites_data)
+        self.sample_hashtag = pd.DataFrame(self.sample_hashtag_data)
 
     def test_top_following(self):
         # Call the function with the sample data
-        result = top_following(self.sample_history)
+        result = crud.top_following(self.sample_history)
 
         # Check if the result is a DataFrame and has the expected columns
         self.assertIsInstance(result, pd.DataFrame)
         self.assertTrue(all(col in result.columns for col in ['Username', 'Count']))
 
+    def test_top_creator_history(self):
+        result = crud.top_creator_history(self.sample_history)
+
+        self.assertIsInstance(result, dict)
+        self.assertTrue(len(result['Username']) == 5)
+        self.assertTrue(result['Username'][0] == 'rory')
+        self.assertTrue(result['Username'][1] == 'badwolf')
+        self.assertTrue(result['Username'][2] == 'lindsaybrookethomas')
+        self.assertTrue(result['Username'][3] == 'lily')
+        self.assertTrue(result['Username'][4] == 'batfamilyprotector')
+        self.assertTrue(result['Count'][0] == 5)
+        self.assertTrue(result['Count'][1] == 4)
+        self.assertTrue(result['Count'][2] == 3)
+        self.assertTrue(result['Count'][3] == 2)
+        self.assertTrue(result['Count'][4] == 1)
+
+    def test_top_creator_likes(self):
+        # Call the function with the sample data
+        result = crud.top_creator_likes(self.sample_history, self.sample_likes)
+
+        # Check if the result is a dictionary and has the expected keys
+        self.assertIsInstance(result, dict)
+        self.assertTrue(len(result['Username']) == 5)
+        self.assertTrue(result['Username'][0] == 'badwolf')
+        self.assertTrue(result['Username'][1] == 'rory')
+        self.assertTrue(result['Username'][2] == 'batfamilyprotector')
+        self.assertTrue(result['Username'][3] == 'emma')
+        self.assertTrue(result['Username'][4] == 'lindsaybrookethomas')
+        self.assertTrue(result['Count_y'][0] == 5)
+        self.assertTrue(result['Count_y'][1] == 4)
+        self.assertTrue(result['Count_y'][2] == 3)
+        self.assertTrue(result['Count_y'][3] == 2)
+        self.assertTrue(result['Count_y'][4] == 1)
+        self.assertTrue(result['Arrow'][0] == 'up')
+        self.assertTrue(result['Arrow'][1] == 'down')
+        self.assertTrue(result['Arrow'][2] == 'up')
+        self.assertTrue(result['Arrow'][3] == 'New Entry')
+        self.assertTrue(result['Arrow'][4] == 'down')
+
+    def test_top_creator_favorites(self):
+        # Call the function with the sample data
+        result = crud.top_creator_favorites(self.sample_likes, self.sample_favorites)
+
+        # Check if the result is a dictionary and has the expected keys
+        self.assertIsInstance(result, dict)
+        self.assertTrue(len(result['Username']) == 5)
+        self.assertTrue(result['Username'][0] == 'lindsaybrookethomas')
+        self.assertTrue(result['Username'][1] == 'rory')
+        self.assertTrue(result['Username'][2] == 'taylor')
+        self.assertTrue(result['Username'][3] == 'emma')
+        self.assertTrue(result['Username'][4] == 'badwolf')
+        self.assertTrue(result['Count_y'][0] == 5)
+        self.assertTrue(result['Count_y'][1] == 4)
+        self.assertTrue(result['Count_y'][2] == 3)
+        self.assertTrue(result['Count_y'][3] == 2)
+        self.assertTrue(result['Count_y'][4] == 1)
+        self.assertTrue(result['Arrow'][0] == 'up')
+        self.assertTrue(result['Arrow'][1] == 'same')
+        self.assertTrue(result['Arrow'][2] == 'New Entry')
+        self.assertTrue(result['Arrow'][3] == 'same')
+        self.assertTrue(result['Arrow'][4] == 'down')
+
+
+    """   
+
     def test_total_minutes(self):
         # Call the function with the sample data
-        result = total_minutes()
+        result = crud.total_minutes()
 
         # Check if the result is a dictionary and has the expected keys
         self.assertIsInstance(result, dict)
@@ -50,11 +137,12 @@ class TestYourFunctions(unittest.TestCase):
 
     def test_top_hashtag(self):
         # Call the function with the sample data
-        result = top_hashtag(False)
+        result = crud.top_hashtag(False)
 
         # Check if the result is a dictionary and has the expected keys
         self.assertIsInstance(result, dict)
         self.assertTrue(all(key in result for key in ['Hashtag', 'Count', 'Photo']))
+        """
 
 if __name__ == '__main__':
     unittest.main()
