@@ -151,7 +151,7 @@ def compare_positions(df1, df2, name1, name2, element_name):
 
     return merged_df
 
-def top_creator_history(history): # taking a lil bit
+def top_creator_history(history):
     top = top_following(history).head(5)
 
     """
@@ -300,7 +300,7 @@ def top_sound_likes(history, likes):
 
     sound_names = []
     for i in top['Sound Link']:
-        sound_name = history.loc[history['Sound Link'] == i, 'Sound Name'].head(1).item()
+        sound_name = likes.loc[likes['Sound Link'] == i, 'Sound Name'].head(1).item()
         sound_names.append(sound_name)
 
     top['Sound Name'] = sound_names
@@ -325,7 +325,7 @@ def top_sound_likes(history, likes):
     top = top.to_dict()
     return top
 
-def top_sound_favorites(likes, favorites, history):
+def top_sound_favorites(likes, favorites):
     top_likes = top_sound(likes).head(5)
     top_favorites = top_sound(favorites).head(5)
     top = compare_positions(top_likes, top_favorites, 'Likes', 'Favorites', 'Sound Link')
@@ -333,7 +333,7 @@ def top_sound_favorites(likes, favorites, history):
 
     sound_names = []
     for i in top['Sound Link']:
-        sound_name = history.loc[history['Sound Link'] == i, 'Sound Name'].head(1).item()
+        sound_name = favorites.loc[favorites['Sound Link'] == i, 'Sound Name'].head(1).item()
         sound_names.append(sound_name)
 
     top['Sound Name'] = sound_names

@@ -29,7 +29,7 @@ class TestYourFunctions(unittest.TestCase):
             'Description': ['text1', 'text2', 'text3', 'text4', 'text5', 'text6', 'text7', 'text8', 'text9', 'text10', 'text11', 'text12', 'text13', 'text14','text15','text16','text17','text18','text19','text20','text21','text22','text23','text24','text25','text26','text27','text28','text29','text30'],
             'Hashtags': ['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6','tag7','tag8','tag9', 'tag10','tag11','tag12','tag13','tag14','tag15','tag16','tag17','tag18','tag19','tag20','tag21','tag22','tag23','tag24','tag25','tag26','tag27','tag28','tag29','tag30'],
             'Sound Name': ['sound5', 'sound6','sound4','sound1','sound2','sound2','sound2','sound4','sound1','sound2','sound1','sound6','sound6','sound2','sound1','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music'],
-            'Sound Link': ['www.tiktok.com/music/sound5', 'www.tiktok.com/music/sound6','www.tiktok.com/music/sound4', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound1', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound2', 'www.tiktok.com/music/sound4','www.tiktok.com/music/sound1', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/sound6','www.tiktok.com/music/sound6','www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music']
+            'Sound Link': ['www.tiktok.com/music/sound5', 'www.tiktok.com/music/sound6','www.tiktok.com/music/sound4', 'www.tiktok.com/music/sound1','www.tiktok.com/music/sound2', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound2', 'www.tiktok.com/music/sound4','www.tiktok.com/music/sound1', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/sound6','www.tiktok.com/music/sound6','www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music']
         }
 
         self.sample_favorites_data = {
@@ -125,6 +125,90 @@ class TestYourFunctions(unittest.TestCase):
         self.assertTrue(result['Arrow'][4] == 'down')
 
 
+    def test_top_sound_history(self):
+        # Call the function with the sample data
+        result = crud.top_sound_history(self.sample_history)
+
+        # Check if the result is a dictionary and has the expected keys
+        self.assertIsInstance(result, dict)
+        self.assertTrue(len(result['Sound Name']) == 5)
+        self.assertTrue(result['Sound Name'][0] == 'sound1')
+        self.assertTrue(result['Sound Name'][1] == 'sound2')
+        self.assertTrue(result['Sound Name'][2] == 'sound3')
+        self.assertTrue(result['Sound Name'][3] == 'sound4')
+        self.assertTrue(result['Sound Name'][4] == 'sound5')
+        self.assertTrue(result['Count'][0] == 5)
+        self.assertTrue(result['Count'][1] == 4)
+        self.assertTrue(result['Count'][2] == 3)
+        self.assertTrue(result['Count'][3] == 2)
+        self.assertTrue(result['Count'][4] == 1)
+
+    def test_top_sound_likes(self):
+        # Call the function with the sample data
+        result = crud.top_sound_likes(self.sample_history, self.sample_likes)
+
+        # Check if the result is a dictionary and has the expected keys
+        self.assertIsInstance(result, dict)
+        self.assertTrue(len(result['Sound Name']) == 5)
+        self.assertTrue(result['Sound Name'][0] == 'sound2')
+        self.assertTrue(result['Sound Name'][1] == 'sound1')
+        self.assertTrue(result['Sound Name'][2] == 'sound6')
+        self.assertTrue(result['Sound Name'][3] == 'sound4')
+        self.assertTrue(result['Sound Name'][4] == 'sound5')
+        self.assertTrue(result['Count_y'][0] == 5)
+        self.assertTrue(result['Count_y'][1] == 4)
+        self.assertTrue(result['Count_y'][2] == 3)
+        self.assertTrue(result['Count_y'][3] == 2)
+        self.assertTrue(result['Count_y'][4] == 1)
+        self.assertTrue(result['Arrow'][0] == 'up')
+        self.assertTrue(result['Arrow'][1] == 'down')
+        self.assertTrue(result['Arrow'][2] == 'New Entry')
+        self.assertTrue(result['Arrow'][3] == 'same')
+        self.assertTrue(result['Arrow'][4] == 'same')
+
+    def test_top_sound_favorites(self):
+        # Call the function with the sample data
+        result = crud.top_sound_favorites(self.sample_likes, self.sample_favorites)
+
+        # Check if the result is a dictionary and has the expected keys
+        self.assertIsInstance(result, dict)
+        self.assertTrue(len(result['Sound Name']) == 5)
+        self.assertTrue(result['Sound Name'][0] == 'sound1')
+        self.assertTrue(result['Sound Name'][1] == 'sound2')
+        self.assertTrue(result['Sound Name'][2] == 'sound4')
+        self.assertTrue(result['Sound Name'][3] == 'sound3')
+        self.assertTrue(result['Sound Name'][4] == 'sound7')
+        self.assertTrue(result['Count_y'][0] == 5)
+        self.assertTrue(result['Count_y'][1] == 4)
+        self.assertTrue(result['Count_y'][2] == 3)
+        self.assertTrue(result['Count_y'][3] == 2)
+        self.assertTrue(result['Count_y'][4] == 1)
+        self.assertTrue(result['Arrow'][0] == 'up')
+        self.assertTrue(result['Arrow'][1] == 'down')
+        self.assertTrue(result['Arrow'][2] == 'up')
+        self.assertTrue(result['Arrow'][3] == 'New Entry')
+        self.assertTrue(result['Arrow'][4] == 'New Entry')
+    
+    def test_top_hashtag(self):
+        # Call the function with the sample data
+        result = crud.top_hashtag(self.sample_hashtag, False)
+
+        # Check if the result is a dictionary and has the expected keys
+        self.assertIsInstance(result, dict)
+        self.assertTrue(len(result['Hashtag']) == 5)
+        self.assertTrue(result['Hashtag'][0] == '10thhungergames')
+        self.assertTrue(result['Hashtag'][1] == '11doctorwho')
+        self.assertTrue(result['Hashtag'][2] == '10thdoctor')
+        self.assertTrue(result['Hashtag'][3] == '11thdoctor')
+        self.assertTrue(result['Hashtag'][4] == '00sbaby')
+        self.assertTrue(result['Count'][0] == 410)
+        self.assertTrue(result['Count'][1] == 399)
+        self.assertTrue(result['Count'][2] == 194)
+        self.assertTrue(result['Count'][3] == 175)
+        self.assertTrue(result['Count'][4] == 98)
+
+
+
     """   
 
     def test_total_minutes(self):
@@ -135,13 +219,6 @@ class TestYourFunctions(unittest.TestCase):
         self.assertIsInstance(result, dict)
         self.assertTrue(all(key in result for key in ['Minutes', 'Quote']))
 
-    def test_top_hashtag(self):
-        # Call the function with the sample data
-        result = crud.top_hashtag(False)
-
-        # Check if the result is a dictionary and has the expected keys
-        self.assertIsInstance(result, dict)
-        self.assertTrue(all(key in result for key in ['Hashtag', 'Count', 'Photo']))
         """
 
 if __name__ == '__main__':

@@ -74,7 +74,7 @@ def top_sound_likes():
 # top sound favorites
 @app.get("/top-sound-favorites")
 def top_sound_favorites():
-    return crud.top_sound_favorites(likes, favorites, history)
+    return crud.top_sound_favorites(likes, favorites)
 
 # top hashtag history
 @app.get("/top-hashtag")
