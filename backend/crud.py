@@ -12,6 +12,11 @@ favorites = pd.read_csv('data/favorite_videos_full_tiktok_data.csv')
 share = pd.read_csv('data/share_history_full_tiktok_data.csv')
 hashtags = pd.read_csv('data/clean_hashtags/after_hashtags.csv')
 
+user_photos = pd.read_csv("backend/user_photos.csv")
+hashtag_photos = pd.read_csv("backend/hashtag_photos.csv")
+sound_photos = pd.read_csv("backend/sound_photos.csv")
+
+
 history = history.sort_values(by=["Date"])
 likes = likes.sort_values(by=["Date"])
 favorites = favorites.sort_values(by=["Date"])
@@ -119,6 +124,7 @@ def top_hashtag(need_photo = True):
 
     top = sorted_hashtag_counts.head(5).reset_index()
 
+    """
     if(need_photo):
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
@@ -127,6 +133,15 @@ def top_hashtag(need_photo = True):
             top['Photo'] = loop.run_until_complete(fetch_photos("https://www.tiktok.com/tag/", top['Hashtag'], 'Hashtag'))
         finally:
             loop.close()
+    """
+
+    photos = []
+    for i in range(len(top)):
+        hashtag = top['Hashtag'][i]
+        photo = hashtag_photos[hashtag_photos['Hashtag'] == hashtag]['Photo'].item()
+        photos.append(photo)
+
+    top['Photo'] = photos
 
     top.drop(['index', 'Cluster'], axis=1, inplace=True)
 
@@ -149,6 +164,7 @@ def compare_positions(df1, df2, name1, name2, element_name):
 def top_creator_history(): # taking a lil bit
     top = top_following(history).head(5)
 
+    """
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 
@@ -156,6 +172,16 @@ def top_creator_history(): # taking a lil bit
         top['Photo'] = loop.run_until_complete(fetch_photos("https://www.tiktok.com/@", top['Username'], 'Username'))
     finally:
         loop.close()
+    """
+
+    photos = []
+
+    for i in range(len(top)):
+        username = top['Username'][i]
+        photo = user_photos[user_photos['Username'] == username]['Photo'].item()
+        photos.append(photo)
+
+    top['Photo'] = photos
 
     top = top.to_dict()
     return top
@@ -166,6 +192,7 @@ def top_creator_likes():
     top = compare_positions(top_history, top_likes, 'History', 'Likes', 'Username')
     top.drop(['Count_x', 'Position_History', 'Position_Likes', 'Change'], axis=1, inplace=True)
 
+    """
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 
@@ -173,6 +200,15 @@ def top_creator_likes():
         top['Photo'] = loop.run_until_complete(fetch_photos("https://www.tiktok.com/@", top['Username'], 'Username'))
     finally:
         loop.close()
+    """
+
+    photos = []
+    for i in range(len(top)):
+        username = top['Username'][i]
+        photo = user_photos[user_photos['Username'] == username]['Photo'].item()
+        photos.append(photo)
+
+    top['Photo'] = photos
 
     top = top.to_dict()
     return top
@@ -183,6 +219,7 @@ def top_creator_favorites():
     top = compare_positions(top_likes, top_favorites, 'Likes', 'Favorites', 'Username')
     top.drop(['Count_x', 'Position_Likes', 'Position_Favorites', 'Change'], axis=1, inplace=True)
 
+    """
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 
@@ -190,6 +227,15 @@ def top_creator_favorites():
         top['Photo'] = loop.run_until_complete(fetch_photos("https://www.tiktok.com/@", top['Username'], 'Username'))
     finally:
         loop.close()
+    """
+
+    photos = []
+    for i in range(len(top)):
+        username = top['Username'][i]
+        photo = user_photos[user_photos['Username'] == username]['Photo'].item()
+        photos.append(photo)
+
+    top['Photo'] = photos
 
     top = top.to_dict()
     return top
@@ -202,6 +248,7 @@ def top_sound_history():
         sound_name = history.loc[history['Sound Link'] == i, 'Sound Name'].head(1).item()
         sound_names.append(sound_name)
 
+    """
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 
@@ -209,6 +256,15 @@ def top_sound_history():
         top['Photo'] = loop.run_until_complete(fetch_photos_sounds(top['Sound Link']))
     finally:
         loop.close()
+    """
+
+    photos = []
+    for i in range(len(top)):
+        sound_link = top['Sound Link'][i]
+        photo = sound_photos[sound_photos['Sound Link'] == sound_link]['Photo'].item()
+        photos.append(photo)
+
+    top['Photo'] = photos
 
     top['Sound Name'] = sound_names
     top.drop(['Sound Link'], axis=1, inplace=True)
@@ -227,6 +283,15 @@ def top_sound_likes():
         sound_names.append(sound_name)
 
     top['Sound Name'] = sound_names
+
+    photos = []
+    for i in range(len(top)):
+        sound_link = top['Sound Link'][i]
+        photo = sound_photos[sound_photos['Sound Link'] == sound_link]['Photo'].item()
+        photos.append(photo)
+
+    top['Photo'] = photos
+
     top.drop(['Sound Link'], axis=1, inplace=True)
     top = top.to_dict()
     return top
@@ -243,6 +308,15 @@ def top_sound_favorites():
         sound_names.append(sound_name)
 
     top['Sound Name'] = sound_names
+
+    photos = []
+    for i in range(len(top)):
+        sound_link = top['Sound Link'][i]
+        photo = sound_photos[sound_photos['Sound Link'] == sound_link]['Photo'].item()
+        photos.append(photo)
+
+    top['Photo'] = photos
+
     top.drop(['Sound Link'], axis=1, inplace=True)
     top = top.to_dict()
     return top
