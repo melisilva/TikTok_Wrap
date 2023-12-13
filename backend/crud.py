@@ -139,6 +139,9 @@ def top_hashtag(need_photo = True):
     for i in range(len(top)):
         hashtag = top['Hashtag'][i]
         photo = hashtag_photos[hashtag_photos['Hashtag'] == hashtag]['Photo'].item()
+        if photo != photo:
+            photo = ""
+
         photos.append(photo)
 
     top['Photo'] = photos
@@ -179,6 +182,9 @@ def top_creator_history(): # taking a lil bit
     for i in range(len(top)):
         username = top['Username'][i]
         photo = user_photos[user_photos['Username'] == username]['Photo'].item()
+        if photo != photo:
+            photo = ""
+
         photos.append(photo)
 
     top['Photo'] = photos
@@ -206,6 +212,9 @@ def top_creator_likes():
     for i in range(len(top)):
         username = top['Username'][i]
         photo = user_photos[user_photos['Username'] == username]['Photo'].item()
+        if photo != photo:
+            photo = ""
+
         photos.append(photo)
 
     top['Photo'] = photos
@@ -233,6 +242,9 @@ def top_creator_favorites():
     for i in range(len(top)):
         username = top['Username'][i]
         photo = user_photos[user_photos['Username'] == username]['Photo'].item()
+        if photo != photo:
+            photo = ""
+
         photos.append(photo)
 
     top['Photo'] = photos
@@ -262,6 +274,9 @@ def top_sound_history():
     for i in range(len(top)):
         sound_link = top['Sound Link'][i]
         photo = sound_photos[sound_photos['Sound Link'] == sound_link]['Photo'].item()
+        if photo != photo:
+            photo = ""
+
         photos.append(photo)
 
     top['Photo'] = photos
@@ -288,6 +303,9 @@ def top_sound_likes():
     for i in range(len(top)):
         sound_link = top['Sound Link'][i]
         photo = sound_photos[sound_photos['Sound Link'] == sound_link]['Photo'].item()
+        if photo != photo:
+            photo = ""
+
         photos.append(photo)
 
     top['Photo'] = photos
@@ -313,6 +331,8 @@ def top_sound_favorites():
     for i in range(len(top)):
         sound_link = top['Sound Link'][i]
         photo = sound_photos[sound_photos['Sound Link'] == sound_link]['Photo'].item()
+        if photo != photo:
+            photo = ""
         photos.append(photo)
 
     top['Photo'] = photos
