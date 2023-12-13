@@ -6,32 +6,10 @@ import asyncio
 
 # Check if this works as global variables
 
-history = pd.read_csv('data/unique_video_browsing_history_full_tiktok_data.csv')
-likes = pd.read_csv('data/likes_full_tiktok_data.csv')
-favorites = pd.read_csv('data/favorite_videos_full_tiktok_data.csv')
-share = pd.read_csv('data/share_history_full_tiktok_data.csv')
-hashtags = pd.read_csv('data/clean_hashtags/after_hashtags.csv')
-
 user_photos = pd.read_csv("backend/user_photos.csv")
 hashtag_photos = pd.read_csv("backend/hashtag_photos.csv")
 sound_photos = pd.read_csv("backend/sound_photos.csv")
 
-
-history = history.sort_values(by=["Date"])
-likes = likes.sort_values(by=["Date"])
-favorites = favorites.sort_values(by=["Date"])
-share = share.sort_values(by=["Date"])
-
-oldest_date_likes = likes['Date'].min()
-oldest_date_favorites = favorites['Date'].min()
-base_date = max(oldest_date_likes, oldest_date_favorites)
-
-print(base_date)
-
-history = history[history['Date'] >= base_date]
-likes = likes[likes['Date'] >= base_date]
-favorites = favorites[favorites['Date'] >= base_date]
-share = share[share['Date'] >= base_date]
 
 async def scrape_tiktok_photo_user(link, session):
     async with session.get(link) as response:
@@ -71,7 +49,6 @@ async def scrape_tiktok_sound_photo(link,session):
             photo = ""
         return photo
 
-
 async def fetch_photos(link, creators, indicator):
     async with aiohttp.ClientSession() as session:
         if indicator == 'Username':
@@ -86,8 +63,13 @@ async def fetch_photos_sounds(sounds):
         return await asyncio.gather(*tasks)
 
 def top_following(df):
+    df_copy = df.copy()
+
+    # Drop every row where the 'Sound Name' contains "Promoted Music"
+    df_copy = df_copy[~df_copy['Sound Name'].str.contains("Promoted Music")]
+
     # Assuming 'Username' is the column containing usernames in the history DataFrame
-    username_counts = df['Username'].value_counts().reset_index()
+    username_counts = df_copy['Username'].value_counts().reset_index()
 
     # Rename the columns for clarity
     username_counts.columns = ['Username', 'Count']
@@ -118,7 +100,7 @@ def top_sound(df):
     # Display the sorted and counted data
     return sorted_sound_counts
 
-def top_hashtag(need_photo = True):
+def top_hashtag(hashtags, need_photo = True):
     # Sort the DataFrame based on the 'Count' column
     sorted_hashtag_counts = hashtags.sort_values(by='Count', ascending=False)
 
@@ -138,7 +120,12 @@ def top_hashtag(need_photo = True):
     photos = []
     for i in range(len(top)):
         hashtag = top['Hashtag'][i]
-        photo = hashtag_photos[hashtag_photos['Hashtag'] == hashtag]['Photo'].item()
+        photo = hashtag_photos[hashtag_photos['Hashtag'] == hashtag]['Photo']
+        if photo.empty:
+            photo = ""
+        else:
+            photo = photo.item()
+
         if photo != photo:
             photo = ""
 
@@ -164,7 +151,7 @@ def compare_positions(df1, df2, name1, name2, element_name):
 
     return merged_df
 
-def top_creator_history(): # taking a lil bit
+def top_creator_history(history): # taking a lil bit
     top = top_following(history).head(5)
 
     """
@@ -181,7 +168,12 @@ def top_creator_history(): # taking a lil bit
 
     for i in range(len(top)):
         username = top['Username'][i]
-        photo = user_photos[user_photos['Username'] == username]['Photo'].item()
+        photo = user_photos[user_photos['Username'] == username]['Photo']
+        if photo.empty:
+            photo = ""
+        else:
+            photo = photo.item()
+
         if photo != photo:
             photo = ""
 
@@ -192,7 +184,7 @@ def top_creator_history(): # taking a lil bit
     top = top.to_dict()
     return top
 
-def top_creator_likes():
+def top_creator_likes(history, likes):
     top_history = top_following(history).head(5)
     top_likes = top_following(likes).head(5)
     top = compare_positions(top_history, top_likes, 'History', 'Likes', 'Username')
@@ -211,7 +203,12 @@ def top_creator_likes():
     photos = []
     for i in range(len(top)):
         username = top['Username'][i]
-        photo = user_photos[user_photos['Username'] == username]['Photo'].item()
+        photo = user_photos[user_photos['Username'] == username]['Photo']
+        if photo.empty:
+            photo = ""
+        else:
+            photo = photo.item()
+
         if photo != photo:
             photo = ""
 
@@ -222,7 +219,7 @@ def top_creator_likes():
     top = top.to_dict()
     return top
 
-def top_creator_favorites():
+def top_creator_favorites(likes, favorites):
     top_likes = top_following(likes).head(5)
     top_favorites = top_following(favorites).head(5)
     top = compare_positions(top_likes, top_favorites, 'Likes', 'Favorites', 'Username')
@@ -241,7 +238,11 @@ def top_creator_favorites():
     photos = []
     for i in range(len(top)):
         username = top['Username'][i]
-        photo = user_photos[user_photos['Username'] == username]['Photo'].item()
+        photo = user_photos[user_photos['Username'] == username]['Photo']
+        if photo.empty:
+            photo = ""
+        else:
+            photo = photo.item()
         if photo != photo:
             photo = ""
 
@@ -252,7 +253,7 @@ def top_creator_favorites():
     top = top.to_dict()
     return top
 
-def top_sound_history():
+def top_sound_history(history):
     top = top_sound(history).head(5)
 
     sound_names = []
@@ -273,7 +274,12 @@ def top_sound_history():
     photos = []
     for i in range(len(top)):
         sound_link = top['Sound Link'][i]
-        photo = sound_photos[sound_photos['Sound Link'] == sound_link]['Photo'].item()
+        photo = sound_photos[sound_photos['Sound Link'] == sound_link]['Photo']
+        if photo.empty:
+            photo = ""
+        else:
+            photo = photo.item()
+
         if photo != photo:
             photo = ""
 
@@ -286,7 +292,7 @@ def top_sound_history():
     top = top.to_dict()
     return top
 
-def top_sound_likes():
+def top_sound_likes(history, likes):
     top_history = top_sound(history).head(5)
     top_likes = top_sound(likes).head(5)
     top = compare_positions(top_history, top_likes, 'History', 'Likes', 'Sound Link')
@@ -302,7 +308,12 @@ def top_sound_likes():
     photos = []
     for i in range(len(top)):
         sound_link = top['Sound Link'][i]
-        photo = sound_photos[sound_photos['Sound Link'] == sound_link]['Photo'].item()
+        photo = sound_photos[sound_photos['Sound Link'] == sound_link]['Photo']
+        if photo.empty:
+            photo = ""
+        else:
+            photo = photo.item()
+
         if photo != photo:
             photo = ""
 
@@ -314,7 +325,7 @@ def top_sound_likes():
     top = top.to_dict()
     return top
 
-def top_sound_favorites():
+def top_sound_favorites(likes, favorites, history):
     top_likes = top_sound(likes).head(5)
     top_favorites = top_sound(favorites).head(5)
     top = compare_positions(top_likes, top_favorites, 'Likes', 'Favorites', 'Sound Link')
@@ -330,7 +341,12 @@ def top_sound_favorites():
     photos = []
     for i in range(len(top)):
         sound_link = top['Sound Link'][i]
-        photo = sound_photos[sound_photos['Sound Link'] == sound_link]['Photo'].item()
+        photo = sound_photos[sound_photos['Sound Link'] == sound_link]['Photo']
+        if photo.empty:
+            photo = ""
+        else:
+            photo = photo.item()
+
         if photo != photo:
             photo = ""
         photos.append(photo)
@@ -341,7 +357,7 @@ def top_sound_favorites():
     top = top.to_dict()
     return top
 
-def total_minutes():
+def total_minutes(history):
     # Convert date strings to datetime objects
     dates = [datetime.strptime(date_str, "%Y-%m-%d %H:%M:%S") for date_str in history['Date']]
 
@@ -371,7 +387,7 @@ def total_minutes():
     #calculate total of minutes
     return result
 
-def time_of_day():
+def time_of_day(history):
     ## Convert the 'Date' column to a datetime object
     history['Date'] = pd.to_datetime(history['Date'])
 
@@ -418,7 +434,7 @@ def top_creators(top_history, top_likes, top_favorites):
 
     return top
 
-def top_creator_overall():
+def top_creator_overall(history, likes, favorites):
     top_history = top_following(history)
     top_likes = top_following(likes)
     top_favorites = top_following(favorites)
@@ -437,7 +453,12 @@ def top_creator_overall():
 
     """
 
-    photo = user_photos[user_photos['Username'] == top['Username'].item()]['Photo'].item()
+    photo = user_photos[user_photos['Username'] == top['Username'].item()]['Photo']
+    if photo.empty:
+            photo = ""
+    else:
+        photo = photo.item()
+
     if photo != photo:
         photo = ""
 
@@ -454,7 +475,7 @@ def top_creator_overall():
     top = top.to_dict()
     return top
 
-def ads():
+def ads(history):
     ads = history[history['Sound Name'] == 'Promoted Music']
 
     ads_counts = ads['Sound Link'].value_counts().reset_index()
@@ -486,7 +507,12 @@ def ads():
     photos = []
     for i in range(len(top)):
         username = creators[i]
-        photo = user_photos[user_photos['Username'] == username]['Photo'].item()
+        photo = user_photos[user_photos['Username'] == username]['Photo']
+        if photo.empty:
+            photo = ""
+        else:
+            photo = photo.item()
+
         if photo != photo:
             photo = ""
 
@@ -499,7 +525,7 @@ def ads():
 
     return top
 
-def summary():
+def summary(history, likes, favorites):
     #top creators
     top_history = top_following(history)
     top_likes = top_following(likes)
