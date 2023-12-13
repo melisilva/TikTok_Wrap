@@ -99,7 +99,8 @@ def top_sound(df):
     # Drop every row where the 'Sound Name' contains "Promoted Music"
     df_copy = df_copy[~df_copy['Sound Name'].str.contains("Promoted Music")]
 
-    df_copy.drop(history.loc[history['Sound Link'] == "www.tiktok.com/"].index, inplace=True)
+    # check if the sound link equal to "www.tiktok.com/" exists and drop it
+    df_copy.drop(df_copy.loc[df_copy['Sound Link'] == "www.tiktok.com/"].index, inplace=True)
 
     sound_counts = df_copy['Sound Link'].value_counts().reset_index()
 
@@ -217,22 +218,13 @@ def top_sound_history():
 def top_sound_likes():
     top_history = top_sound(history).head(5)
     top_likes = top_sound(likes).head(5)
-    top = compare_positions(top_history, top_likes, 'History', 'Likes', 'Sound Name')
+    top = compare_positions(top_history, top_likes, 'History', 'Likes', 'Sound Link')
     top.drop(['Count_x', 'Position_History', 'Position_Likes', 'Change'], axis=1, inplace=True)
 
     sound_names = []
     for i in top['Sound Link']:
         sound_name = history.loc[history['Sound Link'] == i, 'Sound Name'].head(1).item()
         sound_names.append(sound_name)
-
-
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-
-    try:
-        top['Photo'] = loop.run_until_complete(fetch_photos_sounds(top['Sound Link']))
-    finally:
-        loop.close()
 
     top['Sound Name'] = sound_names
     top.drop(['Sound Link'], axis=1, inplace=True)
@@ -242,7 +234,7 @@ def top_sound_likes():
 def top_sound_favorites():
     top_likes = top_sound(likes).head(5)
     top_favorites = top_sound(favorites).head(5)
-    top = compare_positions(top_likes, top_favorites, 'Likes', 'Favorites', 'Sound Name')
+    top = compare_positions(top_likes, top_favorites, 'Likes', 'Favorites', 'Sound Link')
     top.drop(['Count_x', 'Position_Likes', 'Position_Favorites', 'Change'], axis=1, inplace=True)
 
     sound_names = []
@@ -250,14 +242,6 @@ def top_sound_favorites():
         sound_name = history.loc[history['Sound Link'] == i, 'Sound Name'].head(1).item()
         sound_names.append(sound_name)
 
-
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-
-    try:
-        top['Photo'] = loop.run_until_complete(fetch_photos_sounds(top['Sound Link']))
-    finally:
-        loop.close()
     top['Sound Name'] = sound_names
     top.drop(['Sound Link'], axis=1, inplace=True)
     top = top.to_dict()
