@@ -525,7 +525,7 @@ def ads(history):
 
     return top
 
-def summary(history, likes, favorites):
+def summary(history, likes, favorites, hashtags):
     #top creators
     top_history = top_following(history)
     top_likes = top_following(likes)
@@ -534,10 +534,10 @@ def summary(history, likes, favorites):
     creators = top_creators(top_history, top_likes, top_favorites).head(5)
 
     #total minutes
-    minutes = total_minutes()['Minutes']
+    minutes = total_minutes(history)['Minutes']
 
     #top hashtags
-    hashtags = top_hashtag(False)
+    hashtags = top_hashtag(hashtags, False)
 
     #user photo
     personal = pd.read_csv("data/personal.csv")

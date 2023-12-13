@@ -19,7 +19,7 @@ class TestYourFunctions(unittest.TestCase):
             'Description': ['text1', 'text2', 'text3', 'text4', 'text5', 'text6', 'text7', 'text8', 'text9', 'text10', 'text11', 'text12', 'text13', 'text14','text15','text16','text17','text18','text19','text20','text21','text22','text23','text24','text25','text26','text27','text28','text29','text30'],
             'Hashtags': ['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6','tag7','tag8','tag9', 'tag10','tag11','tag12','tag13','tag14','tag15','tag16','tag17','tag18','tag19','tag20','tag21','tag22','tag23','tag24','tag25','tag26','tag27','tag28','tag29','tag30'],
             'Sound Name': ['sound5', 'sound3','sound4','sound1','sound1','sound2','sound2','sound4','sound1','sound2','sound1','sound3','sound3','sound2','sound1','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music'],
-            'Sound Link': ['www.tiktok.com/music/sound5', 'www.tiktok.com/music/sound3','www.tiktok.com/music/sound4', 'www.tiktok.com/music/sound1','www.tiktok.com/music/sound1', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound2', 'www.tiktok.com/music/sound4','www.tiktok.com/music/sound1', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/sound3','www.tiktok.com/music/sound3','www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music']
+            'Sound Link': ['www.tiktok.com/music/sound5', 'www.tiktok.com/music/sound3','www.tiktok.com/music/sound4', 'www.tiktok.com/music/sound1','www.tiktok.com/music/sound1', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound2', 'www.tiktok.com/music/sound4','www.tiktok.com/music/sound1', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/sound3','www.tiktok.com/music/sound3','www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/ikeapt','www.tiktok.com/music/tacobell','www.tiktok.com/music/ikeapt','www.tiktok.com/music/ikeapt','www.tiktok.com/music/ikeapt','www.tiktok.com/music/tacobell','www.tiktok.com/music/ikeapt','www.tiktok.com/music/tacobell','www.tiktok.com/music/tacobell','www.tiktok.com/music/disney','www.tiktok.com/music/disney','www.tiktok.com/music/disney','www.tiktok.com/music/microsoft','www.tiktok.com/music/microsoft','www.tiktok.com/music/playstation']
         }
 
         self.sample_likes_data = {
@@ -29,7 +29,7 @@ class TestYourFunctions(unittest.TestCase):
             'Description': ['text1', 'text2', 'text3', 'text4', 'text5', 'text6', 'text7', 'text8', 'text9', 'text10', 'text11', 'text12', 'text13', 'text14','text15','text16','text17','text18','text19','text20','text21','text22','text23','text24','text25','text26','text27','text28','text29','text30'],
             'Hashtags': ['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6','tag7','tag8','tag9', 'tag10','tag11','tag12','tag13','tag14','tag15','tag16','tag17','tag18','tag19','tag20','tag21','tag22','tag23','tag24','tag25','tag26','tag27','tag28','tag29','tag30'],
             'Sound Name': ['sound5', 'sound6','sound4','sound1','sound2','sound2','sound2','sound4','sound1','sound2','sound1','sound6','sound6','sound2','sound1','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music'],
-            'Sound Link': ['www.tiktok.com/music/sound5', 'www.tiktok.com/music/sound6','www.tiktok.com/music/sound4', 'www.tiktok.com/music/sound1','www.tiktok.com/music/sound2', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound2', 'www.tiktok.com/music/sound4','www.tiktok.com/music/sound1', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/sound6','www.tiktok.com/music/sound6','www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music']
+            'Sound Link': ['www.tiktok.com/music/sound5', 'www.tiktok.com/music/sound6','www.tiktok.com/music/sound4', 'www.tiktok.com/music/sound1','www.tiktok.com/music/sound2', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound2', 'www.tiktok.com/music/sound4','www.tiktok.com/music/sound1', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/sound6','www.tiktok.com/music/sound6','www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/ikeapt','www.tiktok.com/music/tacobell','www.tiktok.com/music/ikeapt','www.tiktok.com/music/ikeapt','www.tiktok.com/music/ikeapt','www.tiktok.com/music/tacobell','www.tiktok.com/music/ikeapt','www.tiktok.com/music/tacobell','www.tiktok.com/music/tacobell','www.tiktok.com/music/disney','www.tiktok.com/music/disney','www.tiktok.com/music/disney','www.tiktok.com/music/microsoft','www.tiktok.com/music/microsoft','www.tiktok.com/music/playstation']
         }
 
         self.sample_favorites_data = {
@@ -39,7 +39,7 @@ class TestYourFunctions(unittest.TestCase):
             'Description': ['text1', 'text2', 'text3', 'text4', 'text5', 'text6', 'text7', 'text8', 'text9', 'text10', 'text11', 'text12', 'text13', 'text14','text15','text16','text17','text18','text19','text20','text21','text22','text23','text24','text25','text26','text27','text28','text29','text30'],
             'Hashtags': ['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6','tag7','tag8','tag9', 'tag10','tag11','tag12','tag13','tag14','tag15','tag16','tag17','tag18','tag19','tag20','tag21','tag22','tag23','tag24','tag25','tag26','tag27','tag28','tag29','tag30'],
             'Sound Name': ['sound7', 'sound4','sound4','sound1','sound1','sound2','sound2','sound4','sound1','sound2','sound1','sound3','sound3','sound2','sound1','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music','Promoted Music'],
-            'Sound Link': ['www.tiktok.com/music/sound7', 'www.tiktok.com/music/sound4','www.tiktok.com/music/sound4', 'www.tiktok.com/music/sound1','www.tiktok.com/music/sound1', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound2', 'www.tiktok.com/music/sound4','www.tiktok.com/music/sound1', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/sound3','www.tiktok.com/music/sound3','www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music','www.tiktok.com/music/Promoted Music']
+            'Sound Link': ['www.tiktok.com/music/sound7', 'www.tiktok.com/music/sound4','www.tiktok.com/music/sound4', 'www.tiktok.com/music/sound1','www.tiktok.com/music/sound1', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound2', 'www.tiktok.com/music/sound4','www.tiktok.com/music/sound1', 'www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/sound3','www.tiktok.com/music/sound3','www.tiktok.com/music/sound2','www.tiktok.com/music/sound1','www.tiktok.com/music/ikeapt','www.tiktok.com/music/tacobell','www.tiktok.com/music/ikeapt','www.tiktok.com/music/ikeapt','www.tiktok.com/music/ikeapt','www.tiktok.com/music/tacobell','www.tiktok.com/music/ikeapt','www.tiktok.com/music/tacobell','www.tiktok.com/music/tacobell','www.tiktok.com/music/disney','www.tiktok.com/music/disney','www.tiktok.com/music/disney','www.tiktok.com/music/microsoft','www.tiktok.com/music/microsoft','www.tiktok.com/music/playstation']
         }
 
         self.sample_hashtag_data = {
@@ -124,7 +124,6 @@ class TestYourFunctions(unittest.TestCase):
         self.assertTrue(result['Arrow'][3] == 'same')
         self.assertTrue(result['Arrow'][4] == 'down')
 
-
     def test_top_sound_history(self):
         # Call the function with the sample data
         result = crud.top_sound_history(self.sample_history)
@@ -207,19 +206,71 @@ class TestYourFunctions(unittest.TestCase):
         self.assertTrue(result['Count'][3] == 175)
         self.assertTrue(result['Count'][4] == 98)
 
-
-
-    """   
-
     def test_total_minutes(self):
         # Call the function with the sample data
-        result = crud.total_minutes()
+        result = crud.total_minutes(self.sample_history)
 
         # Check if the result is a dictionary and has the expected keys
         self.assertIsInstance(result, dict)
         self.assertTrue(all(key in result for key in ['Minutes', 'Quote']))
 
-        """
+        self.assertTrue(result['Minutes'] == 13460)
+        self.assertTrue(result['Quote'] == "Procrastination level: Expert! The real question is, how many times did you think about doing chores?")
+
+    def test_time_of_day(self):
+        # Call the function with the sample data
+        result = crud.time_of_day(self.sample_history)
+
+        # Check if the result is a dictionary and has the expected keys
+        self.assertIsInstance(result, dict)
+        self.assertTrue(all(key in result for key in ['Time', 'Quote']))
+
+        self.assertTrue(result['Time'] == '7-8')
+        self.assertTrue(result['Quote'] == "Rise and shine! Are you on a mission to out-early-bird the early birds? The worm's not ready, but you're already catching the laughs!")
+
+    def test_top_creator_overall(self):
+        result = crud.top_creator_overall(self.sample_history, self.sample_likes, self.sample_favorites)
+
+        self.assertIsInstance(result, dict)
+        
+        self.assertTrue(result['Username'][0] == 'rory')
+        self.assertTrue(result['Photo'][0] == '')
+        self.assertTrue(result['Count_History'][0] == 5)
+        self.assertTrue(result['Count_Likes'][0] == 4)
+        self.assertTrue(result['Count_Favorites'][0] == 4)
+
+
+    def test_ads(self):
+        result = crud.ads(self.sample_history)
+
+        self.assertIsInstance(result, dict)
+        self.assertTrue(result['Username'][0] == 'ikeapt')
+        self.assertTrue(result['Username'][1] == 'tacobell')
+        self.assertTrue(result['Username'][2] == 'disney')
+        self.assertTrue(result['Username'][3] == 'microsoft')
+        self.assertTrue(result['Username'][4] == 'playstation')
+        self.assertTrue(result['Count'][0] == 5)
+        self.assertTrue(result['Count'][1] == 4)
+        self.assertTrue(result['Count'][2] == 3)
+        self.assertTrue(result['Count'][3] == 2)
+        self.assertTrue(result['Count'][4] == 1)
+        self.assertTrue(result['Percentage'][0] == 50.0)
+        
+    def test_summary(self):
+        result = crud.summary(self.sample_history, self.sample_likes, self.sample_favorites, self.sample_hashtag)
+        
+        self.assertIsInstance(result, dict)
+        self.assertTrue(result['Total Minutes'] == 13460)
+        self.assertTrue(result['Top Creators']['Username'][0] == 'rory')
+        self.assertTrue(result['Top Creators']['Username'][1] == 'badwolf')
+        self.assertTrue(result['Top Creators']['Username'][2] == 'lindsaybrookethomas')
+        self.assertTrue(result['Top Creators']['Username'][3] == 'lily')
+        self.assertTrue(result['Top Creators']['Username'][4] == 'batfamilyprotector')
+        self.assertTrue(result['Top Hashtags']['Hashtag'][0] == '10thhungergames')
+        self.assertTrue(result['Top Hashtags']['Hashtag'][1] == '11doctorwho')
+        self.assertTrue(result['Top Hashtags']['Hashtag'][2] == '10thdoctor')
+        self.assertTrue(result['Top Hashtags']['Hashtag'][3] == '11thdoctor')
+        self.assertTrue(result['Top Hashtags']['Hashtag'][4] == '00sbaby')
 
 if __name__ == '__main__':
     unittest.main()
