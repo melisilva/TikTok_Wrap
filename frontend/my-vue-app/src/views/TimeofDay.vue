@@ -1,6 +1,6 @@
 <template>
   <div class="page"
-    style="background-image: linear-gradient(to top, rgba(245, 246, 252, 0.52), #fadadd), url('/images/tiktok_pattern.png');">
+    style="background-image: linear-gradient(to top, rgba(245, 246, 252, 0.52), #fadadd), url('/images/tiktok_pattern.png'); text-align: center;">
     <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" /> 
     <div style="display: flex; flex-direction: column; justify-content: center; align-items: middle;">
       <div class="row">
