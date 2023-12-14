@@ -2,7 +2,7 @@
      <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" />
      <div class="page" style="background: #b4b5db;">
           <div class="row">
-               <div class="top-history-creators" style="margin-bottom: 0px;"> Your Top 5 Watched Creators</div>
+               <div class="top-history-creators"> Your Top 5 Watched Creators</div>
           </div>
           <br style="margin-bottom: 10px; "/>
           <div class="row">

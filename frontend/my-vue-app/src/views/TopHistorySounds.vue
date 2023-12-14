@@ -1,68 +1,72 @@
 <template>
-    <div class="page" style="background: #3B719F;">
-         <div class="top-history-creators"> Your Top 5 Sounds</div>
-         <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" />
-         <div class="side-by-side-chart" style="flex-direction: row;">
-              <div class="col">
-                   <div class="place" style="left:-5px;">
-                        <img class="ellipse" v-bind:src="photos[4] === '' ? 'src/assets/images/sound_default.png' : photos[4]" />
-                        <div class="rectangle-place" style=" width: auto; left: 25px; top: -90px; z-index: 1; padding: 2px 5px 2px 5px;">
-                             <p class="number-placement">#5</p>
-                        </div>
-                   </div>
-                   <div class="rectangle" id="rect-15">
-                        <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ sounds[4]}} </p>
-                   </div>
-              </div>
-              <div class="col">
-                   <div class="place" style="left:-5px;">
-                        <img class="ellipse" v-bind:src="photos[1] === '' ? 'src/assets/images/sound_default.png' : photos[1]" />
-                        <div class="rectangle-place" style=" width: auto; left: 25px; top: -90px; z-index: 1; padding: 2px 5px 2px 5px;">
-                             <p class="number-placement">#2</p>
-                        </div>
-                   </div>
-                   <div class="rectangle" id="rect-12">
-                        <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ sounds[1]}} </p>
-                   </div>
-              </div>
-              <div class="col">
-                   <div class="place">
-                        <img class="ellipse" v-bind:src="photos[0] === '' ? 'src/assets/images/sound_default.png' : photos[0]" />
-                        <div class="rectangle-place" style=" width: auto; left: 25px; top: -90px; z-index: 1; padding: 2px 5px 2px 5px;">
-                             <p class="number-placement">#1</p>
-                        </div>
-                   </div>
-                   <div class="rectangle" id="rect-11">
-                        <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ sounds[0]}} </p>
-                   </div>
-              </div>
-              <div class="col">
-                   <div class="place" style="left:5px;">
-                        <img class="ellipse" v-bind:src="photos[2] === '' ? 'src/assets/images/sound_default.png' : photos[2]" />
-                        <div class="rectangle-place" style=" width: auto; left: 25px; top: -90px; z-index: 1; padding: 2px 5px 2px 5px;">
-                             <p class="number-placement">#3</p>
-                        </div>
-                   </div>
-                   <div class="rectangle" id="rect-13">
-                        <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%; padding-bottom: 50%;"> {{ sounds[2]}} </p>
-                   </div>
-              </div>
-              <div class="col">
-                   <div class="place" style="left:5px;">
-                        <img class="ellipse" v-bind:src="photos[3] === '' ? 'src/assets/images/sound_default.png' : photos[3]" />
-                        <div class="rectangle-place" style=" width: auto; left: 25px; top: -90px; z-index: 1; padding: 2px 5px 2px 5px;">
-                             <p class="number-placement">#4</p>
-                        </div>
-                   </div>
-                   <div class="rectangle" id="rect-14">
-                        <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ sounds[3]}} </p>
-                   </div>
-              </div>
-
-
-         </div>
-
-    </div>
+     <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" />
+     <div class="page" style="background: #3B719F;">
+          <div class="row">
+               <div class="top-history-creators"> Your Top 5 Watched Sounds</div>
+          </div>
+          <br style="margin-bottom: 10px; "/>
+          <div class="row">
+               <div class="side-by-side-chart" style="flex-direction: row; width: 100%; ">
+                    <div class="col ranking" >
+                         <div class="place ranking">
+                              <img class="ellipse ranking" v-bind:src="photos[4] === '' ? 'src/assets/images/sound_default.png' : photos[4]" />
+                              <div class="rectangle-place" style=" width: auto; top: -22.5px; z-index: 1; padding: 2px 5px 2px 5px;">
+                                   <p class="number-placement">#5</p>
+                              </div>
+                         </div>
+                         <div class="rectangle" id="rect-15">
+                              <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ sounds[4]}} </p>
+                         </div>
+                    </div>
+                    <div class="col ranking">
+                         <div class="place ranking">
+                              <img class="ellipse ranking" v-bind:src="photos[1] === '' ? 'src/assets/images/sound_default.png' : photos[1]" />
+                              <div class="rectangle-place" style=" width: auto; top: -22.5px; z-index: 1; padding: 2px 5px 2px 5px;">
+                                   <p class="number-placement">#2</p>
+                              </div>
+                         </div>
+                         <div class="rectangle" id="rect-12">
+                              <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ sounds[1]}} </p>
+                         </div>
+                    </div>
+                    <div class="col ranking">
+                         <div class="place ranking">
+                              <img class="ellipse ranking" v-bind:src="photos[0] === '' ? 'src/assets/images/sound_default.png' : photos[0]" />
+                              <div class="rectangle-place" style=" width: auto; top: -22.5px; z-index: 1; padding: 2px 5px 2px 5px;">
+                                   <p class="number-placement">#1</p>
+                              </div>
+                         </div>
+                         <div class="rectangle" id="rect-11">
+                              <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ sounds[0]}} </p>
+                         </div>
+                    </div>
+                    <div class="col ranking">
+                         <div class="place ranking">
+                              <img class="ellipse ranking" v-bind:src="photos[2] === '' ? 'src/assets/images/sound_default.png' : photos[2]" />
+                              <div class="rectangle-place" style=" width: auto; top: -22.5px; z-index: 1; padding: 2px 5px 2px 5px;">
+                                   <p class="number-placement">#3</p>
+                              </div>
+                         </div>
+                         <div class="rectangle" id="rect-13">
+                              <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%; padding-bottom: 50%;"> {{ sounds[2]}} </p>
+                         </div>
+                    </div>
+                    <div class="col ranking">
+                         <div class="place ranking">
+                              <img class="ellipse ranking" v-bind:src="photos[3] === '' ? 'src/assets/images/sound_default.png' : photos[3]" />
+                              <div class="rectangle-place" style=" width: auto; top: -22.5px; z-index: 1; padding: 2px 5px 2px 5px;">
+                                   <p class="number-placement">#4</p>
+                              </div>
+                         </div>
+                         <div class="rectangle" id="rect-14">
+                              <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ sounds[3]}} </p>
+                         </div>
+                    </div>
+     
+     
+               </div>
+          </div>
+     </div>
 </template>
 
 <script>
