@@ -18,8 +18,7 @@ body, html, .page {
   line-height: 24px;
   font-weight: 400;
   position: absolute;
-  padding-left: 10%;
-  padding-top:5%;
+  padding: 5% 10% 5% 10%; /* horizontal + vertical (top + bottom clock-wise)*/
 }
   
 .tik-tok-logo {
@@ -43,11 +42,17 @@ body, html, .page {
   top: 30px;
   } 
 
-  @media screen and (max-width: 360px) {
-    .ranking {
-      width: 20vw!important;
-    }
+  @media only screen and (device-width: 768px) {
+  .ranking {
+    width: 80px; /* Default width for pc */
+  }
 }
+  
+  @media only screen and (device-width: 360px) {
+    .ranking {
+      width: 20vw!important; /* Adjust the width for mobile */
+    }
+  }
 
 #rect-11{
   background: #25f4ee;
@@ -89,7 +94,7 @@ body, html, .page {
 
 .ellipse {
   border-radius: 50%;
-  width: 20vw;
+  width: 80px;
   height: 80px;
   z-index: 1;
 }
