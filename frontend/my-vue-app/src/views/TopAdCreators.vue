@@ -8,7 +8,7 @@
         Top Ad Creators
     </div>
 
-    <div style="padding-left: 25%;">
+    <div style="padding-left: 10%;">
 
     <div class="creator-item">
         <div class="number"> #1 </div>

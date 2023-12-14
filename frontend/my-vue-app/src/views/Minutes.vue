@@ -1,22 +1,22 @@
 <template>
   <div class="page"
-    style="background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73)), url('/images/tiktok_pattern.png');">
+    style="background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.52), #fadadd), url('/images/tiktok_pattern.png');">
       <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" />
       <div style="display: flex; flex-direction: column; justify-content: center; align-items: middle;">
       <div class="row">
-        <div class="general-text" style="padding-top: 15%;">
+        <div class="general-text" style="padding-top: 25%; color: black;">
         You watched...
       </div>
       </div>
 
       <div class="row">
-        <div class="general-text" style="margin-top:5%;">
+        <div class="general-text" style="margin-top:5%; color: black;">
         ...{{ totalMinutes }} minutes
       </div>
       </div>
 
       <div class="row" style="display: flex; flex-direction: row; justify-content: center;">
-      <div class="quote-text">
+      <div class="quote-text" style="color: black;">
         {{ quote }}
       </div>
       </div>

@@ -158,10 +158,10 @@ body, html, .page {
 
   .general-text {
     font-family: 'futura-maxi-cg-bold';
-    font-size: 32px;
+    font-size: 200%;
     text-align: center;
     color: #ffffff;
-    line-height: 35px;
+    line-height: 100%;
     font-weight: 700;
     position: relative;
   }

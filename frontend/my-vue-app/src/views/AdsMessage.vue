@@ -3,9 +3,9 @@
         <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" />  
         
         <div>
-            <div class="row" style="padding-left: 35%;">
+            <div class="row" style="padding-left: 30%;">
                 <div class="general-text" style="padding-top: 30%; width: 50%;">
-            Bet you were bothered by some ads during your time on TikTok...but who were those companies?
+            Bet you were bothered by some ads during your time on TikTok ... but who were those companies?
                 </div>
             </div>
 
