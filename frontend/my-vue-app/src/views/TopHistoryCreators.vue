@@ -2,11 +2,11 @@
      <div class="page" style="background: #b4b5db;">
           <div class="top-history-creators"> Your Top 5 Watched Creators</div>
           <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" />
-          <div class="side-by-side-chart" style="flex-direction: row;">
-               <div class="col">
-                    <div class="place" style="left:-5px;">
+          <div class="side-by-side-chart" style="flex-direction: row; width: 100%; ">
+               <div class="col" >
+                    <div class="place ranking">
                          <img class="ellipse" v-bind:src="photos[4] === '' ? 'src/assets/images/user_default.png' : photos[4]" />
-                         <div class="rectangle-place" style=" width: auto; left: 25px; top: -90px; z-index: 1; padding: 2px 5px 2px 5px;">
+                         <div class="rectangle-place" style=" width: auto; top: -22.5px; z-index: 1; padding: 2px 5px 2px 5px;">
                               <p class="number-placement">#5</p>
                          </div>
                     </div>
@@ -14,10 +14,10 @@
                          <p class="text-inside-rectangle"> {{ creators[4]}} </p>
                     </div>
                </div>
-               <div class="col">
-                    <div class="place" style="left:-5px;">
+               <div class="col ranking">
+                    <div class="place ranking">
                          <img class="ellipse" v-bind:src="photos[1] === '' ? 'src/assets/images/user_default.png' : photos[1]" />
-                         <div class="rectangle-place" style=" width: auto; left: 25px; top: -90px; z-index: 1; padding: 2px 5px 2px 5px;">
+                         <div class="rectangle-place" style=" width: auto; top: -22.5px; z-index: 1; padding: 2px 5px 2px 5px;">
                               <p class="number-placement">#2</p>
                          </div>
                     </div>
@@ -25,10 +25,10 @@
                          <p class="text-inside-rectangle"> {{ creators[1]}} </p>
                     </div>
                </div>
-               <div class="col">
-                    <div class="place">
+               <div class="col ranking">
+                    <div class="place ranking">
                          <img class="ellipse" v-bind:src="photos[0] === '' ? 'src/assets/images/user_default.png' : photos[0]" />
-                         <div class="rectangle-place" style=" width: auto; left: 25px; top: -90px; z-index: 1; padding: 2px 5px 2px 5px;">
+                         <div class="rectangle-place" style=" width: auto; top: -22.5px; z-index: 1; padding: 2px 5px 2px 5px;">
                               <p class="number-placement">#1</p>
                          </div>
                     </div>
@@ -36,10 +36,10 @@
                          <p class="text-inside-rectangle"> {{ creators[0]}} </p>
                     </div>
                </div>
-               <div class="col">
-                    <div class="place" style="left:5px;">
+               <div class="col ranking">
+                    <div class="place ranking">
                          <img class="ellipse" v-bind:src="photos[2] === '' ? 'src/assets/images/user_default.png' : photos[2]" />
-                         <div class="rectangle-place" style=" width: auto; left: 25px; top: -90px; z-index: 1; padding: 2px 5px 2px 5px;">
+                         <div class="rectangle-place" style=" width: auto; top: -22.5px; z-index: 1; padding: 2px 5px 2px 5px;">
                               <p class="number-placement">#3</p>
                          </div>
                     </div>
@@ -47,10 +47,10 @@
                          <p class="text-inside-rectangle"> {{ creators[2]}} </p>
                     </div>
                </div>
-               <div class="col">
-                    <div class="place" style="left:5px;">
+               <div class="col ranking">
+                    <div class="place ranking">
                          <img class="ellipse" v-bind:src="photos[3] === '' ? 'src/assets/images/user_default.png' : photos[3]" />
-                         <div class="rectangle-place" style=" width: auto; left: 25px; top: -90px; z-index: 1; padding: 2px 5px 2px 5px;">
+                         <div class="rectangle-place" style=" width: auto; top: -22.5px; z-index: 1; padding: 2px 5px 2px 5px;">
                               <p class="number-placement">#4</p>
                          </div>
                     </div>
@@ -61,7 +61,6 @@
 
 
           </div>
-
      </div>
 </template>
 
