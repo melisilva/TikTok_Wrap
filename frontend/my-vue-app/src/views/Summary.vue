@@ -23,7 +23,7 @@
                     <div style=" font-family: 'futura-maxi-cg-bold';font-weight: bolder;height:10%; margin-bottom: 5%">
                         Top Creators
                     </div>
-                    <div v-for="creator in topCreators" style=" font-family: 'futura-maxi-cg-bold';height:10%;display: flex; justify-content: space-between; flex-direction: column;">
+                    <div v-for="creator in topCreators" style=" font-family: 'futura-maxi-cg-bold';height:10%; font-size:65%; display: flex; justify-content: space-between; flex-direction: column;">
                         <div >
                             {{ creator }}
                         </div>
@@ -33,7 +33,7 @@
                     <div style=" font-family: 'futura-maxi-cg-bold'; font-weight: bolder;height:10%; margin-bottom: 5%">
                         Top Hashtags
                     </div>
-                    <div v-for="hashtag in topHashTags" style=" font-family: 'futura-maxi-cg-bold';height:10%;display: flex; justify-content: space-between; flex-direction: column;">
+                    <div v-for="hashtag in topHashTags" style=" font-family: 'futura-maxi-cg-bold';height:10%; font-size:65%; display: flex; justify-content: space-between; flex-direction: column;">
                         <div >
                             # {{ hashtag }}
                         </div>

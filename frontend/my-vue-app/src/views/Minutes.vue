@@ -4,7 +4,7 @@
       <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" />
       <div style="display: flex; flex-direction: column; justify-content: center; align-items: middle;">
       <div class="row">
-        <div class="general-text" style="padding-top: 25%; color: black;">
+        <div class="general-text" style="padding-top: 15%; color: black;">
         You watched...
       </div>
       </div>
