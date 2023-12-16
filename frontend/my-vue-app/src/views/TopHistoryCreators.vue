@@ -1,6 +1,7 @@
 <template>
      <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" />
-     <div class="page" style="background: #b4b5db;">
+     <div id="your-component-id" class="page" style="background: #b4b5db;">
+     <!--<button @click="captureAndSave">Save Image</button> -->
           <div class="row">
                <div class="top-history-creators"> Your Top 5 Watched Creators</div>
           </div>
@@ -66,12 +67,15 @@
      
                </div>
           </div>
+          
      </div>
 </template>
+
 
 <script>
 import axios from 'axios'
 import { defineComponent } from 'vue'
+import html2canvas from 'html2canvas';
 
 export default defineComponent({
   name: 'TopHistoryCreators',
@@ -82,6 +86,26 @@ export default defineComponent({
     }
   },
   methods: {
+    async captureAndSave() {
+      // Use html2canvas to capture the content
+      const element = document.getElementById('your-component-id'); // Replace with your component's ID
+      const canvas = await html2canvas(element);
+
+      // Convert canvas to image
+      const image = canvas.toDataURL('image/png');
+
+      // Create a download link
+      const link = document.createElement('a');
+      link.href = image;
+      link.download = 'top_creators.png';
+      document.body.appendChild(link);
+
+      // Trigger the download
+      link.click();
+
+      // Remove the link from the DOM
+      document.body.removeChild(link);
+    },
   },
   async beforeMount() {
     await axios.get("http://localhost:8000/top-creator-history")
