@@ -47,11 +47,22 @@ class TestYourFunctions(unittest.TestCase):
             'Count':  [2, 98, 52, 7, 21, 35, 22, 2, 3, 30, 59, 1, 15,5, 12, 1, 194, 62, 410, 4, 1, 16, 2, 399, 10, 175, 53, 5, 71, 1, 10]
         }
 
+        self.sample_sound_trends_data = {
+            'Sound Name': ['sound7', 'sound4', 'sound3'],
+            'Sound Link': ['www.tiktok.com/music/sound7', 'www.tiktok.com/music/sound4', 'www.tiktok.com/music/sound3']
+        }
+
+        self.sample_tiktok_trend_data = {
+            'Trends': ['text1', 'trend2', 'trend3']
+        }
+
         # Create DataFrames
         self.sample_history = pd.DataFrame(self.sample_history_data)
         self.sample_likes = pd.DataFrame(self.sample_likes_data)
         self.sample_favorites = pd.DataFrame(self.sample_favorites_data)
         self.sample_hashtag = pd.DataFrame(self.sample_hashtag_data)
+        self.sample_sound_trends = pd.DataFrame(self.sample_sound_trends_data)
+        self.sample_tiktok_trends = pd.DataFrame(self.sample_tiktok_trend_data)
 
     def test_top_following(self):
         # Call the function with the sample data
@@ -270,6 +281,110 @@ class TestYourFunctions(unittest.TestCase):
         self.assertTrue(result['Top Hashtags']['Hashtag'][2] == '10thdoctor')
         self.assertTrue(result['Top Hashtags']['Hashtag'][3] == '11thdoctor')
         self.assertTrue(result['Top Hashtags']['Hashtag'][4] == '00sbaby')
+    
+    def test_top_sound(self):
+        result = crud.top_sound(self.sample_history)
+
+        self.assertIsInstance(result, pd.DataFrame)
+        self.assertTrue(result['Sound Link'][0] == 'www.tiktok.com/music/sound1')
+        self.assertTrue(result['Sound Link'][1] == 'www.tiktok.com/music/sound2')
+        self.assertTrue(result['Sound Link'][2] == 'www.tiktok.com/music/sound3')
+        self.assertTrue(result['Sound Link'][3] == 'www.tiktok.com/music/sound4')
+        self.assertTrue(result['Sound Link'][4] == 'www.tiktok.com/music/sound5')
+        self.assertTrue(result['Count'][0] == 5)
+        self.assertTrue(result['Count'][1] == 4)
+        self.assertTrue(result['Count'][2] == 3)
+        self.assertTrue(result['Count'][3] == 2)
+        self.assertTrue(result['Count'][4] == 1)
+
+    def test_compare_positions(self):
+        top_history = crud.top_following(self.sample_history).head(5)
+        top_likes = crud.top_following(self.sample_likes).head(5)
+        result = crud.compare_positions(top_history, top_likes, 'History', 'Likes', 'Username')
+
+        self.assertIsInstance(result, pd.DataFrame)
+        self.assertTrue(result['Username'][0] == 'badwolf')
+        self.assertTrue(result['Username'][1] == 'rory')
+        self.assertTrue(result['Username'][2] == 'batfamilyprotector')
+        self.assertTrue(result['Username'][3] == 'emma')
+        self.assertTrue(result['Username'][4] == 'lindsaybrookethomas')
+        self.assertTrue(result['Count_x'][0] == 4.0)
+        self.assertTrue(result['Count_x'][1] == 5.0)
+        self.assertTrue(result['Count_x'][2] == 1.0)
+        self.assertTrue(result['Count_x'][4] == 3.0)
+        self.assertTrue(result['Position_History'][0] == 2.0)
+        self.assertTrue(result['Position_History'][1] == 1.0)
+        self.assertTrue(result['Position_History'][2] == 5.0)
+        self.assertTrue(result['Position_History'][4] == 3.0)
+        self.assertTrue(result['Count_y'][0] == 5)
+        self.assertTrue(result['Count_y'][1] == 4)
+        self.assertTrue(result['Count_y'][2] == 3)
+        self.assertTrue(result['Count_y'][3] == 2)
+        self.assertTrue(result['Count_y'][4] == 1)
+        self.assertTrue(result['Position_Likes'][0] == 1)
+        self.assertTrue(result['Position_Likes'][1] == 2)
+        self.assertTrue(result['Position_Likes'][2] == 3)
+        self.assertTrue(result['Position_Likes'][3] == 4)
+        self.assertTrue(result['Position_Likes'][4] == 5)
+        self.assertTrue(result['Change'][0] == 1.0)
+        self.assertTrue(result['Change'][1] == -1.0)
+        self.assertTrue(result['Change'][2] == 2.0)
+        self.assertTrue(result['Change'][4] == -2.0)
+        self.assertTrue(result['Arrow'][0] == 'up')
+        self.assertTrue(result['Arrow'][1] == 'down')
+        self.assertTrue(result['Arrow'][2] == 'up')
+        self.assertTrue(result['Arrow'][3] == 'New Entry')
+        self.assertTrue(result['Arrow'][4] == 'down')
+
+    def test_top_creators(self):
+        top_history = crud.top_following(self.sample_history)
+        top_likes = crud.top_following(self.sample_likes)
+        top_favorites = crud.top_following(self.sample_favorites)
+        result = crud.top_creators(top_history, top_likes, top_favorites).head(5)
+
+        self.assertIsInstance(result, pd.DataFrame)
+        self.assertTrue(result['Username'][0] == 'rory')
+        self.assertTrue(result['Username'][1] == 'badwolf')
+        self.assertTrue(result['Username'][2] == 'lindsaybrookethomas')
+        self.assertTrue(result['Username'][3] == 'lily')
+        self.assertTrue(result['Username'][4] == 'batfamilyprotector')
+        self.assertTrue(result['Count'][0] == 15.0)
+        self.assertTrue(result['Count'][1] == 12.0)
+        self.assertTrue(result['Count'][2] == 9.0)
+        self.assertTrue(result['Count'][3] == 6.0)
+        self.assertTrue(result['Count'][4] == 3.0)
+
+    def test_get_tiktok_sound_trends(self):
+        result = crud.get_tiktok_sound_trends(self.sample_history, self.sample_sound_trends)
+
+        self.assertIsInstance(result, dict)
+        self.assertTrue(result['Sound Name'][0] == 'sound7')
+        self.assertTrue(result['Sound Name'][1] == 'sound4')
+        self.assertTrue(result['Sound Name'][2] == 'sound3')
+        self.assertTrue(result['Sound Link'][0] == 'www.tiktok.com/music/sound7')
+        self.assertTrue(result['Sound Link'][1] == 'www.tiktok.com/music/sound4')
+        self.assertTrue(result['Sound Link'][2] == 'www.tiktok.com/music/sound3')
+        self.assertTrue(result['Count'][0] == 0)
+        self.assertTrue(result['Count'][1] == 2)
+        self.assertTrue(result['Count'][2] == 3)
+
+
+    def test_get_tiktok_trends(self):
+        result = crud.get_tiktok_trends(self.sample_history, self.sample_tiktok_trends)
+
+        self.assertIsInstance(result, dict)
+        self.assertTrue(result['Trends'][0] == 'text1')
+        self.assertTrue(result['Trends'][1] == 'trend2')
+        self.assertTrue(result['Trends'][2] == 'trend3')
+        self.assertTrue(result['Count'][0] == 11)
+        self.assertTrue(result['Count'][1] == 0)
+        self.assertTrue(result['Count'][2] == 0)
+        self.assertTrue(result['Hashtags'][0] == '#text1')
+        self.assertTrue(result['Hashtags'][1] == '#trend2')
+        self.assertTrue(result['Hashtags'][2] == '#trend3')
+
+
+    
 
 if __name__ == '__main__':
     unittest.main()

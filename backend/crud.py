@@ -548,11 +548,11 @@ def summary(history, likes, favorites, hashtags):
     return summary
 
 def get_tiktok_sound_trends(history, sound_trend):
-    sound_trend['count'] = 0
+    sound_trend['Count'] = 0
     for index, row in sound_trend.iterrows():
-        sound_trend.loc[index, 'count'] = len(history[history['Sound Name'] == row['Sound Name']])
+        sound_trend.loc[index, 'Count'] = len(history[history['Sound Name'] == row['Sound Name']])
     
-    sound_trend = sound_trend.sort_values(by='count', ascending=True)
+    sound_trend = sound_trend.sort_values(by='Count', ascending=True)
 
     return sound_trend.to_dict()
 
@@ -560,14 +560,14 @@ def get_tiktok_trends(history, tiktok_trend):
     history_description = history.copy()
     history_description = history_description.dropna(subset=['Description'])
 
-    tiktok_trend['count'] = 0
+    tiktok_trend['Count'] = 0
     tiktok_trend['matching_indexes'] = None
 
     for index, row in tiktok_trend.iterrows():
         mask = history_description['Description'].str.lower().str.contains(str.lower(row['Trends']))
         matching_indexes = history_description[mask].index.tolist()
 
-        tiktok_trend.at[index, 'count'] = len(matching_indexes)
+        tiktok_trend.at[index, 'Count'] = len(matching_indexes)
         tiktok_trend.at[index, 'matching_indexes'] = matching_indexes if matching_indexes else []
 
     tiktok_trend['Hashtags'] = tiktok_trend['Trends'].str.replace(' ', '')
@@ -584,10 +584,10 @@ def get_tiktok_trends(history, tiktok_trend):
         tiktok_trend.at[index, 'matching_indexes'] = list(set(tiktok_trend.at[index, 'matching_indexes'] + matching_indexes))
     
 
-        tiktok_trend.at[index, 'count'] = len(tiktok_trend.at[index, 'matching_indexes']) if tiktok_trend.at[index, 'matching_indexes'] else tiktok_trend.at[index, 'count']
+        tiktok_trend.at[index, 'Count'] = len(tiktok_trend.at[index, 'matching_indexes']) if tiktok_trend.at[index, 'matching_indexes'] else tiktok_trend.at[index, 'Count']
 
-    tiktok_trend = tiktok_trend.sort_values(by='count', ascending=True)
+    tiktok_trend = tiktok_trend.sort_values(by='Count', ascending=True)
 
     tiktok_trend = tiktok_trend.drop(['matching_indexes'], axis=1)
-    
+
     return tiktok_trend.to_dict()
