@@ -13,6 +13,9 @@ likes = pd.read_csv('data/likes_full_tiktok_data.csv')
 favorites = pd.read_csv('data/favorite_videos_full_tiktok_data.csv')
 share = pd.read_csv('data/share_history_full_tiktok_data.csv')
 hashtags = pd.read_csv('data/clean_hashtags/after_hashtags.csv')
+sound_trend = pd.read_csv('data/sound_trend.csv')
+tiktok_trend = pd.read_csv('data/tiktok_trend.csv')
+trend_history = pd.read_csv('data/unique_video_browsing_history_full_tiktok_data.csv')
 
 history = history.sort_values(by=["Date"])
 likes = likes.sort_values(by=["Date"])
@@ -105,6 +108,14 @@ def ads():
 @app.get("/summary")
 def summary():
     return crud.summary(history, likes, favorites, hashtags)
+
+@app.get("/sound-trend")
+def get_tiktok_sound_trends():
+    return crud.get_tiktok_sound_trends(trend_history, sound_trend)
+
+@app.get("/tiktok-trend")
+def get_tiktok_trends():
+    return crud.get_tiktok_trends(trend_history, tiktok_trend)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
