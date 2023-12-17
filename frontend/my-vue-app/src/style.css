@@ -209,3 +209,18 @@ body, html, .page {
     font-family: 'futura-maxi-cg-bold'; 
     color: white;
   }
+
+  .trends, .trends* {
+    box-sizing: border-box;
+    }
+    .trends {
+    color: white;
+    text-align: center;
+    font-family: 'futura-maxi-cg-bold'; 
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    position: relative;
+    width: 293px;
+    height: 181px;
+    } 

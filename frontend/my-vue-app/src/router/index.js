@@ -52,6 +52,16 @@ const router = createRouter({
       path: '/trends-message',
       name: 'trends_message',
       component: () => import('../views/TrendsMessage.vue')
+    },
+    {
+      path: '/trends',
+      name: 'trends',
+      component: () => import('../views/Trends.vue')
+    },
+    {
+      path: '/trend-sounds',
+      name: 'trend_sounds',
+      component: () => import('../views/TrendSounds.vue')
     }
   ]
 })
