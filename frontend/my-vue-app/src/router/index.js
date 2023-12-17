@@ -47,6 +47,11 @@ const router = createRouter({
       path: '/summary',
       name: 'summary',
       component: () => import('../views/Summary.vue')
+    },
+    {
+      path: '/trends-message',
+      name: 'trends_message',
+      component: () => import('../views/TrendsMessage.vue')
     }
   ]
 })
