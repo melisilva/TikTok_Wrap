@@ -552,9 +552,16 @@ def get_tiktok_sound_trends(history, sound_trend):
     for index, row in sound_trend.iterrows():
         sound_trend.loc[index, 'Count'] = len(history[history['Sound Name'] == row['Sound Name']])
     
-    sound_trend = sound_trend.sort_values(by='Count', ascending=True)
+    sound_trend = sound_trend.sort_values(by='Count', ascending=False)
 
-    return sound_trend.to_dict()
+    top = sound_trend.head(5)
+    # for each sound name, remove the creators, part of text after '-'
+    for index, row in top.iterrows():
+        sound_name = row['Sound Name']
+        sound_name = sound_name.split(' - ')[0]
+        top.at[index, 'Sound Name'] = sound_name
+    
+    return {'Trends': top.to_dict(), 'Total Trends': len(sound_trend), 'Seen Trends': len(sound_trend[sound_trend['Count'] != 0])}
 
 def get_tiktok_trends(history, tiktok_trend):
     history_description = history.copy()
@@ -588,6 +595,6 @@ def get_tiktok_trends(history, tiktok_trend):
 
     tiktok_trend = tiktok_trend.sort_values(by='Count', ascending=False)
 
-    tiktok_trend = tiktok_trend.drop(['matching_indexes'], axis=1)
+    tiktok_trend = tiktok_trend.drop(['matching_indexes'], inplace=True)
 
     return {'Trends': tiktok_trend['Trends'][:6].to_dict(), 'Total Trends': len(tiktok_trend), 'Seen Trends': len(tiktok_trend[tiktok_trend['Count'] != 0])}

@@ -42,9 +42,14 @@ body, html, .page {
   top: 30px;
   } 
 
-  @media only screen and (device-width: 768px) {
+  @media only screen and (device-width: 1280px) {
   .ranking {
     width: 80px; /* Default width for pc */
+  }
+
+  .trendy-rec-1, .trendy-rec-2 {
+    width: 700px; /* Default width for pc */
+    margin-top: 1%;
   }
 }
   
@@ -52,6 +57,13 @@ body, html, .page {
     .ranking {
       width: 20vw!important; /* Adjust the width for mobile */
     }
+
+    .trendy-rec-1, .trendy-rec-2 {
+      width: 300px; /* Adjust the width for mobile */
+      margin-top: 10%;
+    }
+
+    
   }
 
 #rect-11{
@@ -224,3 +236,38 @@ body, html, .page {
     width: 293px;
     height: 181px;
     } 
+
+    .container {
+      position: relative;
+    }
+    
+    .trendy-rec-1, .trendy-rec-2 {
+      box-sizing: border-box;
+      background: #2f2f2f;
+      height: 83px;
+      position: relative;
+    }
+    .trendy-rec-1 {
+      border-radius: 0px 40px 40px 0px;
+    }
+    .trendy-rec-2 {
+      border-radius: 40px 0px 0px 40px;
+      margin-left: auto;
+    }
+
+    .trendy-sound-text {
+      color:#ffffff;
+      font-family: 'futura-maxi-cg-bold';
+      text-align: end;
+    }
+
+    .photo-sound {
+      border-radius: 50%;
+      width: 85px;
+      height: 85px;
+      z-index: 1;
+    }
+
+    
+
+    
