@@ -559,6 +559,8 @@ def get_tiktok_sound_trends(history, sound_trend):
     for index, row in top.iterrows():
         sound_name = row['Sound Name']
         sound_name = sound_name.split(' - ')[0]
+        if sound_name == 'What Was I Made For? [From The Motion Picture "Barbie"]':
+            sound_name = "What Was I Made For?"
         top.at[index, 'Sound Name'] = sound_name
     
     return {'Trends': top.to_dict(), 'Total Trends': len(sound_trend), 'Seen Trends': len(sound_trend[sound_trend['Count'] != 0])}

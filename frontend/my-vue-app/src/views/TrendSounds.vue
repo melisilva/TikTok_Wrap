@@ -4,48 +4,123 @@
         <div class="row">
                <div style="padding-top:2%; font-family: futura-maxi-cg-bold;font-size: 20px;line-height: 24px; font-weight: 400;"> Your Top 5 Trendy Sounds</div>
           </div>
-    <br style="margin-bottom: 1%; "/>
+   
     <!-- First pair -->
-    <div class="trendy-rec-1">
-        <div style="display: flex; align-items: center;">
-          <div style="margin-left: 15%;">
-              <p class="trendy-sound-text">#1</p>
-              <p class="trendy-sound-text" >{{ sounds[0] }}</p>
-          </div>
-          <img class="photo-sound" v-bind:src="photos[0] === '' ? 'src/assets/images/user_default.png' : photos[0]" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%);" />
-        </div>    
-    </div>
-    <div class="trendy-rec-2">
-        <div style="display: flex;">
-            <div style="margin-left: 30%;">
-                <p class="trendy-sound-text">#2</p>
-                <p class="trendy-sound-text" >{{ sounds[1] }}</p>
-            </div>
-
-          <img class="photo-sound" v-bind:src="photos[1] === '' ? 'src/assets/images/user_default.png' : photos[1]" style="position: absolute; top: 50%; transform: translateY(-50%);" />
+    <div class="trendy-rec-1" style="display: flex; position: relative;">
+        <div class="horizontal-move-left" style="margin-top: 2%;">
+        <img src="../assets/images/fourth.svg">
+        <img src="../assets/images/first.svg">
+        <img src="../assets/images/second.svg">
+        <img src="../assets/images/third.svg">
+        <img src="../assets/images/fourth.svg">
+        <img src="../assets/images/first.svg">
+        <img src="../assets/images/second.svg">
+        <img src="../assets/images/third.svg">
+        <img src="../assets/images/fourth.svg">
+        <img src="../assets/images/first.svg">
         </div>
+        <div style="margin-top:-5%;">
+            <p class="trendy-sound-text" style="font-size: 20px;">#1</p>
+        </div>
+        <div style="margin-top:2%; margin-left: 15%; position: absolute; top: 50%; transform: translateY(-50%);">
+            <p class="trendy-sound-text" style="font-size: 16px;">{{ sounds[0] }}</p>
+        </div>
+
+          <img class="photo-sound" v-bind:src="photos[0] === '' ? 'src/assets/images/user_default.png' : photos[0]" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%);" />
     </div>
+    
+    <div class="trendy-rec-2" style="display: flex; position: relative;">
+        <div style="margin-top:-5%; margin-left: 30%;">
+            <p class="trendy-sound-text" style="font-size: 20px;">#2</p>
+        </div>
+        <div class="horizontal-move-right" style="margin-top:2%;">
+            <img src="../assets/images/second.svg">
+            <img src="../assets/images/third.svg">
+            <img src="../assets/images/fourth.svg">
+            <img src="../assets/images/first.svg">
+            <img src="../assets/images/second.svg">
+            <img src="../assets/images/third.svg">
+            <img src="../assets/images/fourth.svg">
+            <img src="../assets/images/first.svg">
+            <img src="../assets/images/second.svg">
+            <img src="../assets/images/third.svg">
+        </div>
+        <div style="margin-top:2%;margin-left: 30%; position: absolute; top: 50%; transform: translateY(-50%);">
+            <p class="trendy-sound-text" style="font-size: 16px;">{{ sounds[1] }}</p>
+        </div>
+        <img class="photo-sound" v-bind:src="photos[1] === '' ? 'src/assets/images/user_default.png' : photos[1]" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%);" />
+    </div>
+
+
 
     <!-- Second pair -->
-    <div class="trendy-rec-1">
-        <div style="display: flex; align-items: center;">
+    <div class="trendy-rec-1" style="display: flex; position: relative;">
+        <div class="horizontal-move-left" style="margin-top: 2%;">
+        <img src="../assets/images/fourth.svg">
+        <img src="../assets/images/first.svg">
+        <img src="../assets/images/second.svg">
+        <img src="../assets/images/third.svg">
+        <img src="../assets/images/fourth.svg">
+        <img src="../assets/images/first.svg">
+        <img src="../assets/images/second.svg">
+        <img src="../assets/images/third.svg">
+        <img src="../assets/images/fourth.svg">
+        <img src="../assets/images/first.svg">
+        </div>
+        <div style="margin-top:-5%;">
+            <p class="trendy-sound-text" style="font-size: 20px;">#3</p>
+        </div>
+        <div style="margin-top:2%;margin-left: 45%; position: absolute; top: 50%; transform: translateY(-50%);">
+            <p class="trendy-sound-text" style="font-size: 16px;">{{ sounds[2] }}</p>
+        </div>
 
           <img class="photo-sound" v-bind:src="photos[2] === '' ? 'src/assets/images/user_default.png' : photos[2]" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%);" />
-        </div>    
     </div>
-    <div class="trendy-rec-2">
-        <div style="display: flex; align-items: center;">
 
-          <img class="photo-sound" v-bind:src="photos[3] === '' ? 'src/assets/images/user_default.png' : photos[3]" style="position: absolute; top: 50%; transform: translateY(-50%);" />
+    <div class="trendy-rec-2" style="display: flex; position: relative;">
+        <div style="margin-top:-5%; margin-left: 30%;">
+            <p class="trendy-sound-text" style="font-size: 20px;">#4</p>
         </div>
+        <div class="horizontal-move-right" style="margin-top:2%;">
+            <img src="../assets/images/second.svg">
+            <img src="../assets/images/third.svg">
+            <img src="../assets/images/fourth.svg">
+            <img src="../assets/images/first.svg">
+            <img src="../assets/images/second.svg">
+            <img src="../assets/images/third.svg">
+            <img src="../assets/images/fourth.svg">
+            <img src="../assets/images/first.svg">
+            <img src="../assets/images/second.svg">
+            <img src="../assets/images/third.svg">
+        </div>
+        <div style="margin-top:2%; margin-left: 30%; position: absolute; top: 50%; transform: translateY(-50%);">
+            <p class="trendy-sound-text" style="font-size: 16px;">{{ sounds[3] }}</p>
+        </div>
+        <img class="photo-sound" v-bind:src="photos[3] === '' ? 'src/assets/images/user_default.png' : photos[3]" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%);" />
     </div>
 
     <!-- Third pair -->
-    <div class="trendy-rec-1">
-        <div style="display: flex; align-items: center;">
+    <div class="trendy-rec-1" style="display: flex; position: relative;">
+        <div class="horizontal-move-left" style="margin-top: 2%;">
+        <img src="../assets/images/fourth.svg">
+        <img src="../assets/images/first.svg">
+        <img src="../assets/images/second.svg">
+        <img src="../assets/images/third.svg">
+        <img src="../assets/images/fourth.svg">
+        <img src="../assets/images/first.svg">
+        <img src="../assets/images/second.svg">
+        <img src="../assets/images/third.svg">
+        <img src="../assets/images/fourth.svg">
+        <img src="../assets/images/first.svg">
+        </div>
+        <div style="margin-top:-5%;">
+            <p class="trendy-sound-text" style="font-size: 20px;">#5</p>
+        </div>
+        <div style="margin-top:2%; position: absolute; top: 50%; transform: translateY(-50%);">
+            <p class="trendy-sound-text" style="font-size: 16px;">{{ sounds[4] }}</p>
+        </div>
 
           <img class="photo-sound" v-bind:src="photos[4] === '' ? 'src/assets/images/user_default.png' : photos[4]" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%);" />
-        </div>    
     </div>
 
     <div style="color: black; font-family: 'futura-maxi-cg-bold'; padding-top: 5%;">
