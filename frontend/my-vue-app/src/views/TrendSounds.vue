@@ -17,6 +17,10 @@
     </div>
     <div class="trendy-rec-2">
         <div style="display: flex;">
+            <div style="margin-left: 30%;">
+                <p class="trendy-sound-text">#2</p>
+                <p class="trendy-sound-text" >{{ sounds[1] }}</p>
+            </div>
 
           <img class="photo-sound" v-bind:src="photos[1] === '' ? 'src/assets/images/user_default.png' : photos[1]" style="position: absolute; top: 50%; transform: translateY(-50%);" />
         </div>
@@ -42,6 +46,10 @@
 
           <img class="photo-sound" v-bind:src="photos[4] === '' ? 'src/assets/images/user_default.png' : photos[4]" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%);" />
         </div>    
+    </div>
+
+    <div style="color: black; font-family: 'futura-maxi-cg-bold'; padding-top: 5%;">
+        You listened to <span style="color: #fe2c55;">{{ seenTrends }}</span> of the <span style="color: #fe2c55;">{{totalTrends}}</span> trending sounds.
     </div>
    </div>
   </template>
