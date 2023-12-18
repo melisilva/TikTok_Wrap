@@ -259,7 +259,41 @@ body, html, .page {
       color:#ffffff;
       font-family: 'futura-maxi-cg-bold';
       text-align: end;
-      font-size: 16px;
+    }
+
+    .trendy-sound-text-places-div {
+      margin-top: -1%;
+      margin-left: 55%;
+    }
+
+    .trendy-sound-text-places-div-2 {
+      margin-top: -5%;
+      margin-left: 30%;
+    }
+
+    .trendy-sound-text-sounds-div {
+      margin-top:2%; 
+      position: absolute; 
+      top: 50%; 
+      transform: translateY(-50%);
+    }
+
+    .trendy-sound-text-sounds-div-2 {
+      margin-top:2%; 
+      position: absolute; 
+      top: 50%; 
+      transform: translateY(-50%);
+      margin-left: 30%;
+    }
+
+    .first-sound {
+      margin-left: 60%;
+    }
+    .third-sound {
+      margin-left: 74%;
+    }
+    .fifth-sound {
+      margin-left: 55%;
     }
 
     .photo-sound {
@@ -271,13 +305,20 @@ body, html, .page {
 
     @keyframes moveHorizontalLeft {
       0% {
-        transform: translateX(-100%);
-      }
-      50% {
         transform: translateX(0);
       }
+      25% {
+        transform: translateX(100%);
+      }
+      50% 
+      {
+        transform: translateX(200%);
+      }
+      75% {
+        transform: translateX(100%);
+      }
       100% {
-        transform: translateX(-100%);
+        transform: translateX(0);
       }
     }
     @keyframes moveHorizontalRight {
@@ -296,4 +337,8 @@ body, html, .page {
     }
     .horizontal-move-right {
       animation: moveHorizontalRight 5s linear infinite;
+    }
+
+    .moves {
+      margin-top:2%;
     }

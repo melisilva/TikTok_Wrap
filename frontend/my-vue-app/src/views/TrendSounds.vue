@@ -7,7 +7,7 @@
    
     <!-- First pair -->
     <div class="trendy-rec-1" style="display: flex; position: relative;">
-        <div class="horizontal-move-left" style="margin-top: 2%;">
+        <div class="moves horizontal-move-left">
         <img src="../assets/images/fourth.svg">
         <img src="../assets/images/first.svg">
         <img src="../assets/images/second.svg">
@@ -19,10 +19,10 @@
         <img src="../assets/images/fourth.svg">
         <img src="../assets/images/first.svg">
         </div>
-        <div style="margin-top:-5%;">
+        <div class="trendy-sound-text-places-div">
             <p class="trendy-sound-text" style="font-size: 20px;">#1</p>
         </div>
-        <div style="margin-top:2%; margin-left: 15%; position: absolute; top: 50%; transform: translateY(-50%);">
+        <div class="trendy-sound-text-sounds-div first-sound">
             <p class="trendy-sound-text" style="font-size: 16px;">{{ sounds[0] }}</p>
         </div>
 
@@ -30,10 +30,10 @@
     </div>
     
     <div class="trendy-rec-2" style="display: flex; position: relative;">
-        <div style="margin-top:-5%; margin-left: 30%;">
+        <div class="trendy-sound-text-places-div-2">
             <p class="trendy-sound-text" style="font-size: 20px;">#2</p>
         </div>
-        <div class="horizontal-move-right" style="margin-top:2%;">
+        <div class="moves horizontal-move-right">
             <img src="../assets/images/second.svg">
             <img src="../assets/images/third.svg">
             <img src="../assets/images/fourth.svg">
@@ -45,17 +45,15 @@
             <img src="../assets/images/second.svg">
             <img src="../assets/images/third.svg">
         </div>
-        <div style="margin-top:2%;margin-left: 30%; position: absolute; top: 50%; transform: translateY(-50%);">
+        <div class="trendy-sound-text-sounds-div-2">
             <p class="trendy-sound-text" style="font-size: 16px;">{{ sounds[1] }}</p>
         </div>
         <img class="photo-sound" v-bind:src="photos[1] === '' ? 'src/assets/images/user_default.png' : photos[1]" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%);" />
     </div>
 
-
-
     <!-- Second pair -->
     <div class="trendy-rec-1" style="display: flex; position: relative;">
-        <div class="horizontal-move-left" style="margin-top: 2%;">
+        <div class="moves horizontal-move-left">
         <img src="../assets/images/fourth.svg">
         <img src="../assets/images/first.svg">
         <img src="../assets/images/second.svg">
@@ -67,10 +65,10 @@
         <img src="../assets/images/fourth.svg">
         <img src="../assets/images/first.svg">
         </div>
-        <div style="margin-top:-5%;">
+        <div class="trendy-sound-text-places-div">
             <p class="trendy-sound-text" style="font-size: 20px;">#3</p>
         </div>
-        <div style="margin-top:2%;margin-left: 45%; position: absolute; top: 50%; transform: translateY(-50%);">
+        <div class="trendy-sound-text-sounds-div third-sound">
             <p class="trendy-sound-text" style="font-size: 16px;">{{ sounds[2] }}</p>
         </div>
 
@@ -78,10 +76,10 @@
     </div>
 
     <div class="trendy-rec-2" style="display: flex; position: relative;">
-        <div style="margin-top:-5%; margin-left: 30%;">
+        <div class="trendy-sound-text-places-div-2">
             <p class="trendy-sound-text" style="font-size: 20px;">#4</p>
         </div>
-        <div class="horizontal-move-right" style="margin-top:2%;">
+        <div class="moves horizontal-move-right">
             <img src="../assets/images/second.svg">
             <img src="../assets/images/third.svg">
             <img src="../assets/images/fourth.svg">
@@ -93,7 +91,7 @@
             <img src="../assets/images/second.svg">
             <img src="../assets/images/third.svg">
         </div>
-        <div style="margin-top:2%; margin-left: 30%; position: absolute; top: 50%; transform: translateY(-50%);">
+        <div class="trendy-sound-text-sounds-div-2">
             <p class="trendy-sound-text" style="font-size: 16px;">{{ sounds[3] }}</p>
         </div>
         <img class="photo-sound" v-bind:src="photos[3] === '' ? 'src/assets/images/user_default.png' : photos[3]" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%);" />
@@ -101,7 +99,7 @@
 
     <!-- Third pair -->
     <div class="trendy-rec-1" style="display: flex; position: relative;">
-        <div class="horizontal-move-left" style="margin-top: 2%;">
+        <div class="moves horizontal-move-left">
         <img src="../assets/images/fourth.svg">
         <img src="../assets/images/first.svg">
         <img src="../assets/images/second.svg">
@@ -113,10 +111,10 @@
         <img src="../assets/images/fourth.svg">
         <img src="../assets/images/first.svg">
         </div>
-        <div style="margin-top:-5%;">
+        <div class="trendy-sound-text-places-div">
             <p class="trendy-sound-text" style="font-size: 20px;">#5</p>
         </div>
-        <div style="margin-top:2%; position: absolute; top: 50%; transform: translateY(-50%);">
+        <div class="trendy-sound-text-sounds-div fifth-sound">
             <p class="trendy-sound-text" style="font-size: 16px;">{{ sounds[4] }}</p>
         </div>
 
