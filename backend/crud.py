@@ -586,8 +586,8 @@ def get_tiktok_trends(history, tiktok_trend):
 
         tiktok_trend.at[index, 'Count'] = len(tiktok_trend.at[index, 'matching_indexes']) if tiktok_trend.at[index, 'matching_indexes'] else tiktok_trend.at[index, 'Count']
 
-    tiktok_trend = tiktok_trend.sort_values(by='Count', ascending=True)
+    tiktok_trend = tiktok_trend.sort_values(by='Count', ascending=False)
 
     tiktok_trend = tiktok_trend.drop(['matching_indexes'], axis=1)
 
-    return tiktok_trend.to_dict()
+    return {'Trends': tiktok_trend['Trends'][:6].to_dict(), 'Total Trends': len(tiktok_trend), 'Seen Trends': len(tiktok_trend[tiktok_trend['Count'] != 0])}

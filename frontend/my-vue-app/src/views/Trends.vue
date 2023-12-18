@@ -15,8 +15,8 @@
             Trends
         </div>
     </div>
-    <div class="trends">
-        Taylor Swift<br/>Barbie<br/>BookTok<br/>Cozy<br/>Sabrina Carpenter<br/>Barbenheimer<br/> 
+    <div class="trends" v-for="trend in trendsList" :key="trend" style="margin-top: -2%;">
+            {{ trend }}<br/>
     </div>
 
     <div class="row" >
@@ -24,12 +24,42 @@
                 You have watched...
         </div>
         <div class="general-text" style="text-align: center; font-size: 100%; padding-top: 10%; color: #fe2c55;">
-                21
+                {{ seenTrends }}
         </div>
         <div class="general-text" style="padding-top: 10%;font-size: 100%;">
-                ...out of <span style="color: #fe2c55;">22</span> trends!
+                ...out of <span style="color: #fe2c55;"> {{ totalTrends }}</span> trends!
         </div>
     </div>
     </div>
 
 </template>
+
+<script>
+import axios from 'axios'
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'Trends',
+  data() {
+    return {
+     trendsList: [],
+     totalTrends: 0,
+     seenTrends: 0,
+    }
+  },
+  methods: {
+  },
+  async beforeMount() {
+    await axios.get("http://localhost:8000/tiktok-trend")
+      .then((response) => {
+        console.log(response.data)
+        this.trendsList = Object.values(response.data['Trends']);
+        this.totalTrends = response.data['Total Trends'];
+        this.seenTrends = response.data['Seen Trends'];
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+})
+</script>
