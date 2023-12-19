@@ -1,6 +1,19 @@
 <template>
-    <div class="page" style="width:100%;color:white; background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%,rgba(255, 255, 255, 1.00) 44.79166567325592%), url('/images/tiktok_pattern.png'); padding:auto;">
-        <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" /> 
+  
+    <div class="page" style="width:100%;color:white; padding:auto;background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%,rgba(255, 255, 255, 1.00) 44.79166567325592%); ">
+
+        <div class="scroll-parent" style="position:fixed; z-index: -1;">
+            <div class="scroll-element primary">
+                <img src="../assets/images/tiktok_pattern.png"/>
+            </div>
+            <div class="scroll-element secondary">
+                <img src="../assets/images/tiktok_pattern.png" />
+            </div>
+        </div>
+
+        <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" />
+
+        
         <router-link to="/top-creator-overall">
             <img class="arrow-left" src="../assets/images/arrow-left-solid.svg" alt="Next Page" />
         </router-link>
@@ -54,6 +67,53 @@
     </div>
 </template>
 
+<style scoped lang="scss">
+.scroll-parent {
+  position: relative;
+  width: 125vw;
+  height: 125vw;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.scroll-element {
+  width: inherit;
+  height: inherit;
+  position: absolute;
+  left: 0%;
+  top: 0%;
+}
+.primary {
+  animation: primary 5s linear infinite;
+}
+
+.secondary {
+  animation: secondary 5s linear infinite;
+}
+
+@keyframes primary {
+  from {
+    left: 0%;
+    top: 0%;
+  }
+  to {
+    left: 100%;
+    top: 100%;
+  }
+}
+
+@keyframes secondary {
+  from {
+    left: -100%;
+    top: -100%;
+
+  }
+  to {
+    left: 0%;
+    top: 0%;
+  }
+}
+</style>
 
 <script>
 
