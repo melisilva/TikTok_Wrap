@@ -16,6 +16,7 @@ hashtags = pd.read_csv('data/clean_hashtags/after_hashtags.csv')
 sound_trend = pd.read_csv('data/sound_trend.csv')
 tiktok_trend = pd.read_csv('data/tiktok_trend.csv')
 trend_history = pd.read_csv('data/unique_video_browsing_history_full_tiktok_data.csv')
+personal = pd.read_csv("data/personal.csv")
 
 history = history.sort_values(by=["Date"])
 likes = likes.sort_values(by=["Date"])
@@ -116,6 +117,10 @@ def get_tiktok_sound_trends():
 @app.get("/tiktok-trend")
 def get_tiktok_trends():
     return crud.get_tiktok_trends(trend_history, tiktok_trend)
+
+@app.get("/user-name")
+def get_user_name():
+    return crud.get_user_name(personal)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)

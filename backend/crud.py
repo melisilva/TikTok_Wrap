@@ -600,3 +600,6 @@ def get_tiktok_trends(history, tiktok_trend):
     tiktok_trend = tiktok_trend.drop(['matching_indexes'], inplace=True)
 
     return {'Trends': tiktok_trend['Trends'][:6].to_dict(), 'Total Trends': len(tiktok_trend), 'Seen Trends': len(tiktok_trend[tiktok_trend['Count'] != 0])}
+
+def get_user_name(personal):
+    return {'Username': personal['Username'].item()}

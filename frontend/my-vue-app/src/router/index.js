@@ -62,6 +62,11 @@ const router = createRouter({
       path: '/trend-sounds',
       name: 'trend_sounds',
       component: () => import('../views/TrendSounds.vue')
+    },
+    {
+      path: '/opening',
+      name: 'opening',
+      component: () => import('../views/Opening.vue')
     }
   ]
 })
