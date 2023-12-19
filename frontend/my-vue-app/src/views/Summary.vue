@@ -93,23 +93,23 @@
 
 @keyframes primary {
   from {
-    left: 0%;
+    left: 100%;
     top: 0%;
   }
   to {
-    left: 100%;
+    left: 0%;
     top: 100%;
   }
 }
 
 @keyframes secondary {
   from {
-    left: -100%;
+    left: 0%;
     top: -100%;
 
   }
   to {
-    left: 0%;
+    left: -100%;
     top: 0%;
   }
 }
