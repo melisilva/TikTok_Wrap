@@ -1,6 +1,28 @@
 <template>
     <div class="page" 
-        style="color:white; background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1)), url('/images/black_tiktok_pattern.png'); padding:auto;">
+        style="color:white; background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1)); padding:auto;">
+        
+        <div class="scroll-parent" style="position:fixed; z-index: -1;">
+			<div class="scroll-element six" style="position:fixed;">
+				<img src="../assets/images/black_tiktok_pattern.png" />
+			</div>
+			<div class="scroll-element five" style="position:fixed;">
+				<img src="../assets/images/black_tiktok_pattern.png" />
+			</div>
+			<div class="scroll-element four" style="position:fixed;">
+				<img src="../assets/images/black_tiktok_pattern.png" />
+			</div>
+			<div class="scroll-element three" style="position:fixed;">
+				<img src="../assets/images/black_tiktok_pattern.png" />
+			</div>
+			<div class="scroll-element two" style="position:fixed;">
+				<img src="../assets/images/black_tiktok_pattern.png" />
+			</div>
+			<div class="scroll-element one" style="position:fixed;">
+				<img src="../assets/images/black_tiktok_pattern.png" />
+			</div>
+		</div>
+        
         <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" /> 
         <router-link to="/trends">
             <img class="arrow-left" src="../assets/images/arrow-left-solid.svg" alt="Previous Page" />
@@ -66,6 +88,121 @@
     </div>
 </template>
 
+<style scoped lang="scss">
+.scroll-parent {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+.scroll-element {
+	width: inherit;
+	height: inherit;
+	position: absolute;
+	left: 0%;
+	top: 0%;
+}
+
+.one {
+	animation: one 5s linear infinite;
+}
+
+.two {
+	animation: two 5s linear infinite;
+}
+
+.three {
+	animation: three 5s linear infinite;
+}
+
+.four {
+	animation: four 5s linear infinite;
+}
+
+.five {
+	animation: five 5s linear infinite;
+}
+
+.six {
+	animation: six 5s linear infinite;
+}
+
+@keyframes one {
+	from {
+		left: 50%;
+		top: 50%;
+	}
+
+	to {
+		left: -50%;
+		top: 150%;
+	}
+}
+
+@keyframes two {
+	from {
+		left: 50%;
+		top: -50%;
+	}
+
+	to {
+		left: -50%;
+		top: 50%;
+	}
+}
+
+@keyframes three {
+	from {
+		left: 50%;
+		top: -150%;
+
+	}
+
+	to {
+		left: -50%;
+		top: -50%;
+	}
+}
+
+@keyframes four {
+	from {
+		left: -50%;
+		top: 50%;
+
+	}
+
+	to {
+		left: -150%;
+		top: 150%;
+	}
+}
+
+@keyframes five {
+	from {
+		left: -50%;
+		top: -50%;
+
+	}
+
+	to {
+		left: -150%;
+		top: 50%;
+	}
+}
+
+@keyframes six {
+	from {
+		left: -50%;
+		top: -150%;
+
+	}
+
+	to {
+		left: -150%;
+		top: -50%;
+	}
+}
+</style>
 
 <script>
 

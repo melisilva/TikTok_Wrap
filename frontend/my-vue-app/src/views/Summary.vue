@@ -3,14 +3,25 @@
     <div class="page" style="width:100%;color:white; padding:auto;background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%,rgba(255, 255, 255, 1.00) 44.79166567325592%); ">
 
         <div class="scroll-parent" style="position:fixed; z-index: -1;">
-            <div class="scroll-element primary">
-                <img src="../assets/images/tiktok_pattern.png"/>
-            </div>
-            <div class="scroll-element secondary">
-                <img src="../assets/images/tiktok_pattern.png" />
-            </div>
-        </div>
-
+			<div class="scroll-element six" style="position:fixed;">
+				<img src="../assets/images/tiktok_pattern.png" />
+			</div>
+			<div class="scroll-element five" style="position:fixed;">
+				<img src="../assets/images/tiktok_pattern.png" />
+			</div>
+			<div class="scroll-element four" style="position:fixed;">
+				<img src="../assets/images/tiktok_pattern.png" />
+			</div>
+			<div class="scroll-element three" style="position:fixed;">
+				<img src="../assets/images/tiktok_pattern.png" />
+			</div>
+			<div class="scroll-element two" style="position:fixed;">
+				<img src="../assets/images/tiktok_pattern.png" />
+			</div>
+			<div class="scroll-element one" style="position:fixed;">
+				<img src="../assets/images/tiktok_pattern.png" />
+			</div>
+		</div>
         <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" />
 
         
@@ -69,49 +80,117 @@
 
 <style scoped lang="scss">
 .scroll-parent {
-  position: relative;
-  width: 125vw;
-  height: 125vw;
-  overflow-x: hidden;
-  overflow-y: hidden;
+	position: relative;
+	width: 100%;
+	height: 100%;
 }
 
 .scroll-element {
-  width: inherit;
-  height: inherit;
-  position: absolute;
-  left: 0%;
-  top: 0%;
-}
-.primary {
-  animation: primary 5s linear infinite;
+	width: inherit;
+	height: inherit;
+	position: absolute;
+	left: 0%;
+	top: 0%;
 }
 
-.secondary {
-  animation: secondary 5s linear infinite;
+.one {
+	animation: one 5s linear infinite;
 }
 
-@keyframes primary {
-  from {
-    left: 100%;
-    top: 0%;
-  }
-  to {
-    left: 0%;
-    top: 100%;
-  }
+.two {
+	animation: two 5s linear infinite;
 }
 
-@keyframes secondary {
-  from {
-    left: 0%;
-    top: -100%;
+.three {
+	animation: three 5s linear infinite;
+}
 
-  }
-  to {
-    left: -100%;
-    top: 0%;
-  }
+.four {
+	animation: four 5s linear infinite;
+}
+
+.five {
+	animation: five 5s linear infinite;
+}
+
+.six {
+	animation: six 5s linear infinite;
+}
+
+@keyframes one {
+	from {
+		left: 50%;
+		top: 50%;
+	}
+
+	to {
+		left: -50%;
+		top: 150%;
+	}
+}
+
+@keyframes two {
+	from {
+		left: 50%;
+		top: -50%;
+	}
+
+	to {
+		left: -50%;
+		top: 50%;
+	}
+}
+
+@keyframes three {
+	from {
+		left: 50%;
+		top: -150%;
+
+	}
+
+	to {
+		left: -50%;
+		top: -50%;
+	}
+}
+
+@keyframes four {
+	from {
+		left: -50%;
+		top: 50%;
+
+	}
+
+	to {
+		left: -150%;
+		top: 150%;
+	}
+}
+
+@keyframes five {
+	from {
+		left: -50%;
+		top: -50%;
+
+	}
+
+	to {
+		left: -150%;
+		top: 50%;
+	}
+}
+
+@keyframes six {
+	from {
+		left: -50%;
+		top: -150%;
+
+	}
+
+	to {
+		left: -150%;
+		top: -50%;
+	}
 }
 </style>
 
