@@ -1,6 +1,12 @@
 <template>
     <div class="page" style="background:linear-gradient(180deg, rgba(255, 68, 105, 0.83) 0%,rgba(33, 186, 235, 0.86) 53.5416305065155%);text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;"> 
         <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" />  
+        <router-link to="/timeofday">
+            <img class="arrow-left" src="../assets/images/arrow-left-solid.svg" alt="Previous Page" />
+        </router-link>
+        <router-link to="/top-ads-creators">
+            <img class="arrow-right" src="../assets/images/arrow-right-solid.svg" alt="Next Page" />
+        </router-link>
         
         <div class="row" style="width: 80%;">
             <div class="general-text" style="text-align: center;">

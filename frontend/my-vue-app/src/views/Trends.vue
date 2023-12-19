@@ -2,7 +2,12 @@
     <div class="page" 
         style="color:white; background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 1)), url('/images/black_tiktok_pattern.png'); padding:auto; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;"> 
         <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" /> 
-
+        <router-link to="/trend-sounds">
+            <img class="arrow-left" src="../assets/images/arrow-left-solid.svg" alt="Previous Page" />
+        </router-link>
+        <router-link to="/top-creator-overall">
+            <img class="arrow-right" src="../assets/images/arrow-right-solid.svg" alt="Next Page" />
+        </router-link>
         <div class="row" style="height:45%; padding-top: 10px; padding-bottom: 55px;">
             <!-- Create a white border -->
             <div style="border: 5px solid white; border-radius: 50%; width: 250px; height: 250px; margin: auto;">

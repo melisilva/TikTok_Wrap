@@ -1,5 +1,11 @@
 <template>
     <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" /> 
+    <router-link to="/trends-message">
+            <img class="arrow-left" src="../assets/images/arrow-left-solid.svg" alt="Previous Page" />
+    </router-link>
+    <router-link to="/trends">
+            <img class="arrow-right" src="../assets/images/arrow-right-solid.svg" alt="Next Page" />
+    </router-link>
     <div class="page" style="background-image: linear-gradient(to top, rgba(245, 246, 252, 0.52), #B4B5DB), url('/images/tiktok_pattern.png'); text-align: center;">
         <div class="row">
                <div style="padding-top:2%; font-family: futura-maxi-cg-bold;font-size: 20px;line-height: 24px; font-weight: 400;"> Your Top 5 Trendy Sounds</div>

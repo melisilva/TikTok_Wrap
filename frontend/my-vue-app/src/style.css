@@ -29,6 +29,22 @@ body, html, .page {
     bottom: 10px;
 } 
 
+.arrow-left {
+  width: 29px;
+  height: 29px;
+  position: fixed;
+  right: 50px;
+  bottom: 10px;
+} 
+
+.arrow-right {
+  width: 29px;
+  height: 29px;
+  position: fixed;
+  right: 20px;
+  bottom: 10px;
+} 
+
 .side-by-side-chart {
   display: flex;
   align-items: flex-end; /* Align bars at the bottom */

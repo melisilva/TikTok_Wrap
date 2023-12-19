@@ -1,6 +1,12 @@
 <template>
     <div class="page" style="background: #f08080;">
     <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" />
+    <router-link to="/ads-message">
+            <img class="arrow-left" src="../assets/images/arrow-left-solid.svg" alt="Previous Page" />
+      </router-link>
+      <router-link to="/trends-message">
+            <img class="arrow-right" src="../assets/images/arrow-right-solid.svg" alt="Next Page" />
+      </router-link>
     <div class="title">
         {{ percentage }}% of TikToks you watched were ads
     </div>

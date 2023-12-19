@@ -2,6 +2,12 @@
   <div class="page"
     style="background-image: linear-gradient(to bottom, rgba(245, 246, 252, 0.52), #fadadd), url('/images/tiktok_pattern.png'); text-align: center;">
       <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" />
+      <router-link to="/top-hashtags">
+            <img class="arrow-left" src="../assets/images/arrow-left-solid.svg" alt="Previous Page" />
+      </router-link>
+      <router-link to="/timeofday">
+            <img class="arrow-right" src="../assets/images/arrow-right-solid.svg" alt="Next Page" />
+      </router-link>
       <div style="display: flex; flex-direction: column; justify-content: center; align-items: middle;">
       <div class="row">
         <div class="general-text" style="padding-top: 15%; color: black;">

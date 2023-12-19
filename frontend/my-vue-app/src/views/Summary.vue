@@ -1,7 +1,9 @@
 <template>
     <div class="page" style="width:100%;color:white; background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%,rgba(255, 255, 255, 1.00) 44.79166567325592%), url('/images/tiktok_pattern.png'); padding:auto;">
         <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" /> 
-
+        <router-link to="/top-creator-overall">
+            <img class="arrow-left" src="../assets/images/arrow-left-solid.svg" alt="Next Page" />
+        </router-link>
         <div class="row" style="height:45%; padding-top: 30px; padding-bottom: 30px;">
             <!-- Create a white border -->
             <div style="border: 5px solid black; border-radius: 50%; width: 300px; height: 300px; margin: auto;">
