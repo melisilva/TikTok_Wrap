@@ -51,6 +51,41 @@ body, html, .page {
     width: 700px; /* Default width for pc */
     margin-top: 1%;
   }
+
+  .trendy-sound-text-places-div {
+    margin-top: -1%;
+    margin-left: 55%;
+  }
+
+  .trendy-sound-text-places-div-2 {
+    margin-top: -1%;
+    margin-left: 15%;
+  }
+
+  .trendy-sound-text-sounds-div {
+    margin-top:2%; 
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%);
+  }
+
+  .trendy-sound-text-sounds-div-2 {
+    margin-top:2%; 
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%);
+    margin-left: 15%;
+  }
+
+  .first-sound {
+    margin-left: 60%;
+  }
+  .third-sound {
+    margin-left: 74%;
+  }
+  .fifth-sound {
+    margin-left: 55%;
+  }
 }
   
   @media only screen and (device-width: 360px) {
@@ -62,7 +97,36 @@ body, html, .page {
       width: 300px; /* Adjust the width for mobile */
       margin-top: 10%;
     }
+    .trendy-sound-text-places-div {
+      margin-top: -5%;
+    }
 
+    .trendy-sound-text-places-div-2 {
+      margin-top: -5%;
+      margin-left: 30%;
+    }
+
+    .trendy-sound-text-sounds-div {
+      margin-top:2%; 
+      position: absolute; 
+      top: 50%; 
+      transform: translateY(-50%);
+    }
+
+    .trendy-sound-text-sounds-div-2 {
+      margin-top:2%; 
+      position: absolute; 
+      top: 50%; 
+      transform: translateY(-50%);
+      margin-left: 30%;
+    }
+
+    .first-sound {
+      margin-left: 15%;
+    }
+    .third-sound {
+      margin-left: 45%;
+    }
     
   }
 
@@ -261,41 +325,6 @@ body, html, .page {
       text-align: end;
     }
 
-    .trendy-sound-text-places-div {
-      margin-top: -1%;
-      margin-left: 55%;
-    }
-
-    .trendy-sound-text-places-div-2 {
-      margin-top: -5%;
-      margin-left: 30%;
-    }
-
-    .trendy-sound-text-sounds-div {
-      margin-top:2%; 
-      position: absolute; 
-      top: 50%; 
-      transform: translateY(-50%);
-    }
-
-    .trendy-sound-text-sounds-div-2 {
-      margin-top:2%; 
-      position: absolute; 
-      top: 50%; 
-      transform: translateY(-50%);
-      margin-left: 30%;
-    }
-
-    .first-sound {
-      margin-left: 60%;
-    }
-    .third-sound {
-      margin-left: 74%;
-    }
-    .fifth-sound {
-      margin-left: 55%;
-    }
-
     .photo-sound {
       border-radius: 50%;
       width: 85px;
@@ -305,20 +334,13 @@ body, html, .page {
 
     @keyframes moveHorizontalLeft {
       0% {
+        transform: translateX(-100%);
+      }
+      50% {
         transform: translateX(0);
-      }
-      25% {
-        transform: translateX(100%);
-      }
-      50% 
-      {
-        transform: translateX(200%);
-      }
-      75% {
-        transform: translateX(100%);
       }
       100% {
-        transform: translateX(0);
+        transform: translateX(-100%);
       }
     }
     @keyframes moveHorizontalRight {
@@ -342,3 +364,18 @@ body, html, .page {
     .moves {
       margin-top:2%;
     }
+
+    .scrolling-container {
+      margin-top: -5%;
+      display: flex;
+      animation: scrollText 10s linear infinite; /* Adjust the duration as needed */
+  }
+
+  @keyframes scrollText {
+      0% {
+          transform: translateX(0);
+      }
+      100% {
+          transform: translateX(calc(-100% - 10px)); 
+      }
+  }
