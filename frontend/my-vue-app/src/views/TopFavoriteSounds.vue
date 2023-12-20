@@ -2,7 +2,7 @@
     <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" style="z-index: 10"/>
     <div class="page" style="background: #3B719F; display: flex; flex-direction: column;">
         <div class="top-history-creators" style="width: 100%; height: 10%;">
-            Your Top 5 History Creators
+            Your Top 5 Favorite Sounds
         </div>
         <div style="height: 80%">
             <div class="side-by-side-chart" style="display: flex; flex-direction: row; width: 100%; height: 100%">
@@ -16,7 +16,7 @@
                         </div>
                     </div>
                     <div class="rectangle" id="rect-15">
-                        <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ creators[4] }} </p>
+                        <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ sounds[4] }} </p>
                     </div>
 
                 </div>
@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="rectangle" id="rect-12">
-                        <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ creators[1] }} </p>
+                        <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ sounds[1] }} </p>
                     </div>
                 </div>
                 <div class="col ranking">
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="rectangle" id="rect-11">
-                        <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ creators[0] }} </p>
+                        <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ sounds[0] }} </p>
                     </div>
                 </div>
                 <div class="col ranking">
@@ -57,7 +57,7 @@
                     </div>
                     <div class="rectangle" id="rect-13">
                         <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%; padding-bottom: 50%;">
-                            {{ creators[2] }} </p>
+                            {{ sounds[2] }} </p>
                     </div>
                 </div>
                 <div class="col ranking">
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="rectangle" id="rect-14">
-                        <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ creators[3] }} </p>
+                        <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ sounds[3] }} </p>
                     </div>
                 </div>
 
@@ -179,43 +179,22 @@
 <script>
 import axios from 'axios'
 import { defineComponent } from 'vue'
-import html2canvas from 'html2canvas';
 
 export default defineComponent({
-    name: 'TopHistoryCreators',
+    name: 'TopHistorySounds',
     data() {
         return {
-            creators: [],
+            sounds: [],
             photos: []
         }
     },
     methods: {
-        async captureAndSave() {
-            // Use html2canvas to capture the content
-            const element = document.getElementById('your-component-id'); // Replace with your component's ID
-            const canvas = await html2canvas(element);
-
-            // Convert canvas to image
-            const image = canvas.toDataURL('image/png');
-
-            // Create a download link
-            const link = document.createElement('a');
-            link.href = image;
-            link.download = 'top_creators.png';
-            document.body.appendChild(link);
-
-            // Trigger the download
-            link.click();
-
-            // Remove the link from the DOM
-            document.body.removeChild(link);
-        },
     },
     async beforeMount() {
-        await axios.get("http://localhost:8000/top-creator-history")
+        await axios.get("http://localhost:8000/top-sound-likes")
             .then((response) => {
                 console.log(response.data)
-                this.creators = Object.values(response.data['Username']);
+                this.sounds = Object.values(response.data['Sound Name']);
                 this.photos = Object.values(response.data['Photo']);
             })
             .catch((error) => {

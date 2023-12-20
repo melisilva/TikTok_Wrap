@@ -2,7 +2,7 @@
     <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" style="z-index: 10"/>
     <div class="page" style="background: #3B719F; display: flex; flex-direction: column;">
         <div class="top-history-creators" style="width: 100%; height: 10%;">
-            Your Top 5 History Creators
+            Your Top 5 Favorite Creators
         </div>
         <div style="height: 80%">
             <div class="side-by-side-chart" style="display: flex; flex-direction: row; width: 100%; height: 100%">
@@ -182,7 +182,7 @@ import { defineComponent } from 'vue'
 import html2canvas from 'html2canvas';
 
 export default defineComponent({
-    name: 'TopHistoryCreators',
+    name: 'TopLikedCreators',
     data() {
         return {
             creators: [],
@@ -212,7 +212,7 @@ export default defineComponent({
         },
     },
     async beforeMount() {
-        await axios.get("http://localhost:8000/top-creator-history")
+        await axios.get("http://localhost:8000/top-creator-favorites")
             .then((response) => {
                 console.log(response.data)
                 this.creators = Object.values(response.data['Username']);

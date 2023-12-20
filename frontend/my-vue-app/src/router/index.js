@@ -9,9 +9,29 @@ const router = createRouter({
       component: () => import('../views/TopHistoryCreators.vue')
     },
     {
+      path: '/top-liked-creators',
+      name: 'top_liked_creators',
+      component: () => import('../views/TopLikedCreators.vue')
+    },
+    {
+      path: '/top-favorite-creators',
+      name: 'top_favorite_creators',
+      component: () => import('../views/TopFavoriteCreators.vue')
+    },
+    {
       path: '/top-history-sounds',
       name: 'top_history_sounds',
       component: () => import('../views/TopHistorySounds.vue')
+    },
+    {
+      path: '/top-liked-sounds',
+      name: 'top_liked_sounds',
+      component: () => import('../views/TopLikedSounds.vue')
+    },
+    {
+      path: '/top-favorite-sounds',
+      name: 'top_favorite_sounds',
+      component: () => import('../views/TopFavoriteSounds.vue')
     },
     {
       path: '/top-hashtags',

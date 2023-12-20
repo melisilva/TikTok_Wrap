@@ -17,11 +17,10 @@ html,
     text-align: center;
     font-family: futura-maxi-cg-bold;
     font-size: 20px;
-    line-height: 24px;
     font-weight: 400;
-    position: absolute;
-    padding: 5% 10% 5% 10%;
-    /* horizontal + vertical (top + bottom clock-wise)*/
+    position: relative; 
+    display: grid;
+	align-items: center;
 }
 
 .tik-tok-logo {
@@ -49,19 +48,12 @@ html,
 }
 
 .side-by-side-chart {
-    display: flex;
     align-items: flex-end;
     /* Align bars at the bottom */
     justify-content: center;
 }
 
-.rectangle {
-    /*make this a component*/
-    border-radius: 30px 30px 0px 0px;
-    width: 100%;
-    overflow: hidden;
-    top: 30px;
-}
+
 
 @media only screen and (device-width: 1280px) {
     .ranking {
@@ -161,35 +153,7 @@ html,
 
 }
 
-#rect-11 {
-    background: #25f4ee;
-    height: 528px;
-    position: relative;
-}
 
-#rect-12 {
-    background: #fe2c55;
-    height: 450px;
-    position: relative;
-}
-
-#rect-13 {
-    background: #f7ec59;
-    height: 379px;
-    position: relative;
-}
-
-#rect-14 {
-    background: #b14aed;
-    height: 316px;
-    position: relative;
-}
-
-#rect-15 {
-    background: #454ade;
-    height: 272px;
-    position: relative;
-}
 
 .place {
     display: flex;

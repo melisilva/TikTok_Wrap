@@ -2,7 +2,7 @@
      <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" style="z-index: 10"/>
      <div class="page" style="background: #3B719F; display: flex; flex-direction: column;">
          <div class="top-history-creators" style="width: 100%; height: 10%;">
-             Your Top 5 History Sounds
+             Your Top 5 Liked Sounds
          </div>
          <div style="height: 80%">
              <div class="side-by-side-chart" style="display: flex; flex-direction: row; width: 100%; height: 100%">
@@ -181,25 +181,25 @@ import axios from 'axios'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
- name: 'TopHistorySounds',
- data() {
-   return {
-    sounds: [],
-    photos: []
-   }
- },
- methods: {
- },
- async beforeMount() {
-   await axios.get("http://localhost:8000/top-sound-history")
-     .then((response) => {
-       console.log(response.data)
-       this.sounds = Object.values(response.data['Sound Name']);
-       this.photos = Object.values(response.data['Photo']);
-     })
-     .catch((error) => {
-       console.log(error)
-     })
- }
+     name: 'TopHistorySounds',
+     data() {
+          return {
+               sounds: [],
+               photos: []
+          }
+     },
+     methods: {
+     },
+     async beforeMount() {
+          await axios.get("http://localhost:8000/top-sound-likes")
+               .then((response) => {
+                    console.log(response.data)
+                    this.sounds = Object.values(response.data['Sound Name']);
+                    this.photos = Object.values(response.data['Photo']);
+               })
+               .catch((error) => {
+                    console.log(error)
+               })
+     }
 })
 </script>
