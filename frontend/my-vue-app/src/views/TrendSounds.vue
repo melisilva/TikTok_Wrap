@@ -15,9 +15,9 @@
         </div>
 
         <!-- First pair -->
-        <div class="trendy-rec-1" style="display: flex; position: relative;">
+        <div class="trendy-rec-1" style="display: flex; position: relative; overflow: hidden;">
             <div class="scroll-parent">
-			    <div class="scroll-element one" style="display: flex;">
+                <div class="scroll-element one" style="display: flex;">
                     <img src="../assets/images/fourth.svg">
                     <img src="../assets/images/first.svg">
                     <img src="../assets/images/second.svg">
@@ -71,12 +71,12 @@
                 style="position: absolute; right: 0; top: 50%; transform: translateY(-50%);" />
         </div>
 
-        <div class="trendy-rec-2" style="display: flex; position: relative;">
+        <div class="trendy-rec-2" style="display: flex; position: relative; overflow: hidden;">
             <div class="trendy-sound-text-places-div-2">
                 <p class="trendy-sound-text" style="font-size: 20px;">#2</p>
             </div>
             <div class="scroll-parent">
-			    <div class="scroll-element one-inverse" style="display: flex;">
+                <div class="scroll-element one-inverse" style="display: flex;">
                     <img src="../assets/images/fourth.svg">
                     <img src="../assets/images/first.svg">
                     <img src="../assets/images/second.svg">
@@ -113,9 +113,9 @@
         </div>
 
         <!-- Second pair -->
-        <div class="trendy-rec-1" style="display: flex; position: relative;">
+        <div class="trendy-rec-1" style="display: flex; position: relative; overflow: hidden;">
             <div class="scroll-parent">
-			    <div class="scroll-element one" style="display: flex;">
+                <div class="scroll-element one" style="display: flex;">
                     <img src="../assets/images/fourth.svg">
                     <img src="../assets/images/first.svg">
                     <img src="../assets/images/second.svg">
@@ -169,12 +169,12 @@
                 style="position: absolute; right: 0; top: 50%; transform: translateY(-50%);" />
         </div>
 
-        <div class="trendy-rec-2" style="display: flex; position: relative;">
+        <div class="trendy-rec-2" style="display: flex; position: relative; overflow: hidden;">
             <div class="trendy-sound-text-places-div-2">
                 <p class="trendy-sound-text" style="font-size: 20px;">#4</p>
             </div>
             <div class="scroll-parent">
-			    <div class="scroll-element one-inverse" style="display: flex;">
+                <div class="scroll-element one-inverse" style="display: flex;">
                     <img src="../assets/images/fourth.svg">
                     <img src="../assets/images/first.svg">
                     <img src="../assets/images/second.svg">
@@ -211,9 +211,9 @@
         </div>
 
         <!-- Third pair -->
-        <div class="trendy-rec-1" style="display: flex; position: relative;">
+        <div class="trendy-rec-1" style="display: flex; position: relative; overflow: hidden;">
             <div class="scroll-parent">
-			    <div class="scroll-element one" style="display: flex;">
+                <div class="scroll-element one" style="display: flex;">
                     <img src="../assets/images/fourth.svg">
                     <img src="../assets/images/first.svg">
                     <img src="../assets/images/second.svg">
@@ -256,90 +256,93 @@
                     <img src="../assets/images/third.svg">
                 </div>
             </div>
+            
             <div class="trendy-sound-text-places-div">
                 <p class="trendy-sound-text" style="font-size: 20px;">#5</p>
             </div>
             <div class="trendy-sound-text-sounds-div fifth-sound">
                 <p class="trendy-sound-text" style="font-size: 16px;">{{ sounds[4] }}</p>
             </div>
+            
 
             <img class="photo-sound" v-bind:src="photos[4] === '' ? 'src/assets/images/user_default.png' : photos[4]"
                 style="position: absolute; right: 0; top: 50%; transform: translateY(-50%);" />
         </div>
 
         <div style="color: black; font-family: 'futura-maxi-cg-bold'; padding-top: 5%;">
-            You listened to <span style="color: #fe2c55;">{{ seenTrends }}</span> of the <span
-                style="color: #fe2c55;">{{ totalTrends }}</span> trending sounds.
+            You listened to <span style="color: #fe2c55;">{{ seenTrends }}</span> of the <span style="color: #fe2c55;">{{
+                totalTrends }}</span> trending sounds.
         </div>
     </div>
 </template>
 
 <style scoped lang="scss">
 .scroll-parent {
-	position: relative;
-	width: 75%;
-	height: 50%;
+    position: relative;
+    width: 75%;
+    height: 50%;
 }
 
 .scroll-element {
-	width: inherit;
-	height: inherit;
-	position: absolute;
-	left: 0%;
-	top: 0%;
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    left: 0%;
+    top: 0%;
 }
 
 .one {
-	animation: one 3s linear infinite;
+    animation: one 10s linear infinite;
 }
+
 .one-inverse {
-	animation: one-inverse 3s linear infinite;
+    animation: one-inverse 10s linear infinite;
 }
 
 .two {
-	animation: two 3s linear infinite;
+    animation: two 10s linear infinite;
 }
 
 .two-inverse {
-    animation: two-inverse 3s linear infinite;
+    animation: two-inverse 10s linear infinite;
 }
 
 .three {
-	animation: three 3s linear infinite;
+    animation: three 10s linear infinite;
 }
 
 .three-inverse {
-    animation: three-inverse 3s linear infinite;
+    animation: three-inverse 10s linear infinite;
 }
 
 @keyframes one {
-	from {
-		left: 0%;
-	}
+    from {
+        left: 0%;
+    }
 
-	to {
-		left: 100%;
-	}
+    to {
+        left: 100%;
+    }
 }
 
 @keyframes two {
-	from {
-		left: 112%;
-	}
+    from {
+        left: 112%;
+    }
 
-	to {
-		left: 212%;
-	}
+    to {
+        left: 212%;
+    }
 }
 
 @keyframes three {
-	from {
-		left: -112%;
-	}
+    from {
+        left: -112%;
+    }
 
-	to {
-		left: -12%;
-	}
+    to {
+        left: -12%;
+    }
 }
 
 @keyframes one-inverse {
@@ -363,8 +366,6 @@
         left: -138%;
     }
 }
-
-
 </style>
 
 
