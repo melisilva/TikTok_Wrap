@@ -2,12 +2,6 @@
 	<div class="page"
 		style="background-image: linear-gradient(to top, rgba(245, 246, 252, 0.52), #fadadd); text-align: center;">
 		<div class="scroll-parent" style="position:fixed; z-index: -1;">
-			<div class="scroll-element six" style="position:fixed;">
-				<img src="../assets/images/tiktok_pattern.png" />
-			</div>
-			<div class="scroll-element five" style="position:fixed;">
-				<img src="../assets/images/tiktok_pattern.png" />
-			</div>
 			<div class="scroll-element four" style="position:fixed;">
 				<img src="../assets/images/tiktok_pattern.png" />
 			</div>
@@ -67,102 +61,68 @@
 }
 
 .one {
-	animation: one 5s linear infinite;
+	animation: one 30s linear infinite;
 }
 
 .two {
-	animation: two 5s linear infinite;
+	animation: two 30s linear infinite;
 }
 
 .three {
-	animation: three 5s linear infinite;
+	animation: three 30s linear infinite;
 }
 
 .four {
-	animation: four 5s linear infinite;
-}
-
-.five {
-	animation: five 5s linear infinite;
-}
-
-.six {
-	animation: six 5s linear infinite;
+	animation: four 30s linear infinite;
 }
 
 @keyframes one {
 	from {
-		left: 50%;
-		top: 50%;
+		left: 0px;
+		top: 0px;
 	}
 
 	to {
-		left: -50%;
-		top: 150%;
+		left: -1920px;
+		top: 1080px;
 	}
 }
 
 @keyframes two {
 	from {
-		left: 50%;
-		top: -50%;
+		left: 1817px;
+		top: -10px;
 	}
 
 	to {
-		left: -50%;
-		top: 50%;
+		left: -103px;
+		top: 1070px;
 	}
 }
 
 @keyframes three {
 	from {
-		left: 50%;
-		top: -150%;
+		left: -286px;
+		top: -1069px;
 
 	}
 
 	to {
-		left: -50%;
-		top: -50%;
+		left: -2206px;
+		top: 11px;
 	}
 }
 
 @keyframes four {
 	from {
-		left: -50%;
-		top: 50%;
+		left: 1531px;
+		top: -1079px;
 
 	}
 
 	to {
-		left: -150%;
-		top: 150%;
-	}
-}
-
-@keyframes five {
-	from {
-		left: -50%;
-		top: -50%;
-
-	}
-
-	to {
-		left: -150%;
-		top: 50%;
-	}
-}
-
-@keyframes six {
-	from {
-		left: -50%;
-		top: -150%;
-
-	}
-
-	to {
-		left: -150%;
-		top: -50%;
+		left: -389px;
+		top: -1px;
 	}
 }
 </style>
