@@ -359,6 +359,7 @@ def top_sound_favorites(likes, favorites):
 
 def total_minutes(history):
     # Convert date strings to datetime objects
+    history['Date'] = history['Date'].astype(str)
     dates = [datetime.strptime(date_str, "%Y-%m-%d %H:%M:%S") for date_str in history['Date']]
 
     # Calculate time differences between consecutive dates
