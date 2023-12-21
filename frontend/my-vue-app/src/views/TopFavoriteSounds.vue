@@ -1,5 +1,11 @@
 <template>
     <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" style="z-index: 10"/>
+    <router-link to="/top-liked-sounds">
+		<img class="arrow-left" src="../assets/images/arrow-left-solid.svg" alt="Previous Page" />
+	</router-link>
+	<router-link to="/top-hashtags">
+		<img class="arrow-right" src="../assets/images/arrow-right-solid.svg" alt="Next Page" />
+	</router-link>
     <div class="page" style="background: #3B719F; display: flex; flex-direction: column;">
         <div class="top-history-creators" style="width: 100%; height: 10%;">
             Your Top 5 Favorite Sounds
@@ -191,7 +197,7 @@ export default defineComponent({
     methods: {
     },
     async beforeMount() {
-        await axios.get("http://localhost:8000/top-sound-likes")
+        await axios.get("http://localhost:8000/top-sound-favorites")
             .then((response) => {
                 console.log(response.data)
                 this.sounds = Object.values(response.data['Sound Name']);
