@@ -3,8 +3,41 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 import aiohttp
 import asyncio
+import colorsys
+import random
 
-# Check if this works as global variables
+colors_history = ['#25f4ee', '#fe2c55', '#f7ec59', '#b14aed', '#454ade']
+colors_likes = []
+colors_favorites = []
+
+def hex_to_rgb(hex_color):
+    """Convert hexadecimal color code to RGB tuple."""
+    hex_color = hex_color.lstrip("#")
+    return tuple(int(hex_color[i:i+2], 16) for i in (0, 2, 4))
+
+def rgb_to_hex(rgb):
+    """Convert RGB tuple to hexadecimal color code."""
+    return "#{:02x}{:02x}{:02x}".format(rgb[0], rgb[1], rgb[2])
+
+def generate_random_color(harmonize_colors):
+    # Generate a random hue
+    hue = random.random()
+
+    # Harmonize the color by adjusting the saturation and lightness
+    base_rgb = hex_to_rgb(harmonize_colors[0])
+    base_hls = colorsys.rgb_to_hls(*[x / 255.0 for x in base_rgb])
+
+    # Ensure saturation and lightness are within the valid range [0, 1]
+    saturation = max(0, min(1, random.uniform(base_hls[1] - 0.2, base_hls[1] + 0.2)))
+    lightness = max(0, min(1, random.uniform(base_hls[2] - 0.2, base_hls[2] + 0.2)))
+
+    # Convert HSL to RGB
+    rgb = colorsys.hls_to_rgb(hue, lightness, saturation)
+
+    # Scale RGB values to the range [0, 255]
+    rgb = tuple(int(value * 255) for value in rgb)
+
+    return rgb_to_hex(rgb)
 
 user_photos = pd.read_csv("backend/user_photos.csv")
 hashtag_photos = pd.read_csv("backend/hashtag_photos.csv")
@@ -180,14 +213,30 @@ def top_creator_history(history):
         photos.append(photo)
 
     top['Photo'] = photos
+    top['Colors'] = colors_history
 
     top = top.to_dict()
     return top
 
-def top_creator_likes(history, likes):
+def top_creator_likes(history, likes):  
+    global colors_likes 
     top_history = top_following(history).head(5)
     top_likes = top_following(likes).head(5)
     top = compare_positions(top_history, top_likes, 'History', 'Likes', 'Username')
+
+    if colors_likes == []:
+        top['Colors'] = colors_history
+        for index, row in top.iterrows():
+            if row['Arrow'] == 'New Entry':
+                new_color = generate_random_color(colors_history)
+                top.at[index, 'Colors'] = new_color
+            elif row['Arrow'] != 'same':
+                top.at[index, 'Colors'] = colors_history[int(row['Position_History'] - 1)]
+
+        colors_likes = top['Colors'].tolist()
+    else:
+        top['Colors'] = colors_likes
+
     top.drop(['Count_x', 'Position_History', 'Position_Likes', 'Change'], axis=1, inplace=True)
 
     """
@@ -220,9 +269,25 @@ def top_creator_likes(history, likes):
     return top
 
 def top_creator_favorites(likes, favorites):
+    global colors_favorites
     top_likes = top_following(likes).head(5)
     top_favorites = top_following(favorites).head(5)
     top = compare_positions(top_likes, top_favorites, 'Likes', 'Favorites', 'Username')
+
+    if colors_favorites == []:
+        top['Colors'] = colors_likes
+
+        for index, row in top.iterrows():
+            if row['Arrow'] == 'New Entry':
+                new_color = generate_random_color(colors_likes)
+                top.at[index, 'Colors'] = new_color
+            elif row['Arrow'] != 'same':
+                top.at[index, 'Colors'] = colors_likes[int(row['Position_Likes'] - 1)]
+
+        colors_favorites = top['Colors'].tolist()
+    else:
+        top['Colors'] = colors_favorites
+
     top.drop(['Count_x', 'Position_Likes', 'Position_Favorites', 'Change'], axis=1, inplace=True)
 
     """

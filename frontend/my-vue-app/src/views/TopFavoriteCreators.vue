@@ -22,9 +22,8 @@
                         </div>
                     </div>
                     <div class="rectangle" id="rect-15">
-                        <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ creators[4] }} </p>
+                        <p class="text-inside-rectangle" style="padding-right: 35%; height: 80%; padding-bottom: rect-150%;"> {{ creators[4] }} </p>
                     </div>
-
                 </div>
                 <div class="col ranking">
                     <div class="place ranking">
@@ -35,7 +34,7 @@
                             <p class="number-placement">#2</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-12">
+                    <div class="rectangle" id="rect-12" :style="{ background: colors[1] }">
                         <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ creators[1] }} </p>
                     </div>
                 </div>
@@ -62,7 +61,7 @@
                         </div>
                     </div>
                     <div class="rectangle" id="rect-13">
-                        <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%; padding-bottom: 50%;">
+                        <p class="text-inside-rectangle" style="padding-right: 30%; height: 80%; padding-bottom: 20%;">
                             {{ creators[2] }} </p>
                     </div>
                 </div>
@@ -76,7 +75,7 @@
                         </div>
                     </div>
                     <div class="rectangle" id="rect-14">
-                        <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ creators[3] }} </p>
+                        <p class="text-inside-rectangle" style="padding-right: 35%; height: 80%; padding-bottom: 1%;"> {{ creators[3] }} </p>
                     </div>
                 </div>
 
@@ -103,7 +102,6 @@
 }
 
 #rect-12 {
-    background: #fe2c55;
     position: relative;
     height: 450px;
     animation: growup-12 5s;
@@ -192,7 +190,8 @@ export default defineComponent({
     data() {
         return {
             creators: [],
-            photos: []
+            photos: [],
+            colors: []
         }
     },
     methods: {
@@ -223,6 +222,7 @@ export default defineComponent({
                 console.log(response.data)
                 this.creators = Object.values(response.data['Username']);
                 this.photos = Object.values(response.data['Photo']);
+                this.colors = ['#454ade', '#ffffff', '#f7ec59', '#fe2c55', '#25f4ee'];
             })
             .catch((error) => {
                 console.log(error)

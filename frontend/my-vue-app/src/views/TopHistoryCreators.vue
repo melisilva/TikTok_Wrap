@@ -21,10 +21,9 @@
                             <p class="number-placement">#5</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-15">
-                        <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ creators[4] }} </p>
+                    <div class="rectangle" id="rect-15" :style="{ background: colors[4] }">
+                        <p class="text-inside-rectangle" style="padding-right: 35%; height: 80%; padding-bottom: rect-150%;"> {{ creators[4] }} </p>
                     </div>
-
                 </div>
                 <div class="col ranking">
                     <div class="place ranking">
@@ -35,7 +34,7 @@
                             <p class="number-placement">#2</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-12">
+                    <div class="rectangle" id="rect-12" :style="{ background: colors[1] }">
                         <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ creators[1] }} </p>
                     </div>
                 </div>
@@ -48,7 +47,7 @@
                             <p class="number-placement">#1</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-11">
+                    <div class="rectangle" id="rect-11" :style="{ background: colors[0] }">
                         <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ creators[0] }} </p>
                     </div>
                 </div>
@@ -61,8 +60,8 @@
                             <p class="number-placement">#3</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-13">
-                        <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%; padding-bottom: 50%;">
+                    <div class="rectangle" id="rect-13" :style="{ background: colors[2] }">
+                        <p class="text-inside-rectangle" style="padding-right: 30%; height: 80%; padding-bottom: 20%;">
                             {{ creators[2] }} </p>
                     </div>
                 </div>
@@ -75,8 +74,8 @@
                             <p class="number-placement">#4</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-14">
-                        <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ creators[3] }} </p>
+                    <div class="rectangle" id="rect-14" :style="{ background: colors[3] }">
+                        <p class="text-inside-rectangle" style="padding-right: 35%; height: 80%; padding-bottom: 1%;"> {{ creators[3] }} </p>
                     </div>
                 </div>
 
@@ -96,35 +95,30 @@
 }
 
 #rect-11 {
-    background: #25f4ee;
     position: relative;
     height: 528px;
     animation: growup-11 5s;
 }
 
 #rect-12 {
-    background: #fe2c55;
     position: relative;
     height: 450px;
     animation: growup-12 5s;
 }
 
 #rect-13 {
-    background: #f7ec59;
     position: relative;
     height: 379px;
     animation: growup-13 5s;
 }
 
 #rect-14 {
-    background: #b14aed;
     position: relative;
     height: 316px;
     animation: growup-14 5s;
 }
 
 #rect-15 {
-    background: #454ade;
     position: relative;
     height: 272px;
     animation: growup-15 5s;
@@ -223,6 +217,7 @@ export default defineComponent({
                 console.log(response.data)
                 this.creators = Object.values(response.data['Username']);
                 this.photos = Object.values(response.data['Photo']);
+                this.colors = Object.values(response.data['Colors']);
             })
             .catch((error) => {
                 console.log(error)
