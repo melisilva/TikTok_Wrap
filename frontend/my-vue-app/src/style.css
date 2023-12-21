@@ -124,23 +124,22 @@ html,
     }
 
     .trendy-sound-text-places-div {
-        margin-top: -5%;
+        margin-right: 30%;
     }
 
     .trendy-sound-text-places-div-2 {
-        margin-top: -5%;
         margin-left: 30%;
     }
 
     .trendy-sound-text-sounds-div {
-        margin-top: 2%;
+        margin-top: 7%;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
     }
 
     .trendy-sound-text-sounds-div-2 {
-        margin-top: 2%;
+        margin-top: 7%;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -153,6 +152,10 @@ html,
 
     .third-sound {
         margin-left: 45%;
+    }
+
+    .fifth-sound {
+        margin-left: 3%;
     }
 
 }
