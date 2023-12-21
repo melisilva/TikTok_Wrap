@@ -281,7 +281,6 @@
 .scroll-parent {
     position: relative;
     width: 100%;
-
     height: 30%;
 }
 
@@ -320,6 +319,8 @@
     animation: three 10s linear infinite;
 }
 
+
+
 .three-inverse {
     height:100%;
     animation: three-inverse 10s linear infinite;
@@ -354,6 +355,7 @@
         left: 0%;
     }
 }
+
 
 @keyframes one-inverse {
     from {

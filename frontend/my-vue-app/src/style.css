@@ -67,32 +67,28 @@ html,
 
     .trendy-rec-1,
     .trendy-rec-2 {
-        width: 700px;
+        width: 300px;
+        display: flex; flex-direction: column; overflow: hidden; 
         /* Default width for pc */
         margin-top: 1%;
+        border-radius: 40px;
     }
 
-    .trendy-sound-text-places-div {
-        margin-left: 5%;
+    .trendy-rec-1{
+        margin-left: 35%;
     }
-
-    .trendy-sound-text-places-div-2 {
-        margin-left: 15%;
+    .trendy-rec-2{
+        margin-right: 35%;
     }
 
     .trendy-sound-text-sounds-div {
-        margin-top: 3%;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
+        height: 35%;
+        padding-left: 5%;
     }
 
     .trendy-sound-text-sounds-div-2 {
-        margin-top: 3%;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        margin-left: 15%;
+        height: 35%;
+        padding-right: 5%;
     }
 
 }
@@ -111,6 +107,14 @@ html,
         margin-top: 10%;
     }
 
+    .trendy-rec-1 {
+        border-radius: 0px 40px 40px 0px;
+    }
+    
+    .trendy-rec-2 {
+        border-radius: 40px 0px 0px 40px;
+    }
+
     .trendy-sound-text-sounds-div {
         height:35%; 
         padding-left: 5%
@@ -121,14 +125,15 @@ html,
         padding-right: 5%
     }
 
-    .first-sound {
-        margin-left: 10%;
-    }
-
     .third-sound {
         margin-left: 40%;
     }
 
+}
+
+
+.trendy-rec-2 {
+    margin-left: auto;
 }
 
 .place {
@@ -289,15 +294,6 @@ html,
     background: #2f2f2f;
     height: 83px;
     position: relative;
-}
-
-.trendy-rec-1 {
-    border-radius: 0px 40px 40px 0px;
-}
-
-.trendy-rec-2 {
-    border-radius: 40px 0px 0px 40px;
-    margin-left: auto;
 }
 
 .trendy-sound-text {
