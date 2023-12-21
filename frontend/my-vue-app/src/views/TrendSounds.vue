@@ -15,9 +15,9 @@
         </div>
 
         <!-- First pair -->
-        <div class="trendy-rec-1" style="display: flex; position: relative; overflow: hidden;">
+        <div class="trendy-rec-1">
             <div class="scroll-parent">
-                <div class="scroll-element one" style="display: flex;">
+                <div class="scroll-element one">
                     <img src="../assets/images/fourth.svg">
                     <img src="../assets/images/first.svg">
                     <img src="../assets/images/second.svg">
@@ -31,7 +31,7 @@
                     <img src="../assets/images/second.svg">
                     <img src="../assets/images/third.svg">
                 </div>
-                <div class="scroll-element two" style="display: flex;">
+                <div class="scroll-element two">
                     <img src="../assets/images/fourth.svg">
                     <img src="../assets/images/first.svg">
                     <img src="../assets/images/second.svg">
@@ -45,7 +45,7 @@
                     <img src="../assets/images/second.svg">
                     <img src="../assets/images/third.svg">
                 </div>
-                <div class="scroll-element three" style="display: flex;">
+                <div class="scroll-element three">
                     <img src="../assets/images/fourth.svg">
                     <img src="../assets/images/first.svg">
                     <img src="../assets/images/second.svg">
@@ -60,23 +60,21 @@
                     <img src="../assets/images/third.svg">
                 </div>
             </div>
-            <div class="trendy-sound-text-places-div">
+            <div class="trendy-sound-text-sounds-div">
                 <p class="trendy-sound-text" style="font-size: 20px;">#1</p>
             </div>
-            <div class="trendy-sound-text-sounds-div first-sound">
-                <p class="trendy-sound-text" style="font-size: 16px;">{{ sounds[0] }}</p>
+            <div class="trendy-sound-text-sounds-div">
+                <p class="trendy-sound-text" style="font-size: 16px;"> {{ sounds[0] }}</p>
             </div>
 
             <img class="photo-sound" v-bind:src="photos[0] === '' ? 'src/assets/images/user_default.png' : photos[0]"
                 style="position: absolute; right: 0; top: 50%; transform: translateY(-50%);" />
         </div>
 
-        <div class="trendy-rec-2" style="display: flex; position: relative; overflow: hidden;">
-            <div class="trendy-sound-text-places-div-2">
-                <p class="trendy-sound-text" style="font-size: 20px;">#2</p>
-            </div>
+        <div class="trendy-rec-2">
+
             <div class="scroll-parent">
-                <div class="scroll-element one-inverse" style="display: flex;">
+                <div class="scroll-element one-inverse">
                     <img src="../assets/images/fourth.svg">
                     <img src="../assets/images/first.svg">
                     <img src="../assets/images/second.svg">
@@ -90,7 +88,7 @@
                     <img src="../assets/images/second.svg">
                     <img src="../assets/images/third.svg">
                 </div>
-                <div class="scroll-element three-inverse" style="display: flex;">
+                <div class="scroll-element three-inverse">
                     <img src="../assets/images/fourth.svg">
                     <img src="../assets/images/first.svg">
                     <img src="../assets/images/second.svg">
@@ -106,16 +104,19 @@
                 </div>
             </div>
             <div class="trendy-sound-text-sounds-div-2">
-                <p class="trendy-sound-text" style="font-size: 16px;">{{ sounds[1] }}</p>
+                <p class="trendy-sound-text" style="text-align: right; font-size: 20px;">#2</p>
+            </div>
+            <div class="trendy-sound-text-sounds-div-2">
+                <p class="trendy-sound-text" style="text-align: right; font-size: 16px;">{{ sounds[1] }}</p>
             </div>
             <img class="photo-sound" v-bind:src="photos[1] === '' ? 'src/assets/images/user_default.png' : photos[1]"
                 style="position: absolute; left: 0; top: 50%; transform: translateY(-50%);" />
         </div>
 
         <!-- Second pair -->
-        <div class="trendy-rec-1" style="display: flex; position: relative; overflow: hidden;">
+        <div class="trendy-rec-1">
             <div class="scroll-parent">
-                <div class="scroll-element one" style="display: flex;">
+                <div class="scroll-element one">
                     <img src="../assets/images/fourth.svg">
                     <img src="../assets/images/first.svg">
                     <img src="../assets/images/second.svg">
@@ -129,7 +130,7 @@
                     <img src="../assets/images/second.svg">
                     <img src="../assets/images/third.svg">
                 </div>
-                <div class="scroll-element two" style="display: flex;">
+                <div class="scroll-element two">
                     <img src="../assets/images/fourth.svg">
                     <img src="../assets/images/first.svg">
                     <img src="../assets/images/second.svg">
@@ -143,7 +144,7 @@
                     <img src="../assets/images/second.svg">
                     <img src="../assets/images/third.svg">
                 </div>
-                <div class="scroll-element three" style="display: flex;">
+                <div class="scroll-element three">
                     <img src="../assets/images/fourth.svg">
                     <img src="../assets/images/first.svg">
                     <img src="../assets/images/second.svg">
@@ -158,10 +159,10 @@
                     <img src="../assets/images/third.svg">
                 </div>
             </div>
-            <div class="trendy-sound-text-places-div">
+            <div class="trendy-sound-text-sounds-div">
                 <p class="trendy-sound-text" style="font-size: 20px;">#3</p>
             </div>
-            <div class="trendy-sound-text-sounds-div third-sound">
+            <div class="trendy-sound-text-sounds-div">
                 <p class="trendy-sound-text" style="font-size: 16px;">{{ sounds[2] }}</p>
             </div>
 
@@ -169,12 +170,9 @@
                 style="position: absolute; right: 0; top: 50%; transform: translateY(-50%);" />
         </div>
 
-        <div class="trendy-rec-2" style="display: flex; position: relative; overflow: hidden;">
-            <div class="trendy-sound-text-places-div-2">
-                <p class="trendy-sound-text" style="font-size: 20px;">#4</p>
-            </div>
+        <div class="trendy-rec-2">
             <div class="scroll-parent">
-                <div class="scroll-element one-inverse" style="display: flex;">
+                <div class="scroll-element one-inverse">
                     <img src="../assets/images/fourth.svg">
                     <img src="../assets/images/first.svg">
                     <img src="../assets/images/second.svg">
@@ -188,7 +186,7 @@
                     <img src="../assets/images/second.svg">
                     <img src="../assets/images/third.svg">
                 </div>
-                <div class="scroll-element three-inverse" style="display: flex;">
+                <div class="scroll-element three-inverse">
                     <img src="../assets/images/fourth.svg">
                     <img src="../assets/images/first.svg">
                     <img src="../assets/images/second.svg">
@@ -204,16 +202,19 @@
                 </div>
             </div>
             <div class="trendy-sound-text-sounds-div-2">
-                <p class="trendy-sound-text" style="font-size: 16px;">{{ sounds[3] }}</p>
+                <p class="trendy-sound-text" style="text-align: right; font-size: 20px;">#4</p>
+            </div>
+            <div class="trendy-sound-text-sounds-div-2">
+                <p class="trendy-sound-text" style="text-align: right; font-size: 16px;">{{ sounds[3] }}</p>
             </div>
             <img class="photo-sound" v-bind:src="photos[3] === '' ? 'src/assets/images/user_default.png' : photos[3]"
                 style="position: absolute; left: 0; top: 50%; transform: translateY(-50%);" />
         </div>
 
         <!-- Third pair -->
-        <div class="trendy-rec-1" style="display: flex; position: relative; overflow: hidden;">
+        <div class="trendy-rec-1">
             <div class="scroll-parent">
-                <div class="scroll-element one" style="display: flex;">
+                <div class="scroll-element one">
                     <img src="../assets/images/fourth.svg">
                     <img src="../assets/images/first.svg">
                     <img src="../assets/images/second.svg">
@@ -227,7 +228,7 @@
                     <img src="../assets/images/second.svg">
                     <img src="../assets/images/third.svg">
                 </div>
-                <div class="scroll-element two" style="display: flex;">
+                <div class="scroll-element two">
                     <img src="../assets/images/fourth.svg">
                     <img src="../assets/images/first.svg">
                     <img src="../assets/images/second.svg">
@@ -241,7 +242,7 @@
                     <img src="../assets/images/second.svg">
                     <img src="../assets/images/third.svg">
                 </div>
-                <div class="scroll-element three" style="display: flex;">
+                <div class="scroll-element three">
                     <img src="../assets/images/fourth.svg">
                     <img src="../assets/images/first.svg">
                     <img src="../assets/images/second.svg">
@@ -257,7 +258,7 @@
                 </div>
             </div>
             
-            <div class="trendy-sound-text-places-div">
+            <div class="trendy-sound-text-sounds-div">
                 <p class="trendy-sound-text" style="font-size: 20px;">#5</p>
             </div>
             <div class="trendy-sound-text-sounds-div fifth-sound">
@@ -279,11 +280,14 @@
 <style scoped lang="scss">
 .scroll-parent {
     position: relative;
-    width: 75%;
-    height: 50%;
+    width: 100%;
+
+    height: 30%;
 }
 
 .scroll-element {
+    display: flex;
+    height: 100%;
     width: inherit;
     height: inherit;
     position: absolute;
@@ -292,26 +296,32 @@
 }
 
 .one {
+    height:100%;
     animation: one 10s linear infinite;
 }
 
 .one-inverse {
+    height: 100%;
     animation: one-inverse 10s linear infinite;
 }
 
 .two {
+    height: 100%;
     animation: two 10s linear infinite;
 }
 
 .two-inverse {
+    height: 100%;
     animation: two-inverse 10s linear infinite;
 }
 
 .three {
+    height:100%;
     animation: three 10s linear infinite;
 }
 
 .three-inverse {
+    height:100%;
     animation: three-inverse 10s linear infinite;
 }
 
@@ -337,11 +347,11 @@
 
 @keyframes three {
     from {
-        left: -112%;
+        left: -100%;
     }
 
     to {
-        left: -12%;
+        left: 0%;
     }
 }
 
@@ -355,15 +365,13 @@
     }
 }
 
-
-
 @keyframes three-inverse {
     from {
-        left: -38%;
+        left: 0%;
     }
 
     to {
-        left: -138%;
+        left: -100%;
     }
 }
 </style>

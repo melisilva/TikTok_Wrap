@@ -95,17 +95,6 @@ html,
         margin-left: 15%;
     }
 
-    .first-sound {
-        margin-left: 60%;
-    }
-
-    .third-sound {
-        margin-left: 74%;
-    }
-
-    .fifth-sound {
-        margin-left: 55%;
-    }
 }
 
 @media only screen and (device-width: 360px) {
@@ -117,31 +106,19 @@ html,
     .trendy-rec-1,
     .trendy-rec-2 {
         width: 300px;
+        display: flex; flex-direction: column; overflow: hidden; 
         /* Adjust the width for mobile */
         margin-top: 10%;
     }
 
-    .trendy-sound-text-places-div {
-        margin-right: 35%;
-    }
-
-    .trendy-sound-text-places-div-2 {
-        margin-left: 35%;
-    }
-
     .trendy-sound-text-sounds-div {
-        margin-top: 7%;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
+        height:35%; 
+        padding-left: 5%
     }
 
     .trendy-sound-text-sounds-div-2 {
-        margin-top: 7%;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        margin-left: 35%;
+        height:35%; 
+        padding-right: 5%
     }
 
     .first-sound {
@@ -324,9 +301,10 @@ html,
 }
 
 .trendy-sound-text {
-    color: #ffffff;
-    font-family: 'futura-maxi-cg-bold';
-    text-align: end;
+    margin: auto; 
+    color: white; 
+    font-family: 'futura-maxi-cg-bold'; 
+    text-align: start;
 }
 
 .photo-sound {
