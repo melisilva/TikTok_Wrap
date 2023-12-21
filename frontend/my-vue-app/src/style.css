@@ -73,24 +73,22 @@ html,
     }
 
     .trendy-sound-text-places-div {
-        margin-top: -1%;
-        margin-left: 55%;
+        margin-left: 5%;
     }
 
     .trendy-sound-text-places-div-2 {
-        margin-top: -1%;
         margin-left: 15%;
     }
 
     .trendy-sound-text-sounds-div {
-        margin-top: 2%;
+        margin-top: 3%;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
     }
 
     .trendy-sound-text-sounds-div-2 {
-        margin-top: 2%;
+        margin-top: 3%;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -124,11 +122,11 @@ html,
     }
 
     .trendy-sound-text-places-div {
-        margin-right: 30%;
+        margin-right: 35%;
     }
 
     .trendy-sound-text-places-div-2 {
-        margin-left: 30%;
+        margin-left: 35%;
     }
 
     .trendy-sound-text-sounds-div {
@@ -143,19 +141,15 @@ html,
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        margin-left: 30%;
+        margin-left: 35%;
     }
 
     .first-sound {
-        margin-left: 15%;
+        margin-left: 10%;
     }
 
     .third-sound {
-        margin-left: 45%;
-    }
-
-    .fifth-sound {
-        margin-left: 3%;
+        margin-left: 40%;
     }
 
 }
