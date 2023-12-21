@@ -6,9 +6,12 @@ import asyncio
 import colorsys
 import random
 
+protected_colors = ['#25f4ee', '#fe2c55', '#f7ec59', '#b14aed', '#454ade', '#3b719f']
 colors_history = ['#25f4ee', '#fe2c55', '#f7ec59', '#b14aed', '#454ade']
-colors_likes = []
-colors_favorites = []
+colors_likes_creators = []
+colors_favorites_creators = []
+colors_likes_sounds = []
+colors_favorites_sounds = []
 
 def hex_to_rgb(hex_color):
     """Convert hexadecimal color code to RGB tuple."""
@@ -32,12 +35,22 @@ def generate_random_color(harmonize_colors):
     lightness = max(0, min(1, random.uniform(base_hls[2] - 0.2, base_hls[2] + 0.2)))
 
     # Convert HSL to RGB
-    rgb = colorsys.hls_to_rgb(hue, lightness, saturation)
+    rgb = colorsys.hls_to_rgb(hue, saturation, lightness)
 
     # Scale RGB values to the range [0, 255]
     rgb = tuple(int(value * 255) for value in rgb)
 
-    return rgb_to_hex(rgb)
+    # Convert to hex
+    hex_color = rgb_to_hex(rgb)
+
+    # Check if the color has already been generated, and regenerate if necessary
+    while hex_color in protected_colors:
+        hue = random.random()
+        rgb = colorsys.hls_to_rgb(hue, saturation, lightness)
+        rgb = tuple(int(value * 255) for value in rgb)
+        hex_color = rgb_to_hex(rgb)
+
+    return hex_color
 
 user_photos = pd.read_csv("backend/user_photos.csv")
 hashtag_photos = pd.read_csv("backend/hashtag_photos.csv")
@@ -219,12 +232,12 @@ def top_creator_history(history):
     return top
 
 def top_creator_likes(history, likes):  
-    global colors_likes 
+    global colors_likes_creators
     top_history = top_following(history).head(5)
     top_likes = top_following(likes).head(5)
     top = compare_positions(top_history, top_likes, 'History', 'Likes', 'Username')
 
-    if colors_likes == []:
+    if colors_likes_creators == []:
         top['Colors'] = colors_history
         for index, row in top.iterrows():
             if row['Arrow'] == 'New Entry':
@@ -233,9 +246,9 @@ def top_creator_likes(history, likes):
             elif row['Arrow'] != 'same':
                 top.at[index, 'Colors'] = colors_history[int(row['Position_History'] - 1)]
 
-        colors_likes = top['Colors'].tolist()
+        colors_likes_creators = top['Colors'].tolist()
     else:
-        top['Colors'] = colors_likes
+        top['Colors'] = colors_likes_creators
 
     top.drop(['Count_x', 'Position_History', 'Position_Likes', 'Change'], axis=1, inplace=True)
 
@@ -269,24 +282,24 @@ def top_creator_likes(history, likes):
     return top
 
 def top_creator_favorites(likes, favorites):
-    global colors_favorites
+    global colors_favorites_creators
     top_likes = top_following(likes).head(5)
     top_favorites = top_following(favorites).head(5)
     top = compare_positions(top_likes, top_favorites, 'Likes', 'Favorites', 'Username')
 
-    if colors_favorites == []:
-        top['Colors'] = colors_likes
+    if colors_favorites_creators == []:
+        top['Colors'] = colors_likes_creators
 
         for index, row in top.iterrows():
             if row['Arrow'] == 'New Entry':
-                new_color = generate_random_color(colors_likes)
+                new_color = generate_random_color(colors_likes_creators)
                 top.at[index, 'Colors'] = new_color
             elif row['Arrow'] != 'same':
-                top.at[index, 'Colors'] = colors_likes[int(row['Position_Likes'] - 1)]
+                top.at[index, 'Colors'] = colors_likes_creators[int(row['Position_Likes'] - 1)]
 
-        colors_favorites = top['Colors'].tolist()
+        colors_favorites_creators = top['Colors'].tolist()
     else:
-        top['Colors'] = colors_favorites
+        top['Colors'] = colors_favorites_creators
 
     top.drop(['Count_x', 'Position_Likes', 'Position_Favorites', 'Change'], axis=1, inplace=True)
 
@@ -351,6 +364,8 @@ def top_sound_history(history):
         photos.append(photo)
 
     top['Photo'] = photos
+    top['Colors'] = colors_history
+
 
     top['Sound Name'] = sound_names
     top.drop(['Sound Link'], axis=1, inplace=True)
@@ -358,9 +373,24 @@ def top_sound_history(history):
     return top
 
 def top_sound_likes(history, likes):
+    global colors_likes_sounds
     top_history = top_sound(history).head(5)
     top_likes = top_sound(likes).head(5)
     top = compare_positions(top_history, top_likes, 'History', 'Likes', 'Sound Link')
+    
+    if colors_likes_sounds == []:
+        top['Colors'] = colors_history
+        for index, row in top.iterrows():
+            if row['Arrow'] == 'New Entry':
+                new_color = generate_random_color(colors_history)
+                top.at[index, 'Colors'] = new_color
+            elif row['Arrow'] != 'same':
+                top.at[index, 'Colors'] = colors_history[int(row['Position_History'] - 1)]
+
+        colors_likes_sounds = top['Colors'].tolist()
+    else:
+        top['Colors'] = colors_likes_sounds
+
     top.drop(['Count_x', 'Position_History', 'Position_Likes', 'Change'], axis=1, inplace=True)
 
     sound_names = []
@@ -391,9 +421,26 @@ def top_sound_likes(history, likes):
     return top
 
 def top_sound_favorites(likes, favorites):
+    global colors_favorites_sounds
     top_likes = top_sound(likes).head(5)
     top_favorites = top_sound(favorites).head(5)
     top = compare_positions(top_likes, top_favorites, 'Likes', 'Favorites', 'Sound Link')
+    
+    if colors_favorites_sounds == []:
+        top['Colors'] = colors_likes_sounds
+
+        for index, row in top.iterrows():
+            if row['Arrow'] == 'New Entry':
+                new_color = generate_random_color(colors_likes_sounds)
+                top.at[index, 'Colors'] = new_color
+            elif row['Arrow'] != 'same':
+                top.at[index, 'Colors'] = colors_likes_sounds[int(row['Position_Likes'] - 1)]
+
+        colors_favorites_sounds = top['Colors'].tolist()
+    else:
+        top['Colors'] = colors_favorites_sounds
+
+
     top.drop(['Count_x', 'Position_Likes', 'Position_Favorites', 'Change'], axis=1, inplace=True)
 
     sound_names = []

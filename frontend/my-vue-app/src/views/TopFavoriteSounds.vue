@@ -21,7 +21,7 @@
                             <p class="number-placement">#5</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-15">
+                    <div class="rectangle" id="rect-15" :style="{ background: colors[4] }">
                         <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ sounds[4] }} </p>
                     </div>
 
@@ -35,7 +35,7 @@
                             <p class="number-placement">#2</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-12">
+                    <div class="rectangle" id="rect-12" :style="{ background: colors[1] }">
                         <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ sounds[1] }} </p>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                             <p class="number-placement">#1</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-11">
+                    <div class="rectangle" id="rect-11" :style="{ background: colors[0] }">
                         <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ sounds[0] }} </p>
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                             <p class="number-placement">#3</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-13">
+                    <div class="rectangle" id="rect-13" :style="{ background: colors[2] }">
                         <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%; padding-bottom: 50%;">
                             {{ sounds[2] }} </p>
                     </div>
@@ -75,7 +75,7 @@
                             <p class="number-placement">#4</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-14">
+                    <div class="rectangle" id="rect-14" :style="{ background: colors[3] }">
                         <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ sounds[3] }} </p>
                     </div>
                 </div>
@@ -96,35 +96,30 @@
 }
 
 #rect-11 {
-    background: #25f4ee;
     position: relative;
     height: 528px;
     animation: growup-11 5s;
 }
 
 #rect-12 {
-    background: #fe2c55;
     position: relative;
     height: 450px;
     animation: growup-12 5s;
 }
 
 #rect-13 {
-    background: #f7ec59;
     position: relative;
     height: 379px;
     animation: growup-13 5s;
 }
 
 #rect-14 {
-    background: #b14aed;
     position: relative;
     height: 316px;
     animation: growup-14 5s;
 }
 
 #rect-15 {
-    background: #454ade;
     position: relative;
     height: 272px;
     animation: growup-15 5s;
@@ -187,11 +182,12 @@ import axios from 'axios'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-    name: 'TopHistorySounds',
+    name: 'TopFavoriteSounds',
     data() {
         return {
             sounds: [],
-            photos: []
+            photos: [],
+            colors: []
         }
     },
     methods: {
@@ -202,6 +198,7 @@ export default defineComponent({
                 console.log(response.data)
                 this.sounds = Object.values(response.data['Sound Name']);
                 this.photos = Object.values(response.data['Photo']);
+                this.colors = Object.values(response.data['Colors']);
             })
             .catch((error) => {
                 console.log(error)
