@@ -6,7 +6,7 @@ import asyncio
 import colorsys
 import random
 
-protected_colors = ['#25f4ee', '#fe2c55', '#f7ec59', '#b14aed', '#454ade', '#3b719f']
+protected_colors = ['#25f4ee', '#fe2c55', '#f7ec59', '#b14aed', '#454ade', '#3b719f', '#b4b5db']
 colors_history = ['#25f4ee', '#fe2c55', '#f7ec59', '#b14aed', '#454ade']
 colors_likes_creators = []
 colors_favorites_creators = []

@@ -61,6 +61,10 @@ html,
         /* Default width for pc */
     }
 
+    .space-for-title {
+        margin-bottom: 60px; 
+    }
+
     .trendy-rec-1,
     .trendy-rec-2 {
         width: 700px;
@@ -152,8 +156,6 @@ html,
     }
 
 }
-
-
 
 .place {
     display: flex;

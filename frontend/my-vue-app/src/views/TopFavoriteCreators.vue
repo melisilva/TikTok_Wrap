@@ -6,10 +6,12 @@
 	<router-link to="/top-history-sounds">
 		<img class="arrow-right" src="../assets/images/arrow-right-solid.svg" alt="Next Page" />
 	</router-link>
-    <div class="page" style="background: #3B719F; display: flex; flex-direction: column;">
+    <div class="page" style="background: #b4b5db; display: flex; flex-direction: column;">
         <div class="top-history-creators" style="width: 100%; height: 10%;">
             Your Top 5 Favorite Creators
         </div>
+        <br class="space-for-title"/>
+
         <div style="height: 80%">
             <div class="side-by-side-chart" style="display: flex; flex-direction: row; width: 100%; height: 100%">
                 <div class="col ranking ">

@@ -10,6 +10,7 @@
          <div class="top-history-creators" style="width: 100%; height: 10%;">
              Your Top 5 History Sounds
          </div>
+         <br class="space-for-title"/>
          <div style="height: 80%">
              <div class="side-by-side-chart" style="display: flex; flex-direction: row; width: 100%; height: 100%">
                  <div class="col ranking ">
