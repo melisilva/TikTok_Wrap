@@ -18,10 +18,10 @@
 		</div>
         
         <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" /> 
-        <router-link to="/trends">
+        <router-link to="/top-creator-message">
             <img class="arrow-left" src="../assets/images/arrow-left-solid.svg" alt="Previous Page" />
         </router-link>
-        <router-link to="/summary">
+        <router-link to="/finale">
             <img class="arrow-right" src="../assets/images/arrow-right-solid.svg" alt="Next Page" />
         </router-link>
         <div class="row" style="height:45%; padding-top: 10px; padding-bottom: 55px;">
@@ -34,7 +34,7 @@
                             #1
                         </div>
                     </div>
-                    <img v-bind:src="topCreatorImage === '' ? 'src/assets/images/sound_default.png' : topCreatorImage" style="background-color:cyan;width: 300px; height: 300px; border-radius: 50%;">
+                    <img v-bind:src="topCreatorImage === '' ? 'src/assets/images/user_default.png' : topCreatorImage" style="background-color:cyan;width: 300px; height: 300px; border-radius: 50%;">
                     <div style="width: 50%; height: 10%; border: 5px solid white; border-radius: 50px; position: relative; margin: auto; bottom: 7%; ">
                         <div style=" font-family: 'futura-maxi-cg-bold';width: 100%; height: 100%; background-color: black; border-radius: 50px; display:flex; align-items: center; justify-content: center;">
                             {{ topCreator }}

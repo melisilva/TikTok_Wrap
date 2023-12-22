@@ -20,7 +20,7 @@
 		<router-link to="/trend-sounds">
 			<img class="arrow-left" src="../assets/images/arrow-left-solid.svg" alt="Previous Page" />
 		</router-link>
-		<router-link to="/top-creator-overall">
+		<router-link to="/top-creator-message">
 			<img class="arrow-right" src="../assets/images/arrow-right-solid.svg" alt="Next Page" />
 		</router-link>
 		<div class="row" style="height:45%; padding-top: 10px; padding-bottom: 55px;">

@@ -87,6 +87,31 @@ const router = createRouter({
       path: '/opening',
       name: 'opening',
       component: () => import('../views/Opening.vue')
+    },
+    {
+      path: '/creators-message',
+      name: 'creators_message',
+      component: () => import('../views/CreatorsMessage.vue')
+    },
+    {
+      path: '/sounds-message',
+      name: 'sounds_message',
+      component: () => import('../views/SoundsMessage.vue')
+    },
+    {
+      path: '/hashtag-message',
+      name: 'hashtag_message',
+      component: () => import('../views/HashtagMessage.vue')
+    },
+    {
+      path: '/top-creator-message',
+      name: 'top_creator_message',
+      component: () => import('../views/TopCreatorMessage.vue')
+    },
+    {
+      path: '/finale',
+      name: 'finale',
+      component: () => import('../views/Finale.vue')
     }
   ]
 })

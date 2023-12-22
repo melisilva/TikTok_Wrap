@@ -17,7 +17,7 @@
                 <div class="col ranking ">
                     <div class="place ranking">
                         <img class="ellipse ranking"
-                            v-bind:src="photos[4] === '' ? 'src/assets/images/sound_default.png' : photos[4]" />
+                            v-bind:src="photos[4] === '' ? 'src/assets/images/user_default.png' : photos[4]" />
                         <div class="rectangle-place"
                             style=" width: auto; top: -22.5px; z-index: 1; padding: 2px 5px 2px 5px;">
                             <p class="number-placement">#5</p>
@@ -30,7 +30,7 @@
                 <div class="col ranking">
                     <div class="place ranking">
                         <img class="ellipse ranking"
-                            v-bind:src="photos[1] === '' ? 'src/assets/images/sound_default.png' : photos[1]" />
+                            v-bind:src="photos[1] === '' ? 'src/assets/images/user_default.png' : photos[1]" />
                         <div class="rectangle-place"
                             style=" width: auto; top: -22.5px; z-index: 1; padding: 2px 5px 2px 5px;">
                             <p class="number-placement">#2</p>
@@ -43,7 +43,7 @@
                 <div class="col ranking">
                     <div class="place ranking">
                         <img class="ellipse ranking"
-                            v-bind:src="photos[0] === '' ? 'src/assets/images/sound_default.png' : photos[0]" />
+                            v-bind:src="photos[0] === '' ? 'src/assets/images/user_default.png' : photos[0]" />
                         <div class="rectangle-place"
                             style=" width: auto; top: -22.5px; z-index: 1; padding: 2px 5px 2px 5px;">
                             <p class="number-placement">#1</p>
@@ -56,7 +56,7 @@
                 <div class="col ranking">
                     <div class="place ranking">
                         <img class="ellipse ranking"
-                            v-bind:src="photos[2] === '' ? 'src/assets/images/sound_default.png' : photos[2]" />
+                            v-bind:src="photos[2] === '' ? 'src/assets/images/user_default.png' : photos[2]" />
                         <div class="rectangle-place"
                             style=" width: auto; top: -22.5px; z-index: 1; padding: 2px 5px 2px 5px;">
                             <p class="number-placement">#3</p>
@@ -70,7 +70,7 @@
                 <div class="col ranking">
                     <div class="place ranking">
                         <img class="ellipse ranking"
-                            v-bind:src="photos[3] === '' ? 'src/assets/images/sound_default.png' : photos[3]" />
+                            v-bind:src="photos[3] === '' ? 'src/assets/images/user_default.png' : photos[3]" />
                         <div class="rectangle-place"
                             style=" width: auto; top: -22.5px; z-index: 1; padding: 2px 5px 2px 5px;">
                             <p class="number-placement">#4</p>

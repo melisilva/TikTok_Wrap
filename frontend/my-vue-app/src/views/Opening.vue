@@ -2,7 +2,7 @@
     <div class="page" 
     style="background:linear-gradient(to bottom right, #FE2C55, #25F4EE);text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;"> 
         <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" />  
-        <router-link to="/top-history-creators">
+        <router-link to="/creators-message">
             <img class="arrow-right" src="../assets/images/arrow-right-solid.svg" alt="Next Page" />
         </router-link>
         <div class="row">
