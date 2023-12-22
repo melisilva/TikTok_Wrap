@@ -12,6 +12,7 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@fortawesome/vue-fontawesome": "^3.0.5",
+    "dom-to-image": "^2.6.0",
     "html2canvas": "^1.4.1",
     "vue": "^3.3.8",
     "vue-social-sharing": "^4.0.0-alpha4"

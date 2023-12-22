@@ -18,9 +18,9 @@ html,
     font-family: futura-maxi-cg-bold;
     font-size: 20px;
     font-weight: 400;
-    position: relative; 
+    position: relative;
     display: grid;
-	align-items: center;
+    align-items: center;
 }
 
 .tik-tok-logo {
@@ -62,22 +62,25 @@ html,
     }
 
     .space-for-title {
-        margin-bottom: 60px; 
+        margin-bottom: 60px;
     }
 
     .trendy-rec-1,
     .trendy-rec-2 {
         width: 300px;
-        display: flex; flex-direction: column; overflow: hidden; 
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
         /* Default width for pc */
         margin-top: 1%;
         border-radius: 40px;
     }
 
-    .trendy-rec-1{
+    .trendy-rec-1 {
         margin-left: 35%;
     }
-    .trendy-rec-2{
+
+    .trendy-rec-2 {
         margin-right: 35%;
     }
 
@@ -102,7 +105,9 @@ html,
     .trendy-rec-1,
     .trendy-rec-2 {
         width: 300px;
-        display: flex; flex-direction: column; overflow: hidden; 
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
         /* Adjust the width for mobile */
         margin-top: 10%;
     }
@@ -110,18 +115,18 @@ html,
     .trendy-rec-1 {
         border-radius: 0px 40px 40px 0px;
     }
-    
+
     .trendy-rec-2 {
         border-radius: 40px 0px 0px 40px;
     }
 
     .trendy-sound-text-sounds-div {
-        height:35%; 
+        height: 35%;
         padding-left: 5%
     }
 
     .trendy-sound-text-sounds-div-2 {
-        height:35%; 
+        height: 35%;
         padding-right: 5%
     }
 
@@ -255,8 +260,6 @@ html,
     display: flex;
     height: 70%;
     font-size: 14px;
-    padding-bottom: 30%;
-    padding-right: 30%;
     transform: rotate(180deg);
 }
 
@@ -297,9 +300,9 @@ html,
 }
 
 .trendy-sound-text {
-    margin: auto; 
-    color: white; 
-    font-family: 'futura-maxi-cg-bold'; 
+    margin: auto;
+    color: white;
+    font-family: 'futura-maxi-cg-bold';
     text-align: start;
 }
 
@@ -365,4 +368,14 @@ html,
     100% {
         transform: translateX(calc(-100% - 10px));
     }
+}
+
+.centered-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.centered-container p {
+    text-align: center;
 }

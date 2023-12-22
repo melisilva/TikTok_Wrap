@@ -1,16 +1,17 @@
 <template>
-    <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" style="z-index: 10"/>
+    <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" style="z-index: 10" />
     <router-link to="/opening">
-		<img class="arrow-left" src="../assets/images/arrow-left-solid.svg" alt="Previous Page" />
-	</router-link>
-	<router-link to="/top-liked-creators">
-		<img class="arrow-right" src="../assets/images/arrow-right-solid.svg" alt="Next Page" />
-	</router-link>
-    <div class="page" style="background: #b4b5db; display: flex; flex-direction: column;">
+        <img class="arrow-left" src="../assets/images/arrow-left-solid.svg" alt="Previous Page" />
+    </router-link>
+    <router-link to="/top-liked-creators">
+        <img class="arrow-right" src="../assets/images/arrow-right-solid.svg" alt="Next Page" />
+    </router-link>
+    <div id="your-component-id" class="page" style="background: #b4b5db; display: flex; flex-direction: column;">
+        <button @click="captureAndSave">Save Image</button>
         <div class="top-history-creators" style="width: 100%; height: 10%;">
             Your Top 5 History Creators
         </div>
-        <br class="space-for-title"/>
+        <br class="space-for-title" />
 
         <div style="height: 80%">
             <div class="side-by-side-chart" style="display: flex; flex-direction: row; width: 100%; height: 100%">
@@ -23,8 +24,8 @@
                             <p class="number-placement">#5</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-15" :style="{ background: colors[4] }">
-                        <p class="text-inside-rectangle" style="padding-right: 35%; height: 80%; padding-bottom: rect-150%;"> {{ creators[4] }} </p>
+                    <div class="rectangle centered-container" id="rect-15" :style="{ background: colors[4] }">
+                        <p class="text-inside-rectangle"> {{ creators[4] }} </p>
                     </div>
                 </div>
                 <div class="col ranking">
@@ -36,8 +37,8 @@
                             <p class="number-placement">#2</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-12" :style="{ background: colors[1] }">
-                        <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ creators[1] }} </p>
+                    <div class="rectangle centered-container" id="rect-12" :style="{ background: colors[1] }">
+                        <p class="text-inside-rectangle"> {{ creators[1] }} </p>
                     </div>
                 </div>
                 <div class="col ranking">
@@ -49,8 +50,8 @@
                             <p class="number-placement">#1</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-11" :style="{ background: colors[0] }">
-                        <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ creators[0] }} </p>
+                    <div class="rectangle centered-container" id="rect-11" :style="{ background: colors[0] }">
+                        <p class="text-inside-rectangle"> {{ creators[0] }} </p>
                     </div>
                 </div>
                 <div class="col ranking">
@@ -62,8 +63,8 @@
                             <p class="number-placement">#3</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-13" :style="{ background: colors[2] }">
-                        <p class="text-inside-rectangle" style="padding-right: 30%; height: 80%; padding-bottom: 20%;">
+                    <div class="rectangle centered-container" id="rect-13" :style="{ background: colors[2] }">
+                        <p class="text-inside-rectangle">
                             {{ creators[2] }} </p>
                     </div>
                 </div>
@@ -76,8 +77,8 @@
                             <p class="number-placement">#4</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-14" :style="{ background: colors[3] }">
-                        <p class="text-inside-rectangle" style="padding-right: 35%; height: 80%; padding-bottom: 1%;"> {{ creators[3] }} </p>
+                    <div class="rectangle centered-container" id="rect-14" :style="{ background: colors[3] }">
+                        <p class="text-inside-rectangle"> {{ creators[3] }} </p>
                     </div>
                 </div>
 
@@ -94,6 +95,7 @@
     overflow: hidden;
     top: 30px;
     border-radius: 30px 30px 0px 0px;
+    text-align: center;
 }
 
 #rect-11 {
@@ -181,24 +183,44 @@
 <script>
 import axios from 'axios'
 import { defineComponent } from 'vue'
-import html2canvas from 'html2canvas';
 
 export default defineComponent({
     name: 'TopHistoryCreators',
     data() {
         return {
             creators: [],
-            photos: []
+            photos: [],
+            colors: []
         }
     },
     methods: {
         async captureAndSave() {
+            console.log("capturing");
             // Use html2canvas to capture the content
             const element = document.getElementById('your-component-id'); // Replace with your component's ID
             const canvas = await html2canvas(element);
-
             // Convert canvas to image
             const image = canvas.toDataURL('image/png');
+            // Create a download link
+            const link = document.createElement('a');
+            link.href = image;
+            link.download = 'top_creators.png';
+            document.body.appendChild(link);
+            // Trigger the download
+            link.click();
+            // Remove the link from the DOM
+            document.body.removeChild(link);
+        },
+
+
+        /*
+        // Use html2canvas to capture the content
+        const element = document.getElementById('your-component-id'); // Replace with your component's ID
+        const canvas = await html2canvas(element);
+
+        // Convert canvas to image
+         // Convert the canvas to an image and open it in a new window
+            var image = canvas.toDataURL('image/png');
 
             // Create a download link
             const link = document.createElement('a');
@@ -211,7 +233,8 @@ export default defineComponent({
 
             // Remove the link from the DOM
             document.body.removeChild(link);
-        },
+        
+        */
     },
     async beforeMount() {
         await axios.get("http://localhost:8000/top-creator-history")

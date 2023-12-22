@@ -1,5 +1,5 @@
 <template>
-    <div class="page" style="background: linear-gradient(180deg, rgba(255, 0, 50, 0.83) 0%, rgba(225, 27, 78, 0.84) 8.506933599710464%, rgba(33, 186, 235, 0.86) 53.5416305065155%, rgba(37, 244, 238, 0.86) 88.71526718139648%); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;"> 
+    <div class="page" style="background: linear-gradient(to bottom right, #FE2C55, #25F4EE); text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;"> 
         <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" />  
         <router-link to="/trends">
             <img class="arrow-left" src="../assets/images/arrow-left-solid.svg" alt="Previous Page" />
@@ -9,10 +9,10 @@
         </router-link>
         
         <div class="row" style="width: 80%;">
-            <div class="general-text" style="color: black; text-align: center;">
+            <div class="general-text" style="text-align: center;">
                 Crowning the ultimate TikTok royalty!
             </div>
-            <div class="general-text" style="color: black; padding-top: 20%;">
+            <div class="general-text" style="padding-top: 20%;">
                 Your top creator, ruling across all realms...
             </div>
         </div>

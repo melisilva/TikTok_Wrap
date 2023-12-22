@@ -23,8 +23,8 @@
                             <p class="number-placement">#5</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-15" :style="{ background: colors[4] }">
-                        <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ sounds[4] }} </p>
+                    <div class="rectangle centered-container" id="rect-15" :style="{ background: colors[4] }">
+                        <p class="text-inside-rectangle" > {{ sounds[4] }} </p>
                     </div>
 
                 </div>
@@ -37,8 +37,8 @@
                             <p class="number-placement">#2</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-12" :style="{ background: colors[1] }">
-                        <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ sounds[1] }} </p>
+                    <div class="rectangle centered-container" id="rect-12" :style="{ background: colors[1] }">
+                        <p class="text-inside-rectangle" > {{ sounds[1] }} </p>
                     </div>
                 </div>
                 <div class="col ranking">
@@ -50,8 +50,8 @@
                             <p class="number-placement">#1</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-11" :style="{ background: colors[0] }">
-                        <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ sounds[0] }} </p>
+                    <div class="rectangle centered-container" id="rect-11" :style="{ background: colors[0] }">
+                        <p class="text-inside-rectangle" > {{ sounds[0] }} </p>
                     </div>
                 </div>
                 <div class="col ranking">
@@ -63,8 +63,8 @@
                             <p class="number-placement">#3</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-13" :style="{ background: colors[2] }">
-                        <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%; padding-bottom: 50%;">
+                    <div class="rectangle centered-container" id="rect-13" :style="{ background: colors[2] }">
+                        <p class="text-inside-rectangle" >
                             {{ sounds[2] }} </p>
                     </div>
                 </div>
@@ -77,8 +77,8 @@
                             <p class="number-placement">#4</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-14" :style="{ background: colors[3] }">
-                        <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ sounds[3] }} </p>
+                    <div class="rectangle centered-container" id="rect-14" :style="{ background: colors[3] }">
+                        <p class="text-inside-rectangle" > {{ sounds[3] }} </p>
                     </div>
                 </div>
 

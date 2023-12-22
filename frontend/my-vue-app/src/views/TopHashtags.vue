@@ -23,8 +23,8 @@
                              <p class="number-placement">#5</p>
                          </div>
                      </div>
-                     <div class="rectangle" id="rect-15">
-                         <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ hashtags[4] }} </p>
+                     <div class="rectangle centered-container" id="rect-15">
+                         <p class="text-inside-rectangle" > {{ hashtags[4] }} </p>
                      </div>
  
                  </div>
@@ -37,8 +37,8 @@
                              <p class="number-placement">#2</p>
                          </div>
                      </div>
-                     <div class="rectangle" id="rect-12">
-                         <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ hashtags[1] }} </p>
+                     <div class="rectangle centered-container" id="rect-12">
+                         <p class="text-inside-rectangle" > {{ hashtags[1] }} </p>
                      </div>
                  </div>
                  <div class="col ranking">
@@ -50,8 +50,8 @@
                              <p class="number-placement">#1</p>
                          </div>
                      </div>
-                     <div class="rectangle" id="rect-11">
-                         <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ hashtags[0] }} </p>
+                     <div class="rectangle centered-container" id="rect-11">
+                         <p class="text-inside-rectangle" > {{ hashtags[0] }} </p>
                      </div>
                  </div>
                  <div class="col ranking">
@@ -63,8 +63,8 @@
                              <p class="number-placement">#3</p>
                          </div>
                      </div>
-                     <div class="rectangle" id="rect-13">
-                         <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%; padding-bottom: 50%;">
+                     <div class="rectangle centered-container" id="rect-13">
+                         <p class="text-inside-rectangle">
                              {{ hashtags[2] }} </p>
                      </div>
                  </div>
@@ -77,8 +77,8 @@
                              <p class="number-placement">#4</p>
                          </div>
                      </div>
-                     <div class="rectangle" id="rect-14">
-                         <p class="text-inside-rectangle" style="padding-right: 20%; height: 80%;"> {{ hashtags[3] }} </p>
+                     <div class="rectangle centered-container" id="rect-14">
+                         <p class="text-inside-rectangle" > {{ hashtags[3] }} </p>
                      </div>
                  </div>
  

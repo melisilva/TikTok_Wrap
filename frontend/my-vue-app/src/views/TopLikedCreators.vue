@@ -23,8 +23,8 @@
                             <p class="number-placement">#5</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-15" :style="{ background: colors[4] }">
-                        <p class="text-inside-rectangle" style="padding-right: 35%; height: 80%; padding-bottom: rect-150%;"> {{ creators[4] }} </p>
+                    <div class="rectangle centered-container" id="rect-15" :style="{ background: colors[4] }">
+                        <p class="text-inside-rectangle" >{{ creators[4] }} </p>
                     </div>
                 </div>
                 <div class="col ranking">
@@ -36,8 +36,8 @@
                             <p class="number-placement">#2</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-12" :style="{ background: colors[1] }">
-                        <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ creators[1] }} </p>
+                    <div class="rectangle centered-container" id="rect-12" :style="{ background: colors[1] }">
+                        <p class="text-inside-rectangle"> {{ creators[1] }} </p>
                     </div>
                 </div>
                 <div class="col ranking">
@@ -49,8 +49,8 @@
                             <p class="number-placement">#1</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-11" :style="{ background: colors[0] }">
-                        <p class="text-inside-rectangle" style="padding-right: 40%;"> {{ creators[0] }} </p>
+                    <div class="rectangle centered-container" id="rect-11" :style="{ background: colors[0] }">
+                        <p class="text-inside-rectangle"> {{ creators[0] }} </p>
                     </div>
                 </div>
                 <div class="col ranking">
@@ -62,8 +62,8 @@
                             <p class="number-placement">#3</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-13" :style="{ background: colors[2] }">
-                        <p class="text-inside-rectangle" style="padding-right: 30%; height: 80%; padding-bottom: 20%;">
+                    <div class="rectangle centered-container" id="rect-13" :style="{ background: colors[2] }">
+                        <p class="text-inside-rectangle">
                             {{ creators[2] }} </p>
                     </div>
                 </div>
@@ -76,8 +76,8 @@
                             <p class="number-placement">#4</p>
                         </div>
                     </div>
-                    <div class="rectangle" id="rect-14" :style="{ background: colors[3] }">
-                        <p class="text-inside-rectangle" style="padding-right: 35%; height: 80%; padding-bottom: 1%;"> {{ creators[3] }} </p>
+                    <div class="rectangle centered-container" id="rect-14" :style="{ background: colors[3] }">
+                        <p class="text-inside-rectangle"> {{ creators[3] }} </p>
                     </div>
                 </div>
 
@@ -188,7 +188,8 @@ export default defineComponent({
     data() {
         return {
             creators: [],
-            photos: []
+            photos: [],
+            colors: []
         }
     },
     methods: {
