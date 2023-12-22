@@ -1,4 +1,6 @@
 <template>
+    <button @click="captureAndSave" class="tik-tok-button">Save Image</button>
+
     <div id="your-component-id" class="page"
         style="width:100%;color:white; padding:auto;background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%,rgba(255, 255, 255, 1.00) 44.79166567325592%, rgba(255, 255, 255, 1.00) 100%); ">
 
@@ -18,7 +20,6 @@
         </div>
 
         <img class="tik-tok-logo" src="../assets/images/tiktok-logo.png" />
-        <button @click="captureAndSave" class="tik-tok-button">Save Image</button>
 
 
         <router-link to="/finale">
