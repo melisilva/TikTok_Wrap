@@ -287,19 +287,20 @@ def top_creator_favorites(likes, favorites):
     top_favorites = top_following(favorites).head(5)
     top = compare_positions(top_likes, top_favorites, 'Likes', 'Favorites', 'Username')
 
-    if colors_favorites_creators == []:
-        top['Colors'] = colors_likes_creators
+    if(colors_likes_creators != []):
+        if colors_favorites_creators == []:
+            top['Colors'] = colors_likes_creators
 
-        for index, row in top.iterrows():
-            if row['Arrow'] == 'New Entry':
-                new_color = generate_random_color(colors_likes_creators)
-                top.at[index, 'Colors'] = new_color
-            elif row['Arrow'] != 'same':
-                top.at[index, 'Colors'] = colors_likes_creators[int(row['Position_Likes'] - 1)]
+            for index, row in top.iterrows():
+                if row['Arrow'] == 'New Entry':
+                    new_color = generate_random_color(colors_likes_creators)
+                    top.at[index, 'Colors'] = new_color
+                elif row['Arrow'] != 'same':
+                    top.at[index, 'Colors'] = colors_likes_creators[int(row['Position_Likes'] - 1)]
 
-        colors_favorites_creators = top['Colors'].tolist()
-    else:
-        top['Colors'] = colors_favorites_creators
+            colors_favorites_creators = top['Colors'].tolist()
+        else:
+            top['Colors'] = colors_favorites_creators
 
     top.drop(['Count_x', 'Position_Likes', 'Position_Favorites', 'Change'], axis=1, inplace=True)
 
@@ -426,19 +427,20 @@ def top_sound_favorites(likes, favorites):
     top_favorites = top_sound(favorites).head(5)
     top = compare_positions(top_likes, top_favorites, 'Likes', 'Favorites', 'Sound Link')
     
-    if colors_favorites_sounds == []:
-        top['Colors'] = colors_likes_sounds
+    if(colors_likes_sounds != []):
+        if colors_favorites_sounds == []:
+            top['Colors'] = colors_likes_sounds
 
-        for index, row in top.iterrows():
-            if row['Arrow'] == 'New Entry':
-                new_color = generate_random_color(colors_likes_sounds)
-                top.at[index, 'Colors'] = new_color
-            elif row['Arrow'] != 'same':
-                top.at[index, 'Colors'] = colors_likes_sounds[int(row['Position_Likes'] - 1)]
+            for index, row in top.iterrows():
+                if row['Arrow'] == 'New Entry':
+                    new_color = generate_random_color(colors_likes_sounds)
+                    top.at[index, 'Colors'] = new_color
+                elif row['Arrow'] != 'same':
+                    top.at[index, 'Colors'] = colors_likes_sounds[int(row['Position_Likes'] - 1)]
 
-        colors_favorites_sounds = top['Colors'].tolist()
-    else:
-        top['Colors'] = colors_favorites_sounds
+            colors_favorites_sounds = top['Colors'].tolist()
+        else:
+            top['Colors'] = colors_favorites_sounds
 
 
     top.drop(['Count_x', 'Position_Likes', 'Position_Favorites', 'Change'], axis=1, inplace=True)

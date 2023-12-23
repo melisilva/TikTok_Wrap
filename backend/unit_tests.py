@@ -358,15 +358,15 @@ class TestYourFunctions(unittest.TestCase):
         result = crud.get_tiktok_sound_trends(self.sample_history, self.sample_sound_trends)
 
         self.assertIsInstance(result, dict)
-        self.assertTrue(result['Sound Name'][0] == 'sound7')
-        self.assertTrue(result['Sound Name'][1] == 'sound4')
-        self.assertTrue(result['Sound Name'][2] == 'sound3')
-        self.assertTrue(result['Sound Link'][0] == 'www.tiktok.com/music/sound7')
-        self.assertTrue(result['Sound Link'][1] == 'www.tiktok.com/music/sound4')
-        self.assertTrue(result['Sound Link'][2] == 'www.tiktok.com/music/sound3')
-        self.assertTrue(result['Count'][0] == 0)
-        self.assertTrue(result['Count'][1] == 2)
-        self.assertTrue(result['Count'][2] == 3)
+        self.assertTrue(result['Trends']['Sound Name'][0] == 'sound7')
+        self.assertTrue(result['Trends']['Sound Name'][1] == 'sound4')
+        self.assertTrue(result['Trends']['Sound Name'][2] == 'sound3')
+        self.assertTrue(result['Trends']['Sound Link'][0] == 'www.tiktok.com/music/sound7')
+        self.assertTrue(result['Trends']['Sound Link'][1] == 'www.tiktok.com/music/sound4')
+        self.assertTrue(result['Trends']['Sound Link'][2] == 'www.tiktok.com/music/sound3')
+        self.assertTrue(result['Trends']['Count'][0] == 0)
+        self.assertTrue(result['Trends']['Count'][1] == 2)
+        self.assertTrue(result['Trends']['Count'][2] == 3)
 
 
     def test_get_tiktok_trends(self):
@@ -376,13 +376,24 @@ class TestYourFunctions(unittest.TestCase):
         self.assertTrue(result['Trends'][0] == 'text1')
         self.assertTrue(result['Trends'][1] == 'trend2')
         self.assertTrue(result['Trends'][2] == 'trend3')
-        self.assertTrue(result['Count'][0] == 11)
-        self.assertTrue(result['Count'][1] == 0)
-        self.assertTrue(result['Count'][2] == 0)
-        self.assertTrue(result['Hashtags'][0] == '#text1')
-        self.assertTrue(result['Hashtags'][1] == '#trend2')
-        self.assertTrue(result['Hashtags'][2] == '#trend3')
+        self.assertTrue(result['Total Trends'] == 3)
+        self.assertTrue(result['Seen Trends'] == 1)
 
+
+    def test_hex_to_rgv(self):
+        result = crud.hex_to_rgb('#ffffff')
+
+        self.assertIsInstance(result, tuple)
+        self.assertTrue(result[0] == 255)
+        self.assertTrue(result[1] == 255)
+        self.assertTrue(result[2] == 255)
+
+    def test_rgb_to_hex(self):
+        rgb = (255, 255, 255)
+        result = crud.rgb_to_hex(rgb)
+
+        self.assertIsInstance(result, str)
+        self.assertTrue(result == '#ffffff')
 
     
 
