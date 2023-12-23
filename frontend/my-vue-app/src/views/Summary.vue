@@ -31,8 +31,7 @@
             <div style="border: 5px solid black; border-radius: 50%; width: 300px; height: 300px; margin: auto;">
                 <!-- Center the image -->
                 <div style="width: 100%; height: 100%; position: relative;">
-                    <img src="../assets/images/user_default.png"
-                        style="background-color:cyan;width: 300px; height: 300px; border-radius: 50%;">
+                    <img v-bind:src="photo === '' ? 'src/assets/images/user_default.png' : photo" style="background-color:cyan;width: 300px; height: 300px; border-radius: 50%;">
                 </div>
                 <div
                     style="width: 60%; height: 10%; border: 5px solid black; border-radius: 50px; position: relative; margin: auto; bottom: 7%; ">

@@ -6,8 +6,7 @@
     <router-link to="/top-liked-creators">
         <img class="arrow-right" src="../assets/images/arrow-right-solid.svg" alt="Next Page" />
     </router-link>
-    <div id="your-component-id" class="page" style="background: #b4b5db; display: flex; flex-direction: column;">
-        <button @click="captureAndSave">Save Image</button>
+    <div class="page" style="background: #b4b5db; display: flex; flex-direction: column;">
         <div class="top-history-creators" style="width: 100%; height: 10%;">
             Your Top 5 History Creators
         </div>
@@ -193,49 +192,7 @@ export default defineComponent({
             colors: []
         }
     },
-    methods: {
-        async captureAndSave() {
-            console.log("capturing");
-            // Use html2canvas to capture the content
-            const element = document.getElementById('your-component-id'); // Replace with your component's ID
-            const canvas = await html2canvas(element);
-            // Convert canvas to image
-            const image = canvas.toDataURL('image/png');
-            // Create a download link
-            const link = document.createElement('a');
-            link.href = image;
-            link.download = 'top_creators.png';
-            document.body.appendChild(link);
-            // Trigger the download
-            link.click();
-            // Remove the link from the DOM
-            document.body.removeChild(link);
-        },
-
-
-        /*
-        // Use html2canvas to capture the content
-        const element = document.getElementById('your-component-id'); // Replace with your component's ID
-        const canvas = await html2canvas(element);
-
-        // Convert canvas to image
-         // Convert the canvas to an image and open it in a new window
-            var image = canvas.toDataURL('image/png');
-
-            // Create a download link
-            const link = document.createElement('a');
-            link.href = image;
-            link.download = 'top_creators.png';
-            document.body.appendChild(link);
-
-            // Trigger the download
-            link.click();
-
-            // Remove the link from the DOM
-            document.body.removeChild(link);
-        
-        */
-    },
+    methods: {},
     async beforeMount() {
         await axios.get("http://localhost:8000/top-creator-history")
             .then((response) => {
