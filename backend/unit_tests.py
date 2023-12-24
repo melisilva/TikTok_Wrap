@@ -56,6 +56,11 @@ class TestYourFunctions(unittest.TestCase):
             'Trends': ['text1', 'trend2', 'trend3']
         }
 
+        self.sample_personal_data = {
+            'Username': ['rory'],
+            'Photo': ['photo1']
+        }
+
         # Create DataFrames
         self.sample_history = pd.DataFrame(self.sample_history_data)
         self.sample_likes = pd.DataFrame(self.sample_likes_data)
@@ -63,6 +68,7 @@ class TestYourFunctions(unittest.TestCase):
         self.sample_hashtag = pd.DataFrame(self.sample_hashtag_data)
         self.sample_sound_trends = pd.DataFrame(self.sample_sound_trends_data)
         self.sample_tiktok_trends = pd.DataFrame(self.sample_tiktok_trend_data)
+        self.sample_personal = pd.DataFrame(self.sample_personal_data)
 
     def test_top_following(self):
         # Call the function with the sample data
@@ -380,7 +386,7 @@ class TestYourFunctions(unittest.TestCase):
         self.assertTrue(result['Seen Trends'] == 1)
 
 
-    def test_hex_to_rgv(self):
+    def test_hex_to_rgb(self):
         result = crud.hex_to_rgb('#ffffff')
 
         self.assertIsInstance(result, tuple)
@@ -394,6 +400,12 @@ class TestYourFunctions(unittest.TestCase):
 
         self.assertIsInstance(result, str)
         self.assertTrue(result == '#ffffff')
+
+    def test_get_user_name(self):
+        result = crud.get_user_name(self.sample_personal)
+
+        self.assertIsInstance(result, dict)
+        self.assertTrue(result['Username'] == 'rory')
 
     
 
