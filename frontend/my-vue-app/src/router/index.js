@@ -84,7 +84,7 @@ const router = createRouter({
       component: () => import('../views/TrendSounds.vue')
     },
     {
-      path: '/opening',
+      path: '/',
       name: 'opening',
       component: () => import('../views/Opening.vue')
     },
