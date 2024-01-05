@@ -607,7 +607,7 @@ def ads(history):
         creator = ads.loc[history['Sound Link'] == i, 'Username'].head(1).item()
         creators.append(creator)
 
-    top['Username'] = creators
+    top = top.assign(Username=creators)
 
     """
     loop = asyncio.new_event_loop()
@@ -633,9 +633,8 @@ def ads(history):
 
         photos.append(photo)
 
-    top['Photo'] = photos
-        
-    top['Percentage'] = len(ads) / len(history) * 100
+    top.loc[:, 'Photo'] = photos
+    top.loc[:, 'Percentage'] = len(ads) / len(history) * 100
     top = top.to_dict()
 
     return top
